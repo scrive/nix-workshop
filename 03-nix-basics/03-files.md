@@ -65,22 +65,22 @@ nix-repl> workshop = builtins.path { path = ./.; name = "first-scrive-workshop";
 nix-repl> workshop
 "/nix/store/fp0lw035xhxqwgfqifxlb430lyw48r7m-first-scrive-workshop"
 
-nix-repl> builtins.readFile (workshop + "/03-nix-basics/04-files/hello.txt")
+nix-repl> builtins.readFile (workshop + "/03-nix-basics/03-files/hello.txt")
 "Hello World!"
 ```
 
 ## Content Addressible Path
 
-The files [hello.txt](04-files/hello.txt) and [hello.txt](04-files/hello.txt)
+The files [hello.txt](03-files/hello.txt) and [hello.txt](03-files/hello.txt)
 both have the same content `"Hello World!"`, but they produce different artifacts
 in the Nix store. i.e. Name of Nix artifacts depend on the name of the original
 file / directory.
 
 ```
-nix-repl> builtins.path { path = ./03-nix-basics/04-files/hello.txt; }
+nix-repl> builtins.path { path = ./03-nix-basics/03-files/hello.txt; }
 "/nix/store/925f1jb1ajrypjbyq7rylwryqwizvhp0-hello.txt"
 
-nix-repl> builtins.path { path = ./03-nix-basics/04-files/hello-2.txt; }
+nix-repl> builtins.path { path = ./03-nix-basics/03-files/hello-2.txt; }
 "/nix/store/bghk1lsjcylfm05j00zj5j42lv09i79z-hello-2.txt"
 ```
 
@@ -89,7 +89,7 @@ Solution: give a fixed name to path artifacts:
 ```
 nix-repl> builtins.path {
             name = "hello.txt";
-            path = ./03-nix-basics/04-files/hello-2.txt;
+            path = ./03-nix-basics/03-files/hello-2.txt;
           }
 "/nix/store/925f1jb1ajrypjbyq7rylwryqwizvhp0-hello.txt"
 ```
