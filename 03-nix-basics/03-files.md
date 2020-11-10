@@ -38,7 +38,7 @@ nix-repl> ./. + "01-getting-started"
 nix-repl> builtins.readFile ./03-nix-basics/04-derivation/hello.txt
 "Hello World!"
 
-nix-repl> builtins.readFile /nix/store/hgz1qairf1d74dqxzwvpkdbs6galinn0-hello
+nix-repl> builtins.readFile /nix/store/r4mvpxzh7rgrm4j831b2yi90zq64grqm-hello.txt
 "Hello World!"
 
 nix-repl> builtins.readFile (builtins.toFile "hello" "Hello World!")
@@ -56,6 +56,8 @@ nix-repl> builtins.path { path = ./.; }
 $ ls /nix/store/s0c3cc8k6dy51zx9xicfprsl9r35zvf6-nix-workshop
 01-getting-started  02-nix-commands ...
 ```
+
+The exact address changes every time the directory is updated.
 
 ## Named Path
 
