@@ -6,8 +6,24 @@ We have the following files in
 [03-nix-basics/04-import](03-nix-basics/04-import):
 
   - [foo.nix](./04-import/foo.nix)
+
+```nix
+{{#include ./04-import/foo.nix}}
+```
+
   - [bar.nix](./04-import/bar.nix)
+
+```nix
+{{#include ./04-import/bar.nix}}
+```
+
   - [default.nix](./04-import/default.nix)
+
+
+```nix
+{{#include ./04-import/default.nix}}
+```
+
 
 ```
 nix-repl> import ./03-nix-basics/04-import/foo.nix

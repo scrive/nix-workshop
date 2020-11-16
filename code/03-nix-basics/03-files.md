@@ -73,7 +73,7 @@ nix-repl> builtins.readFile (workshop + "/03-nix-basics/03-files/hello.txt")
 
 ## Content Addressible Path
 
-The files [hello.txt](03-files/hello.txt) and [hello.txt](03-files/hello.txt)
+The files [hello.txt](03-files/hello.txt) and [hello-2.txt](03-files/hello-2.txt)
 both have the same content `"Hello World!"`, but they produce different artifacts
 in the Nix store. i.e. Name of Nix artifacts depend on the name of the original
 file / directory.

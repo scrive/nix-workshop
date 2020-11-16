@@ -18,7 +18,7 @@ error: value is null while a Boolean was expected
 ```
 nix-repl> let
             foo = "foo val";
-            bar = "bar val";
+            bar = "bar val, ${foo}";
           in
           { inherit foo bar; }
 { bar = "bar val"; foo = "foo val"; }

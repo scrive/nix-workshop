@@ -1,16 +1,14 @@
-# Nix Derivation
+# Nix Derivation Basics
 
-First import `nixpkgs`:
+First import a pinned version of `nixpkgs` so that we all get the same result:
 
 ```
-nix-repl> nixpkgs-src =  builtins.fetchTarball {
+nix-repl> nixpkgs-src = builtins.fetchTarball {
             url = "https://github.com/NixOS/nixpkgs/archive/c1e5f8723ceb684c8d501d4d4ae738fef704747e.tar.gz";
             sha256 = "02k3l9wnwpmq68xmmfy4wb2panqa1rs04p1mzh2kiwn0449hl86j";
           }
 
 nix-repl> nixpkgs = import nixpkgs-src {}
-
-nix-repl> nixpkgs.lib.stringLength "hello"
 ```
 
 We use the pinned version of `nixpkgs` so that everyone following the
@@ -66,6 +64,16 @@ Hello World!
 This may take some time to load on your computer, as Nix fetches the essential
 build tools that are commonly needed to build Nix packages.
 
+We can also build the derivation within Nix repl using the `:b` command:
+
+```
+nix-repl> :b hello-drv
+[1 built, 0.0 MiB DL]
+
+this derivation produced the following outputs:
+  out -> /nix/store/z449wrqvwncs8clk7bsliabv1g1ci3n3-hello.txt
+```
+
 ## Tracing Derivation
 
 Our `hello-drv` produce the same output as `hello.txt` in previous chapter,
@@ -103,26 +111,30 @@ in the next chapter.
 ## Derivation in a Nix File
 
 We save the same earlier derivation we defined inside a Nix file named
-[`hello.nix`](05-derivation/hello.nix). Now we can build our derivation directly:
+[`hello.nix`](01-derivation-basics/hello.nix). Now we can build our derivation directly:
 
 ```bash
-$ nix-build 03-nix-basics/05-derivation/hello.nix
+$ nix-build 04-derivations/01-derivation-basics/hello.nix
 /nix/store/z449wrqvwncs8clk7bsliabv1g1ci3n3-hello.txt
 ```
 
 We can also get the derivation without building it using `nix-instantiate`:
 
 ```bash
-$ nix-instantiate 03-nix-basics/05-derivation/hello.nix
+$ nix-instantiate 04-derivations/01-derivation-basics/hello.nix
+warning: you did not specify '--add-root'; the result might be removed by the garbage collector
 /nix/store/ad6c51ia15p9arjmvvqkn9fys9sf1kdw-hello.txt.drv
 ```
+
+Ignore the warning from `nix-instantiate`, as we don't care whether the derivation
+is deleted during Nix garbage collection.
 
 Notice that both the derivation and the build output have the same hash
 as the earlier result we had in `nix repl`.
 
 ## Caching Nix Build Artifacts
 
-We create [`hello-sleep.nix`](05-derivation/hello-sleep.nix) as a variant of
+We create [`hello-sleep.nix`](01-derivation-basics/hello-sleep.nix) as a variant of
 `hello.nix` which sleeps for 10 seconds in its `buildPhase`.
 (We will go through how each phases work in the next chapter)
 The 10 seconds sleep simulates the time taken to compile a program.
@@ -132,7 +144,7 @@ multiple times.
 First, instantiating a derivation is not affected by the build time:
 
 ```bash
-$ time nix-instantiate 03-nix-basics/05-derivation/hello-sleep.nix
+$ time nix-instantiate 04-derivations/01-derivation-basics/hello-sleep.nix
 /nix/store/58ngrpwgv6hl633a1iyjbmjqlbdqjw92-hello.txt.drv
 
 real    0m0,217s
@@ -144,7 +156,7 @@ The first time we build `hello-sleep.nix`, it is going to take about 10 seconds.
 We can also see the logs we printed during the build phase is shown:
 
 ```bash
-$ time nix-build 03-nix-basics/05-derivation/hello-sleep.nix
+$ time nix-build 04-derivations/01-derivation-basics/hello-sleep.nix
 these derivations will be built:
   /nix/store/58ngrpwgv6hl633a1iyjbmjqlbdqjw92-hello.txt.drv
 building '/nix/store/58ngrpwgv6hl633a1iyjbmjqlbdqjw92-hello.txt.drv'...
@@ -186,3 +198,42 @@ derivation. For our case, in both calls to `hello-sleep.nix`,
 `/nix/store/k3cq3qn2cx7vmqjrzlc5wcbm3ci75yxy-hello.txt.drv`
 as the result. So it determines that the result has previously already
 been built, and reuse the same Nix artifact.
+
+## Derivation as File
+
+With the duck-typing nature of Nix, derivations acts just like files in Nix.
+We can actually treat the `hello-drv` we defined earlier as a file and
+read from it:
+
+```
+nix-repl> builtins.readFile hello-drv
+querying info about missing paths"Hello World!"
+```
+
+How does that works? Internally Nix lazily builds a
+derivation when it is evaluated, and turn it into
+a file path. We can verify that by using `builtins.toPath`:
+
+```
+nix-repl> builtins.toPath hello-drv
+"/nix/store/z449wrqvwncs8clk7bsliabv1g1ci3n3-hello.txt"
+```
+
+With this property, we can also import derivations
+from a Nix file, and then use it as if the derivation
+has been built:
+
+```
+nix-repl> hello = import ./04-derivations/01-derivation-basics/hello.nix
+
+nix-repl> builtins.readFile hello
+querying info about missing paths"Hello World!"
+```
+
+We can even use a derivation as a string. Nix automatically
+builds the derivation when it is evaluated as a string:
+
+```
+nix-repl> "path of hello: ${hello}"
+"path of hello: /nix/store/z449wrqvwncs8clk7bsliabv1g1ci3n3-hello.txt"
+```
