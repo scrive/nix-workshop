@@ -120,6 +120,41 @@ nix-repl> { inherit foo bar; }
 { bar = "bar val"; foo = "foo val"; }
 ```
 
+## Inherit From Object
+
+```
+nix-repl> let
+            object = {
+              foo = "foo val";
+              bar = "bar val";
+            };
+          in
+          {
+            foo = object.foo;
+
+            baz = "baz val";
+          }
+{ baz = "baz val"; foo = "foo val"; }
+```
+
+
+```
+nix-repl> let
+            object = {
+              foo = "foo val";
+              bar = "bar val";
+            };
+          in
+          {
+            inherit (object) foo;
+
+            baz = "baz val";
+          }
+{ baz = "baz val"; foo = "foo val"; }
+```
+
+
+
 ## List
 
 ```

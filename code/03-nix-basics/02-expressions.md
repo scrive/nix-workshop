@@ -24,6 +24,38 @@ nix-repl> let
 { bar = "bar val"; foo = "foo val"; }
 ```
 
+
+## With Expression
+
+```
+nix-repl> let
+            object = {
+              foo = "foo val";
+              bar = "bar val";
+            };
+          in
+          [
+            object.foo
+            object.bar
+          ]
+[ "foo val" "bar val" ]
+```
+
+```
+nix-repl> let
+            object = {
+              foo = "foo val";
+              bar = "bar val";
+            };
+          in
+          with object; [
+            foo
+            bar
+          ]
+[ "foo val" "bar val" ]
+```
+
+
 ## Function
 
 ```
