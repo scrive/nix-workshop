@@ -195,6 +195,56 @@ $ nix-store -qR /nix/store/dwjxm9rqxfbhf4m8nbg5wzddx1j4rcpl-1605562192-fib-10.dr
 /nix/store/dwjxm9rqxfbhf4m8nbg5wzddx1j4rcpl-1605562192-fib-10.drv
 ```
 
+### Input Derivations
+
+If we inspect the derivation, the derivations `fib-9.drv` and `fib-8.drv`
+are listed as one of the input derivations:
+
+```bash
+$ nix show-derivation /nix/store/dwjxm9rqxfbhf4m8nbg5wzddx1j4rcpl-1605562192-fib-10.drv
+{
+  "/nix/store/dwjxm9rqxfbhf4m8nbg5wzddx1j4rcpl-1605562192-fib-10.drv": {
+    "outputs": {
+      "out": {
+        "path": "/nix/store/g7415lrzl6b43vnw58dgkxg5nzbjplp0-1605562192-fib-10"
+      }
+    },
+    "inputSrcs": [
+      "/nix/store/9krlzvny65gdc8s7kpb6lkx8cd02c25b-default-builder.sh"
+    ],
+    "inputDrvs": {
+      "/nix/store/6av3vlibm4knm4m3djcrfrhhb6jck3zx-1605562192-fib-9.drv": [
+        "out"
+      ],
+      "/nix/store/gn9hp9jcsfclrsdx6qlvjd051w4rsx8b-1605562192-fib-8.drv": [
+        "out"
+      ],
+      "/nix/store/l54djrh1n7d8zdfn26w7v6zjh5wp7faa-bash-4.4-p23.drv": [
+        "out"
+      ],
+      "/nix/store/x9why09hwx2pcnmw0fw7hhh1511hyskl-stdenv-linux.drv": [
+        "out"
+      ]
+    },
+    ...
+    "env": {
+      "buildInputs": "",
+      "buildPhase": "fib_1=$(cat /nix/store/zr1ziy94ig8isdg0gdliz0sm59abh2l1-1605562192-fib-9/answer)\nfib_2=$(cat /nix/store/zvivby98nbjlb6pszp6qla4v1r6zwj82
+-1605562192-fib-8/answer)\n\necho \"Calculating the answer of fib(10)..\"\necho \"Given fib(9) = $fib_1,\"\necho \"and given fib(8) = $fib_2..\"\n\nsleep 3\n\
+nanswer=$(( $fib_1 + $fib_2 ))\necho \"The answer to fib(10) is $answer\"\n",
+...
+```
+
+Interestingly, the `buildPhase` of the derivation refers to the output paths
+of `fib-8.drv` and `fib-9.drv`, even when they have not been built! In other words,
+the hash for a derivation output is deterministically derived ahead of time before
+it is actually built.
+
+In fact, the path to the build output for `fib-10.drv` can be found in the `output`
+field of the derivation.
+
+### Building Actual Derivation
+
 We can build them later on when `nix-build` is actually called, or we can get the cached result
 from else where before building them.
 
@@ -226,3 +276,154 @@ real    0m39,818s
 user    0m1,260s
 sys     0m0,413s
 ```
+
+## Evaluation-Time Dependencies
+
+In our original `fib.nix`, the build output of earlier fibonacci
+numbers are used during the build phase of the current derivation.
+But if we somehow uses the earlier fibonacci numbers to build
+the derviation itself, Nix would behave quite differently.
+
+[`fib-serialized.nix`](./03-fibonacci/fib-serialized.nix):
+
+```nix
+let
+  fib-1 = fib (n - 1);
+  fib-2 = fib (n - 2);
+
+  n-1-str = builtins.toString (n - 1);
+  n-2-str = builtins.toString (n - 2);
+
+  fib-1-answer = nixpkgs.lib.removeSuffix "\n"
+    (builtins.readFile "${fib-1}/answer");
+  fib-2-answer = nixpkgs.lib.removeSuffix "\n"
+    (builtins.readFile "${fib-2}/answer");
+in
+stdenv.mkDerivation {
+  name = "${prefix}-fib-${n-str}";
+  unpackPhase = "true";
+
+  buildPhase = ''
+    echo "Calculating the answer of fib(${n-str}).."
+    echo "Given fib(${n-1-str}) = ${fib-1-answer},"
+    echo "and given fib(${n-2-str}) = ${fib-2-answer}.."
+
+    sleep 3
+
+    answer=$(( ${fib-1-answer} + ${fib-2-answer} ))
+    echo "The answer to fib(${n-str}) is $answer"
+  '';
+  ...
+}
+```
+
+Let's try to instantiate the serialized version of `fib(4)`:
+
+```bash
+$ time nix-instantiate -E "import ./04-derivations/03-fibonacci/fib-serialized.nix \"$(date +%s)\" 4"
+building '/nix/store/97h18adc1358s8ri9mjzmnbvbbsj7p0a-1606145205-fib-1.drv'...
+...
+Producing base case fib(1)...
+The answer to fib(1) is 1
+...
+building '/nix/store/fyizpk51qr2k6pm6v2pbqynfqf8ws68p-1606145205-fib-0.drv'...
+...
+Producing base case fib(0)...
+The answer to fib(0) is 0
+...
+building '/nix/store/8qglzk0vq984mx65f3993rqjpipc3q9j-1606145205-fib-2.drv'...
+...
+Calculating the answer of fib(2)..
+Given fib(1) = 1,
+and given fib(0) = 0..
+The answer to fib(2) is 1
+...
+building '/nix/store/4p8xy858gwc348576h6rz39a3l7wk64l-1606145205-fib-3.drv'...
+...
+Calculating the answer of fib(3)..
+Given fib(2) = 1,
+and given fib(1) = 1..
+The answer to fib(3) is 2
+...
+/nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv
+
+real    0m20,016s
+user    0m1,221s
+sys     0m0,261s
+```
+
+What happened here? `fib(0)` to `fib(3)` are built even though we are just
+instantiating `fib(4)`.
+
+### Inspecting Input Derivation
+
+Showing the derivation of `fib-4.drv` gives us a better idea:
+
+```bash
+$ nix show-derivation /nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv
+{
+  "/nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv": {
+    "outputs": {
+      "out": {
+        "path": "/nix/store/fgq0j5mlqpy99mfdfc3v4bvbd6wr2slg-1606145205-fib-4"
+      }
+    },
+    ...
+    "inputDrvs": {
+      "/nix/store/l54djrh1n7d8zdfn26w7v6zjh5wp7faa-bash-4.4-p23.drv": [
+        "out"
+      ],
+      "/nix/store/x9why09hwx2pcnmw0fw7hhh1511hyskl-stdenv-linux.drv": [
+        "out"
+      ]
+    },
+    "env": {
+      "buildInputs": "",
+      "buildPhase": "echo \"Calculating the answer of fib(4)..\"\necho \"Given fib(3) = 2,\"\necho \"and given fib(2) = 1..\"\n\nsleep 3\n\nanswer=$(( 2 + 1 ))\necho \"The answer to fib(4) is $answer\"\n",
+  ...
+```
+
+Thanks to `builtins.readFile`, the results for `fib(3)` and `fib(2)` have in fact
+been calculated and inlined inside the the derivation itself. They are no longer
+listed in the input derivation.
+
+## Caching Problem of Evaluation-Time Dependencies
+
+In fact, `fib(3)` and `fib(2)` are not even shown as dependencies in `fib(4)` anymore:
+
+```bash
+$ nix-store -qR /nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv | grep fib
+/nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv
+```
+
+This has a consequence in caching Nix dependencies. Not knowing `fib(0)` to
+`fib(3)` are actually input to `fib(4)`, it would be difficult to properly
+cache these dependencies to Cachix.
+
+This is part of the reason why caching Nix dependencies in Kontrakcja can be tricky.
+There are many evaluation-time dependencies in libraries like Haskell.nix that
+cannot be properly cached.
+
+### Non-Lazy Build
+
+If we build `fib(4)` now, indeed only `fib(4)` itself is being built.
+
+```bash
+$ nix-build /nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv
+these derivations will be built:
+  /nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv
+building '/nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv'...
+...
+Calculating the answer of fib(4)..
+Given fib(3) = 2,
+and given fib(2) = 1..
+The answer to fib(4) is 3
+...
+/nix/store/fgq0j5mlqpy99mfdfc3v4bvbd6wr2slg-1606145205-fib-4
+```
+
+The same effect can also happen if we import `.nix` files from derivation outputs.
+
+Lesson learnt: parallelization in Nix can still be tricky. Try your best to
+include dependencies as input derivations, and lazily refer to the built output
+of dependencies only during build time.

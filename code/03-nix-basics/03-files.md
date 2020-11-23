@@ -2,7 +2,7 @@
 
 ## String to File
 
-```
+```nix
 nix-repl> builtins.toFile "hello.txt" "Hello World!"
 "/nix/store/r4mvpxzh7rgrm4j831b2yi90zq64grqm-hello.txt"
 ```
@@ -12,9 +12,10 @@ $ cat /nix/store/r4mvpxzh7rgrm4j831b2yi90zq64grqm-hello.txt
 Hello World!
 ```
 
+
 ## Path
 
-```
+```nix
 nix-repl> ./.
 /path/to/nix-workshop
 
@@ -27,15 +28,15 @@ nix-repl> ./not-found
 
 ## Path Concatenation
 
-```
+```nix
 nix-repl> ./. + "01-getting-started"
 /path/to/nix-workshop/01-getting-started
 ```
 
 ## Read File
 
-```
-nix-repl> builtins.readFile ./03-nix-basics/04-derivation/hello.txt
+```nix
+nix-repl> builtins.readFile ./03-nix-basics/03-files/hello.txt
 "Hello World!"
 
 nix-repl> builtins.readFile /nix/store/r4mvpxzh7rgrm4j831b2yi90zq64grqm-hello.txt
@@ -47,8 +48,13 @@ nix-repl> builtins.readFile (builtins.toFile "hello" "Hello World!")
 
 ## Path
 
-```
+```nix
 nix-repl> builtins.path { path = ./.; }
+"/nix/store/s0c3cc8k6dy51zx9xicfprsl9r35zvf6-nix-workshop"
+```
+
+```nix
+nix-repl> "${./.}"
 "/nix/store/s0c3cc8k6dy51zx9xicfprsl9r35zvf6-nix-workshop"
 ```
 
@@ -61,7 +67,7 @@ The exact address changes every time the directory is updated.
 
 ## Named Path
 
-```
+```nix
 nix-repl> workshop = builtins.path { path = ./.; name = "first-scrive-workshop"; }
 
 nix-repl> workshop
@@ -78,7 +84,7 @@ both have the same content `"Hello World!"`, but they produce different artifact
 in the Nix store. i.e. Name of Nix artifacts depend on the name of the original
 file / directory.
 
-```
+```nix
 nix-repl> builtins.path { path = ./03-nix-basics/03-files/hello.txt; }
 "/nix/store/925f1jb1ajrypjbyq7rylwryqwizvhp0-hello.txt"
 
@@ -88,7 +94,7 @@ nix-repl> builtins.path { path = ./03-nix-basics/03-files/hello-2.txt; }
 
 Solution: give a fixed name to path artifacts:
 
-```
+```nix
 nix-repl> builtins.path {
             name = "hello.txt";
             path = ./03-nix-basics/03-files/hello-2.txt;
@@ -99,7 +105,7 @@ nix-repl> builtins.path {
 
 ## Fetch URL
 
-```
+```nix
 nix-repl> example = builtins.fetchurl "https://scrive.com/robots.txt"
 
 nix-repl> example
@@ -139,6 +145,7 @@ Make sure that the content retrieved are the same for all users.
 
 ```bash
 nix-repl> nodejs-src = builtins.fetchTarball {
+            name = "nodejs-src";
             url = "https://nodejs.org/dist/v14.15.0/node-v14.15.0-linux-x64.tar.xz";
             sha256 = "14jmakaxmlllyyprydc6826s7yk50ipvmwwrkzf6pdqis04g7a9v";
           }

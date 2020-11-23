@@ -2,7 +2,7 @@
 
 First import a pinned version of `nixpkgs` so that we all get the same result:
 
-```
+```nix
 nix-repl> nixpkgs-src = builtins.fetchTarball {
             url = "https://github.com/NixOS/nixpkgs/archive/c1e5f8723ceb684c8d501d4d4ae738fef704747e.tar.gz";
             sha256 = "02k3l9wnwpmq68xmmfy4wb2panqa1rs04p1mzh2kiwn0449hl86j";
@@ -16,7 +16,7 @@ tutorial will get the exact same derivation.
 
 ## Standard Derivation
 
-```
+```nix
 nix-repl> hello-drv = nixpkgs.stdenv.mkDerivation {
             name = "hello.txt";
             unpackPhase = "true";
@@ -66,7 +66,7 @@ build tools that are commonly needed to build Nix packages.
 
 We can also build the derivation within Nix repl using the `:b` command:
 
-```
+```nix
 nix-repl> :b hello-drv
 [1 built, 0.0 MiB DL]
 
@@ -205,7 +205,7 @@ With the duck-typing nature of Nix, derivations acts just like files in Nix.
 We can actually treat the `hello-drv` we defined earlier as a file and
 read from it:
 
-```
+```nix
 nix-repl> builtins.readFile hello-drv
 querying info about missing paths"Hello World!"
 ```
@@ -214,7 +214,7 @@ How does that works? Internally Nix lazily builds a
 derivation when it is evaluated, and turn it into
 a file path. We can verify that by using `builtins.toPath`:
 
-```
+```nix
 nix-repl> builtins.toPath hello-drv
 "/nix/store/z449wrqvwncs8clk7bsliabv1g1ci3n3-hello.txt"
 ```
@@ -223,7 +223,7 @@ With this property, we can also import derivations
 from a Nix file, and then use it as if the derivation
 has been built:
 
-```
+```nix
 nix-repl> hello = import ./04-derivations/01-derivation-basics/hello.nix
 
 nix-repl> builtins.readFile hello
@@ -233,7 +233,7 @@ querying info about missing paths"Hello World!"
 We can even use a derivation as a string. Nix automatically
 builds the derivation when it is evaluated as a string:
 
-```
+```nix
 nix-repl> "path of hello: ${hello}"
 "path of hello: /nix/store/z449wrqvwncs8clk7bsliabv1g1ci3n3-hello.txt"
 ```

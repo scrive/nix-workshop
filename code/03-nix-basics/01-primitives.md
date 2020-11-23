@@ -2,14 +2,14 @@
 
 ## Strings
 
-```
+```nix
 nix-repl> "hello"
 "hello"
 ```
 
 ## Booleans
 
-```
+```nix
 nix-repl> true
 true
 
@@ -25,7 +25,7 @@ true
 
 ## Null
 
-```
+```nix
 nix-repl> null
 null
 
@@ -35,7 +35,7 @@ error: value is null while a Boolean was expected, at (string):1:1
 
 ## Numbers
 
-```
+```nix
 nix-repl> 1
 1
 
@@ -48,7 +48,7 @@ nix-repl> 1 + 2
 
 ## String Interpolation
 
-```
+```nix
 nix-repl> name = "John"
 
 nix-repl> name
@@ -60,7 +60,7 @@ nix-repl> "Hello, ${name}!"
 
 ## Multi Line Strings
 
-```
+```nix
 nix-repl> ''
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Nullam augue ligula, pharetra quis mi porta.
@@ -72,7 +72,7 @@ nix-repl> ''
 
 ## String Concatenation
 
-```
+```nix
 nix-repl> "Hello " + "World"
 "Hello World"
 
@@ -82,7 +82,7 @@ error: cannot coerce an integer to a string, at (string):1:1
 
 ## Set / Object
 
-```
+```nix
 nix-repl> object = { foo = "foo val"; bar = "bar val"; }
 
 nix-repl> object
@@ -97,7 +97,7 @@ nix-repl> object.bar
 
 ## Merge Objects
 
-```
+```nix
 nix-repl> a = { foo = "foo val"; bar = "bar val"; }
 
 nix-repl> b = { foo = "override"; baz = "baz val"; }
@@ -108,7 +108,7 @@ nix-repl> a // b
 
 ## Inherit
 
-```
+```nix
 nix-repl> foo = "foo val"
 
 nix-repl> bar = "bar val"
@@ -122,7 +122,7 @@ nix-repl> { inherit foo bar; }
 
 ## Inherit From Object
 
-```
+```nix
 nix-repl> let
             object = {
               foo = "foo val";
@@ -138,7 +138,7 @@ nix-repl> let
 ```
 
 
-```
+```nix
 nix-repl> let
             object = {
               foo = "foo val";
@@ -157,7 +157,7 @@ nix-repl> let
 
 ## List
 
-```
+```nix
 nix-repl> list = [ "hello" 123 { foo = "foo"; } ]
 
 nix-repl> list
@@ -169,7 +169,7 @@ nix-repl> builtins.elemAt list 2
 
 ## List Concatenation
 
-```
+```nix
 nix-repl> [ 1 2 ] ++ [ "foo" "bar" ]
 [ 1 2 "foo" "bar" ]
 ```

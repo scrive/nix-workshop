@@ -25,5 +25,4 @@ nixpkgs.stdenv.mkDerivation {
 
     chmod +x $out/bin/upper-greet
   '';
-
 }
