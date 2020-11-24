@@ -66,6 +66,67 @@ upper case.
 {{#include ./02-dependencies/upper-greet.nix}}
 ```
 
+### Show Derivation
+
+First we instantiate `upper-greet.drv` without building it yet:
+
+```bash
+drv=$(nix-instantiate 04-derivations/02-dependencies/upper-greet.nix)
+```
+
+We can use `nix show-derivation` to find out the dependency graph of the
+derivation of `upper-greet`:
+
+```bash
+$ nix show-derivation $drv
+{
+  "/nix/store/n61g8616l7g7zv32q52yrzmzr850mjp0-upper-greet.drv": {
+    "outputs": {
+      "out": {
+        "path": "/nix/store/dj2vp64gbja0bp65lngrw9q4lrm1a8r3-upper-greet"
+      }
+    },
+    "inputSrcs": [
+      "/nix/store/9krlzvny65gdc8s7kpb6lkx8cd02c25b-default-builder.sh"
+    ],
+    "inputDrvs": {
+      "/nix/store/7gby8zic1p851ap63q1vdpwy7z1db85c-coreutils-8.32.drv": [
+        "out"
+      ],
+      "/nix/store/97lmyym0isl0ism7pfnv1b0ls4cahpi8-greet.drv": [
+        "out"
+      ],
+      "/nix/store/l54djrh1n7d8zdfn26w7v6zjh5wp7faa-bash-4.4-p23.drv": [
+        "out"
+      ],
+      "/nix/store/x9why09hwx2pcnmw0fw7hhh1511hyskl-stdenv-linux.drv": [
+        "out"
+      ]
+    },
+    ...
+    "env": {
+      "buildInputs": "",
+      "buildPhase": "echo \"building upper-greet...\"\nsleep 3\n",
+      "builder": "/nix/store/qdp56fi357fgxxnkjrwx1g67hrk775im-bash-4.4-p23/bin/bash",
+      ...
+      "installPhase": "mkdir -p $out/bin\n\ncat <<'EOF' > $out/bin/upper-greet\n#!/usr/bin/env bash\n/nix/store/l6xy4qjr8x3ni16skfilw0fvnda13szq-greet/bin/greet \"$@\" | /nix/store/2shqhfsyzz4rnfyysbzgyp5kbfk29750-coreutils-8.32/bin/tr [a-z] [A-Z]\nEOF\n\nchmod +x $out/bin/upper-greet\n",
+      "name": "upper-greet",
+...
+```
+
+We can see that `greet.drv` is included as one of `inputDrvs`. This means that when
+`upper-greet.drv` is being built, `greet.drv` will have to be built first.
+
+The output path of `upper-greet.drv` is listed in `outputs`. This shows that
+the output hash of a derivation is fixed, regardless of the content of the
+build result.
+
+This is also why the output path of `greet.drv` is used directly in `env.installPhase`
+of `upper-greet.drv`, even for the case when `greet.drv` has not been built.
+
+### Build Derivation
+
+
 ```bash
 $ nix-build 04-derivations/02-dependencies/upper-greet.nix
 these derivations will be built:
@@ -103,18 +164,24 @@ $ cat result/bin/upper-greet
 /nix/store/l6xy4qjr8x3ni16skfilw0fvnda13szq-greet/bin/greet "$@" | /nix/store/2shqhfsyzz4rnfyysbzgyp5kbfk29750-coreutils-8.32/bin/tr [a-z] [A-Z]
 ```
 
-If we query the dependency of the built `upper-greet` (not the derivation),
+### Runtime Dependency
+
+If we query the references of the `upper-greet` output (not the derivation),
 we can see that `greet` is still a _runtime_ dependency of `upper-greet`.
 
 ```bash
-$ nix-store -qR /nix/store/dj2vp64gbja0bp65lngrw9q4lrm1a8r3-upper-greet
-/nix/store/hfpiccrc1wsqv9p09mb2ddkakpg09bh4-libunistring-0.9.10
-/nix/store/7bpq6jhxdans9csm7brrdj0qg8bk0m8v-libidn2-2.3.0
-/nix/store/kah5n342wz4i0s9lz9ka4bgz91xa2i94-glibc-2.32
-/nix/store/gyfqw8k2ibhn6mcka9mcd7wcmq14cnmm-attr-2.4.48
-/nix/store/fg73gb66fnzlv9b9kc1bn1zvdq6w2dn4-acl-2.2.53
+$ nix-store --query --references /nix/store/dj2vp64gbja0bp65lngrw9q4lrm1a8r3-upper-greet
 /nix/store/2shqhfsyzz4rnfyysbzgyp5kbfk29750-coreutils-8.32
 /nix/store/qdp56fi357fgxxnkjrwx1g67hrk775im-bash-4.4-p23
 /nix/store/l6xy4qjr8x3ni16skfilw0fvnda13szq-greet
+```
+
+We can use `nix why-depends` to find out why Nix thinks `greet` is a runtime
+dependency to `upper-greet`:
+
+```bash
+$ nix why-depends /nix/store/dj2vp64gbja0bp65lngrw9q4lrm1a8r3-upper-greet /nix/store/l6xy4qjr8x3ni16skfilw0fvnda13szq-greet
 /nix/store/dj2vp64gbja0bp65lngrw9q4lrm1a8r3-upper-greet
+╚═══bin/upper-greet: …ash-4.4-p23/bin/bash./nix/store/l6xy4qjr8x3ni16skfilw0fvnda13szq-greet/bin/greet "$@" | /nix/sto…
+    => /nix/store/l6xy4qjr8x3ni16skfilw0fvnda13szq-greet
 ```

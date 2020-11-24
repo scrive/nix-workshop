@@ -234,15 +234,6 @@ $ nix show-derivation /nix/store/dwjxm9rqxfbhf4m8nbg5wzddx1j4rcpl-1605562192-fib
 nanswer=$(( $fib_1 + $fib_2 ))\necho \"The answer to fib(10) is $answer\"\n",
 ...
 ```
-
-Interestingly, the `buildPhase` of the derivation refers to the output paths
-of `fib-8.drv` and `fib-9.drv`, even when they have not been built! In other words,
-the hash for a derivation output is deterministically derived ahead of time before
-it is actually built.
-
-In fact, the path to the build output for `fib-10.drv` can be found in the `output`
-field of the derivation.
-
 ### Building Actual Derivation
 
 We can build them later on when `nix-build` is actually called, or we can get the cached result
@@ -392,8 +383,9 @@ listed in the input derivation.
 In fact, `fib(3)` and `fib(2)` are not even shown as dependencies in `fib(4)` anymore:
 
 ```bash
-$ nix-store -qR /nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv | grep fib
+$ nix-store -qR --include-outputs /nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv | grep fib
 /nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv
+/nix/store/fgq0j5mlqpy99mfdfc3v4bvbd6wr2slg-1606145205-fib-4
 ```
 
 This has a consequence in caching Nix dependencies. Not knowing `fib(0)` to
