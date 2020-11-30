@@ -36,4 +36,6 @@
 
   - [Fibonacci](./04-derivations/03-fibonacci.md)
 
-  - [Build Environment](./04-derivations/04-build-environment.md)
+  - [Raw Derivation](./04-derivations/04-raw-derivation.md)
+
+  - [Standard Derivation](./04-derivations/05-standard-derivation.md)
