@@ -246,7 +246,7 @@ We can capture the build environment as a file by saving the output of `env` to 
 
 ```nix
 nix-repl> builtins.derivation {
-            name = "env-2";
+            name = "env";
             system = builtins.currentSystem;
             builder = "${nixpkgs.bash}/bin/bash";
             args = [
@@ -304,10 +304,10 @@ __ETC_PROFILE_SOURCED=1
 DISPLAY=:1
 out=/nix/store/6kjgg8j3y44g1ja95swqdd1v8xp6mwi1-env
 builder=/nix/store/qdp56fi357fgxxnkjrwx1g67hrk775im-bash-4.4-p23/bin/bash
-USER=soares
+USER=user
 system=x86_64-linux
-PWD=/mnt/gamma/scrive/nix-workshop
-HOME=/home/soares
+PWD=/path/to/nix-workshop
+HOME=/home/user
 TMP=/run/user/1000
 NIX_STORE=/nix/store
 TMPDIR=/run/user/1000
@@ -318,8 +318,8 @@ TEMPDIR=/run/user/1000
 SHLVL=3
 NIX_BUILD_CORES=8
 TEMP=/run/user/1000
-LOGNAME=soares
-PATH=/nix/store/lf467z8nr5y50q1vqnlbhpv2jachx3cs-bash-interactive-4.4-p23/bin:/home/soares/.cargo/bin:/home/user/.nix-profile/bin
+LOGNAME=user
+PATH=/nix/store/lf467z8nr5y50q1vqnlbhpv2jachx3cs-bash-interactive-4.4-p23/bin:/home/user/.nix-profile/bin:...
 NIX_BUILD_TOP=/run/user/1000
 _=/usr/bin/env
 ```
