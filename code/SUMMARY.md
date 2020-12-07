@@ -41,3 +41,9 @@
   - [Standard Derivation](./04-derivations/05-standard-derivation.md)
 
   - [Build Phases](./04-derivations/06-build-phases.md)
+
+  - [Garbage Collection]()
+
+# Package Management
+
+  - [Evaluating Dependency Graph](./05-package-management/02-dependency-graph.md)

@@ -83,7 +83,7 @@ Let's try to see what is done in `unpackPhase` when we give it some source direc
 
 ```nix
 nix-repl> nixpkgs.stdenv.mkDerivation {
-            name = "fibonacci";
+            name = "fibonacci-src";
             src = ./04-derivations/03-fibonacci;
             installPhase = ''
               set -x
