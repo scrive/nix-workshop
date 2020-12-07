@@ -5,8 +5,8 @@ let
   hsPkgs = nixpkgs.haskell.packages.ghc8102;
 
   src = builtins.path {
-    name = "haskell-project-v1-src";
-    path = ../../src;
+    name = "haskell-project-src";
+    path = ../../haskell;
     filter = path: type:
       let
         basePath = builtins.baseNameOf path;
@@ -15,6 +15,6 @@ let
     ;
   };
 
-  project = hsPkgs.callCabal2nix "haskell-project-v1" src;
+  project = hsPkgs.callCabal2nix "haskell-project" src;
 in
 hsPkgs.callPackage project {}

@@ -42,8 +42,8 @@
 
   - [Build Phases](./04-derivations/06-build-phases.md)
 
-  - [Garbage Collection]()
-
 # Package Management
 
-  - [Evaluating Dependency Graph](./05-package-management/02-dependency-graph.md)
+  - [Dependency Management](./05-package-management/01-dependency-management.md)
+
+  - [Basic Haskell Project](./05-package-management/02-basic-haskell.md)

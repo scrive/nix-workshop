@@ -1,9 +1,7 @@
 cabal-version:       2.4
-name:                haskell-project-v1
+name:                haskell-project
 version:             0.1.0.0
 license:             ISC
-author:              Soares Chen
-maintainer:          soares.chen@gmail.com
 build-type:          Simple
 
 executable haskell-project-v1
