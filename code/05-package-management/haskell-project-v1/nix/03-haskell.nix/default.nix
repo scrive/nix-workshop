@@ -1,4 +1,4 @@
 let
   project = import ./project.nix;
 in
-project.haskell-project-v1.components.exes.haskell-project
+project.haskell-project.components.exes.hello

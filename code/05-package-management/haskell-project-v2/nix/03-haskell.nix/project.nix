@@ -7,7 +7,7 @@ let
 
   src = builtins.path {
     name = "haskell-project-src";
-    path = ../../src;
+    path = ../../haskell;
     filter = path: type:
       let
         basePath = builtins.baseNameOf path;
@@ -20,12 +20,6 @@ let
     inherit src;
 
     compiler-nix-name = "ghc8102";
-
-    modules = [
-      {
-        reinstallableLibGhc = true;
-      }
-    ];
   };
 in
 project

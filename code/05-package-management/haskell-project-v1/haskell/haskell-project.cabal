@@ -4,7 +4,7 @@ version:             0.1.0.0
 license:             ISC
 build-type:          Simple
 
-executable haskell-project-v1
+executable hello
   main-is:             Main.hs
   build-depends:       base >=4.13
   default-language:    Haskell2010

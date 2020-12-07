@@ -14,7 +14,7 @@ let
 
   src = builtins.path {
     name = "haskell-project-src";
-    path = ../../src;
+    path = ../../haskell;
     filter = path: type:
       let
         basePath = builtins.baseNameOf path;

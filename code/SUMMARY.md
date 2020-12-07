@@ -47,3 +47,5 @@
   - [Dependency Management](./05-package-management/01-dependency-management.md)
 
   - [Basic Haskell Project](./05-package-management/02-basic-haskell.md)
+
+  - [Version Conflicts](./05-package-management/03-version-conflicts.md)
