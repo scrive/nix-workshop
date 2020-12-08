@@ -7,21 +7,13 @@ let
 
   hsPkgs = hsPkgs-original.override {
     overrides = hsPkgs-old: hsPkgs-new: {
-      QuickCheck = hsPkgs-new.callHackageDirect {
-        pkg = "QuickCheck";
-        ver = "2.14.2";
-        sha256 = "0rx4lz5rj0s1v451cq6qdxhilq4rv9b9lnq6frm18h64civ2pwbq";
-      } {};
-
-      splitmix = hsLib.dontCheck
-        (hsPkgs-new.callHackage
-          "splitmix" "0.1.0.3" {});
+      QuickCheck = hsPkgs-new.callHackage "QuickCheck" "2.14.2" {};
     };
   };
 
   src = builtins.path {
     name = "haskell-project-src";
-    path = ../../src;
+    path = ../../haskell;
     filter = path: type:
       let
         basePath = builtins.baseNameOf path;

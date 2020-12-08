@@ -2,11 +2,9 @@ cabal-version:       2.4
 name:                haskell-project
 version:             0.1.0.0
 license:             ISC
-author:              Soares Chen
-maintainer:          soares.chen@gmail.com
 build-type:          Simple
 
-executable haskell-project
+executable hello
   main-is:             Main.hs
   build-depends:       base >=4.13
                      , QuickCheck == 2.14.2

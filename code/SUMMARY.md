@@ -49,3 +49,5 @@
   - [Basic Haskell Project](./05-package-management/02-basic-haskell.md)
 
   - [Version Conflicts](./05-package-management/03-version-conflicts.md)
+
+  - [Transitive Version Conflicts](./05-package-management/04-transitive-version-conflicts.md)
