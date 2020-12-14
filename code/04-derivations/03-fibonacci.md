@@ -396,6 +396,17 @@ This is part of the reason why caching Nix dependencies in Kontrakcja can be tri
 There are many evaluation-time dependencies in libraries like Haskell.nix that
 cannot be properly cached.
 
+## Import From Derivation
+
+Evaluation-time dependencies can also occur if we import a `.nix` file from a derivation.
+Since Nix has to read the file content to be able to import the `.nix` file, the
+derivation has to be built at evaluation time. This is more commonly known as
+[Import From Derivation](https://nixos.wiki/wiki/Import_From_Derivation), or
+IFD in short.
+
+IFD should be avoided if possible. However as we will see in later chapters,
+there are valid use cases that can only be solved using IFD.
+
 ### Non-Lazy Build
 
 If we build `fib(4)` now, indeed only `fib(4)` itself is being built.

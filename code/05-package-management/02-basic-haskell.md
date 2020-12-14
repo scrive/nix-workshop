@@ -148,7 +148,7 @@ There is a full tutorial by
 [Gabriel](https://github.com/Gabriel439/haskell-nix). Here we will
 just take a quick tour.
 
-```
+```nix
 {{#include ./haskell-project-v1/nix/02-nixpkgs/default.nix}}
 ```
 

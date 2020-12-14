@@ -51,3 +51,7 @@
   - [Version Conflicts](./05-package-management/03-version-conflicts.md)
 
   - [Transitive Version Conflicts](./05-package-management/04-transitive-version-conflicts.md)
+
+  - [Multi-versioned Haskell Packages](./05-package-management/05-multi-versioned-haskell-packages.md)
+
+  - [Other Package Management Strategies](./05-package-management/06-other-strategies.md)
