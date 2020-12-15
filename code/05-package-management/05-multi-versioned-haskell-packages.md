@@ -109,6 +109,32 @@ have to regularly keep up to date our own version of Hackage.nix.
 Because of this, we recommend readers to be patient and wait for
 few days for a new Haskell packge to become available in Haskell.nix.
 
+## Freezing Hackage Index
+
+The Hackage index at hackage.haskell.org is constantly updated, and there is
+no straightforward way to go back in time and get the old state of Hackage
+at a time in the past.
+
+This can cause issue when we try to download the Hackage snapshot from Nix.
+To ensure reproducibility, the downloaded `01-index.tar.gz` is supposed
+to have the exact same content for everyone by checking the SHA256
+checksum. But since the Hackage index keeps changing, we cannot ask
+Nix to just download the index from the URL.
+
+As a workaround, Hackage instead guarantees that the index state is
+updated in append-only mode. With this Haskell.nix uses a workaround
+to _truncate_ the downloaded index with a known length of the
+snapshot at a particular time during fetching. This helps make sure
+that when Nix finally sees the index archive, the content is exactly
+the same regardless of when the code is evaluated.
+
+Nevertheless, this workaround is one part of the complexity in Haskell.nix.
+In the daily update to Hackage.nix, it has to regularly check the new
+length of the latest Hackage index, while keeping the old lengths for
+each day in the past. As a `.tar.gz` file, the format is opaque, and
+it needs to rely on the obscure interaction of Hackage with the file
+compression to create a reproducible index snapshot.
+
 ## Source Repository Package
 
 Haskell.nix also allows Haskell packages to be provided outside of Hackage.
