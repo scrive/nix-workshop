@@ -29,8 +29,10 @@ let
     materialized = if useMaterialization
       then ./plan else null;
 
-    plan-sha256 = nixpkgs.lib.removeSuffix "\n"
-      (builtins.readFile ./plan-hash.txt);
+    plan-sha256 = if useMaterialization
+      then nixpkgs.lib.removeSuffix "\n"
+        (builtins.readFile ./plan-hash.txt)
+      else null;
 
     exactDeps = true;
   };
