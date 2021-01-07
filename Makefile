@@ -5,7 +5,6 @@ serve:
 	nix-shell --run "mdbook serve"
 
 docker:
-	docker build --tag nix-workshop .
-	docker run --rm -it -v ${pwd}:/nix-workshop nix-workshop
+	./scripts/docker.sh
 
 .PHONY: build serve docker
