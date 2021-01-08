@@ -9,6 +9,6 @@ docker build \
   .
 
 docker run --rm -it \
-  -v "$(pwd):/home/user/nix-workshop" \
+  -v "$(pwd):/home/nix/nix-workshop" \
   nix-workshop \
   /bin/bash --login

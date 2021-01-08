@@ -3,23 +3,24 @@ FROM ubuntu:20.04
 ARG UID=1000
 ARG GID=1000
 
-RUN groupadd -g $GID -o user && \
-  useradd -m -u $UID -g $GID -o -s /bin/bash user && \
-  usermod -aG sudo user && \
+RUN groupadd -g $GID -o nix && \
+  useradd -m -u $UID -g $GID -o -s /bin/bash nix && \
+  usermod -aG sudo nix && \
   DEBIAN_FRONTEND="noninteractive" apt-get update && \
   apt-get install -y git curl wget sudo xz-utils && \
-  echo "user ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/user
+  echo "nix ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/nix
 
-ENV USER user
-USER user
+ENV USER nix
+USER nix
 
-WORKDIR /home/user
+WORKDIR /home/nix
 
-COPY --chown=user:user ./nix.conf /home/user/.config/nix/nix.conf
+COPY --chown=nix:nix ./nix.conf /home/nix/.config/nix/nix.conf
 
 RUN curl -L https://nixos.org/nix/install | sh
 
-RUN . /home/user/.nix-profile/etc/profile.d/nix.sh && \
+RUN . /home/nix/.nix-profile/etc/profile.d/nix.sh && \
   nix-channel --add https://nixos.org/channels/nixos-20.09 nixpkgs && \
   nix-channel --update && \
-  nix-env -i cachix
+  nix-env -i cachix && \
+  cachix use iohk
