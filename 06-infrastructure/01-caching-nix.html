@@ -1,0 +1,594 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Caching Nix Packages - Scrive Nix Workshop</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Scrive Nix Workshop</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="../01-getting-started/01-introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../01-getting-started/02-installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../01-getting-started/03-resources.html"><strong aria-hidden="true">4.</strong> Resources</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Commands</li><li class="chapter-item expanded "><a href="../02-nix-commands/01-install-global-packages.html"><strong aria-hidden="true">5.</strong> Installing Global Packages</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/02-use-packages-in-nix-shell.html"><strong aria-hidden="true">6.</strong> Using Packages in Nix shell</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/03-nix-repl.html"><strong aria-hidden="true">7.</strong> Nix Repl</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Basics</li><li class="chapter-item expanded "><a href="../03-nix-basics/01-primitives.html"><strong aria-hidden="true">8.</strong> Nix Primitives</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/02-expressions.html"><strong aria-hidden="true">9.</strong> Expressions</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/03-files.html"><strong aria-hidden="true">10.</strong> Files</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/04-import.html"><strong aria-hidden="true">11.</strong> Import</a></li><li class="chapter-item expanded affix "><li class="part-title">Derivations</li><li class="chapter-item expanded "><a href="../04-derivations/01-derivation-basics.html"><strong aria-hidden="true">12.</strong> Derivation Basics</a></li><li class="chapter-item expanded "><a href="../04-derivations/02-dependencies.html"><strong aria-hidden="true">13.</strong> Dependencies</a></li><li class="chapter-item expanded "><a href="../04-derivations/03-fibonacci.html"><strong aria-hidden="true">14.</strong> Fibonacci</a></li><li class="chapter-item expanded "><a href="../04-derivations/04-raw-derivation.html"><strong aria-hidden="true">15.</strong> Raw Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/05-standard-derivation.html"><strong aria-hidden="true">16.</strong> Standard Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/06-build-phases.html"><strong aria-hidden="true">17.</strong> Build Phases</a></li><li class="chapter-item expanded affix "><li class="part-title">Package Management</li><li class="chapter-item expanded "><a href="../05-package-management/01-dependency-management.html"><strong aria-hidden="true">18.</strong> Dependency Management</a></li><li class="chapter-item expanded "><a href="../05-package-management/02-basic-haskell.html"><strong aria-hidden="true">19.</strong> Basic Haskell Project</a></li><li class="chapter-item expanded "><a href="../05-package-management/03-version-conflicts.html"><strong aria-hidden="true">20.</strong> Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/04-transitive-version-conflicts.html"><strong aria-hidden="true">21.</strong> Transitive Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/05-multi-versioned-haskell-packages.html"><strong aria-hidden="true">22.</strong> Multi-versioned Haskell Packages</a></li><li class="chapter-item expanded "><a href="../05-package-management/06-other-strategies.html"><strong aria-hidden="true">23.</strong> Other Package Management Strategies</a></li><li class="chapter-item expanded affix "><li class="part-title">Infrastructure</li><li class="chapter-item expanded "><a href="../06-infrastructure/01-caching-nix.html" class="active"><strong aria-hidden="true">24.</strong> Caching Nix Packages</a></li><li class="chapter-item expanded "><a href="../06-infrastructure/02-caching-haskell.html"><strong aria-hidden="true">25.</strong> Caching Haskell Nix Packages</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Scrive Nix Workshop</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#caching-nix-packages" id="caching-nix-packages">Caching Nix Packages</a></h1>
+<p>Nix can be used to build all kinds of packages from the ground up. A Nix
+packages can be as simple as a hello world output, or as large as projects
+such as GHC and GCC. If every time we try to build our Nix package from
+scratch together with all its dependencies, it is going to take unreasonably
+long time.</p>
+<p>Fortunately, NixOS provides cache for most packages provided by nixpkgs,
+hosted at https://cache.nixos.org. This cache is usually enabled by default
+in your local <code>nix.conf</code> file. Thanks to this, we can simply download
+the packages in nixpkgs instead of building them from scratch.</p>
+<p>The default cache from cache.nixos.org is usually sufficient if we are
+just using Nix to build small projects. But what if we are using Nix to
+build large projects that take hours to build? What if we need to
+use Nix to build something like
+<a href="../04-derivations/03-fibonacci/fib.nix"><code>fib(50)</code></a>?</p>
+<h2><a class="header" href="#cachix" id="cachix">Cachix</a></h2>
+<p><a href="https://cachix.org/">Cachix</a> is a cloud service for us to easily host our
+own Nix cache. The service is free to use for public cache, and paid plan
+is available for private Nix cache.</p>
+<p>Other than Cachix, there are other options available for hosting Nix cache,
+such as <a href="https://github.com/edolstra/nix-serve">nix-serve</a> and
+<a href="https://github.com/NixOS/hydra">hydra</a>. However they require rolling up your
+own infrastructure to host the servers, which can take quite a bit of effort.</p>
+<p>Cachix is by far the easiest way to setup a Nix cache. In this section we
+will go through the details of caching Nix packages using Cachix.
+There are also <a href="https://docs.cachix.org">official documentation</a> available
+on using Cachix, which you should check out.</p>
+<p>To get started using Cachix, first sign up for an account at
+https://app.cachix.org/signup. Or if you have already signed up, login
+at https://app.cachix.org/login. After logging in, create a new
+binary cache at https://app.cachix.org/cache.</p>
+<p><img src="./images/create-cache.png" alt="Create Cache" /></p>
+<p>Choose a unique name for your cache. For write access, leave with the default
+option &quot;API tokens&quot;. We will also use the default public read access,
+since our test cache do not contain sensitive data.</p>
+<p>After creating the cache, we will also need to create an auth token to
+push to our cache. Go to https://app.cachix.org/personal-auth-tokens
+to generate one.</p>
+<p><img src="./images/create-token.png" alt="Create Cache" /></p>
+<p>Enter a suitable description for your Cachix token, then click the &quot;Generate&quot;
+button.</p>
+<p><img src="./images/create-token-2.png" alt="Create Cache" /></p>
+<p>The web page will then show us the generated token, which we can later
+enter in our shell. For the purpose of this workshop, also save the
+auth token as <code>cachix-token</code> in the <a href="../../config">nix-workshop/config</a>
+directory. (Remember to exclude the <code>cachix authtoken</code> prefix).</p>
+<p>You should keep the generated token secret, as it can be used to push to
+the Cachix store you own, as well as accessing private cache.
+Having a proper description can help us identify the tokens that we are
+no longer using, so that we can revoke them at a later time.</p>
+<p>Now that we have setup our Cachix account, we can install Cachix on our local
+machine using Nix:</p>
+<pre><code class="language-bash">$ nix-channel --update
+...
+$ nix-env -i cachix
+...
+$ cachix --version
+cachix 0.5.1
+</code></pre>
+<p>At the point of writing the version of our <code>cachix</code> command is <code>0.5.1</code>.
+We can then configure Nix to use our Cachix store by running:</p>
+<pre><code class="language-bash">cachix use my-awesome-nix-cache
+</code></pre>
+<p>(Replace the store name <code>my-awesome-nix-cache</code> with the Cachix store name
+that you have created)</p>
+<h2><a class="header" href="#docker" id="docker">Docker</a></h2>
+<p>It is difficult to test whether a Nix cache works when using a single machine.
+Since Nix also locally caches a Nix package after building it, we can't
+really verify locally that Nix will download from our cache the next
+time we build it on a fresh machine.</p>
+<p>Although we could force rebuild everything using <code>nix-collect-garbage</code>, that
+would also destroy all local builds we have. So we might not want to use that
+nuclear option.</p>
+<p>For the purpose of this workshop, we provide a <a href="../../Dockerfile">Dockerfile</a>
+that you can use to enter an Ubuntu Docker container with fresh Nix environment.
+You can enter the container by simply running:</p>
+<pre><code class="language-bash">make docker
+</code></pre>
+<p>Inside the docker container, you can run as the <code>nix</code> user with the workshop
+directory mounted at <code>~/nix-workshop</code>.</p>
+<p>The Docker container is started with the <code>--rm</code> option, so storage for the
+local Nix store is reclaimed when you exit the container. You can run
+multiple copies of the container in separate shell, to test whether the
+Nix packages are cached properly.</p>
+<p>We still have to configure our Docker container to use the Cachix store
+that we have just created. To simplify the configuration, save your
+Cachix credentials in <a href="../../config">nix-workshop/config</a>, with
+the file <code>cachix-store</code> containing the name of your Cachix store,
+and <code>cachix-token</code> containing the auth token we have just created
+earlier.</p>
+<p>With that, we can run the following commands to setup Cachix inside
+the Docker container:</p>
+<pre><code class="language-bash">CACHIX_STORE=$(cat ~/nix-workshop/config/cachix-store)
+cachix use $CACHIX_STORE
+cachix authtoken $(cat ~/nix-workshop/config/cachix-token)
+</code></pre>
+<p>Alternatively, we can run <code>scripts/setup.sh</code> to do the same thing
+as above for us:</p>
+<pre><code class="language-bash">$ source scripts/setup.sh
+</code></pre>
+<h2><a class="header" href="#caching-fibonacci" id="caching-fibonacci">Caching Fibonacci</a></h2>
+<p>Now that our Cachix store is setup properly, we can try to actually
+cache some Nix builds.
+We will reuse the <a href="../04-derivations/03-fibonacci/fib.nix"><code>fib.nix</code></a>
+derivation that we defined in earlier
+<a href="../04-derivations/03-fibonacci.html">chapter</a>.</p>
+<p>First of all, we use <code>nix-instantiate</code> to instantiate our Nix derivation,
+and then save the result into <code>$drv</code>. We will create the <code>fib(4)</code> derivation
+with the prefix <code>&quot;foo&quot;</code>. (You can choose your own prefix here)</p>
+<pre><code class="language-bash">$ drv=$(nix-instantiate -E '
+  import ./code/04-derivations/03-fibonacci/fib.nix
+    &quot;foo&quot; 4
+')
+...
+warning: you did not specify '--add-root'; the result might be removed by the garbage collector
+</code></pre>
+<p>When running <code>nix-instantiate</code>, it will produce the warning line
+<code>warning: you did not specify '--add-root' ...</code> which we can usually ignore.</p>
+<p>Now we can build <code>$drv</code>, which can take a while to finish.</p>
+<pre><code class="language-bash">$ echo $drv
+/nix/store/a4qb7vq7ws2q01jd5a07zpml5hw381nl-foo-fib-4.drv
+
+$ nix-build --no-out-link $drv
+...
+/nix/store/zdq2p21pq836n3k1xkh4yb8wkvl9fy0l-foo-fib-4
+</code></pre>
+<h3><a class="header" href="#single-build-output" id="single-build-output">Single Build Output</a></h3>
+<p>Now that we have built our derivation, how do we actually cache it using
+Cachix? At the most basic level, we can use <code>cachix push</code> to push
+a particular Nix store path to Cachix:</p>
+<pre><code class="language-bash">$ nix-build --no-out-link $drv | cachix push $CACHIX_STORE
+compressing and pushing /nix/store/zdq2p21pq836n3k1xkh4yb8wkvl9fy0l-foo-fib-4 (288.00 B)
+All done.
+</code></pre>
+<p>In our naive attempt, we simply pipe the build output path of <code>fib(4)</code> to
+<code>cachix push</code>. From the output we can see that Cachix has pushed a single path to
+our store.</p>
+<p>Now if we try to build <code>fib(4)</code> again in another container, we can see that
+Nix would fetch the result directly from Cachix:</p>
+<pre><code>$ nix-build --no-out-link $drv
+these paths will be fetched (0.00 MiB download, 0.00 MiB unpacked):
+  /nix/store/zdq2p21pq836n3k1xkh4yb8wkvl9fy0l-foo-fib-4
+copying path '/nix/store/zdq2p21pq836n3k1xkh4yb8wkvl9fy0l-foo-fib-4' from 'https://scrive-nix-workshop.cachix.org'...
+/nix/store/zdq2p21pq836n3k1xkh4yb8wkvl9fy0l-foo-fib-4
+</code></pre>
+<p>Everything looks fine so far. But in fact <code>fib(0)</code> to <code>fib(3)</code> have
+not yet been cached in our store. So Nix will still have to rebuild
+the dependencies when they are needed, such as when entering
+Nix shell:</p>
+<pre><code class="language-bash">$ nix-shell $drv
+these derivations will be built:
+  /nix/store/6mc3ccymdyfmqacrq5vyc43zb2gl81ml-foo-fib-1.drv
+  /nix/store/hj0g7hn703axx44x29l27xb1nrdg83rh-foo-fib-0.drv
+  /nix/store/k65i01s85dix9xcgxyaggc8l13lx1rrz-foo-fib-2.drv
+  /nix/store/wgcp26v3g23x9i9iqiirn20pgmv4mgki-foo-fib-3.drv
+</code></pre>
+<p>The dependencies also need to be rebuilt when we try to build something like
+<code>fib(6)</code>, which depends on not only <code>fib(4)</code> but also <code>fib(3)</code>:</p>
+<pre><code class="language-bash">$ drv=$(nix-instantiate -E '
+  import ./code/04-derivations/03-fibonacci/fib.nix
+    &quot;foo&quot; 6
+')
+$ nix-build --no-out-link $drv
+these derivations will be built:
+  /nix/store/6mc3ccymdyfmqacrq5vyc43zb2gl81ml-foo-fib-1.drv
+  /nix/store/hj0g7hn703axx44x29l27xb1nrdg83rh-foo-fib-0.drv
+  /nix/store/k65i01s85dix9xcgxyaggc8l13lx1rrz-foo-fib-2.drv
+  /nix/store/wgcp26v3g23x9i9iqiirn20pgmv4mgki-foo-fib-3.drv
+  /nix/store/m3sspba1wz9ffp5qyjplg8fjbnhy7d73-foo-fib-5.drv
+  /nix/store/zyhq28hxak4jk7xak6lixa4lbfxdjwvz-foo-fib-6.drv
+...
+</code></pre>
+<h3><a class="header" href="#how-cachix-push-works" id="how-cachix-push-works">How <code>cachix push</code> works</a></h3>
+<p>The <code>cachix push</code> command works by reading the Nix store paths from STDIN,
+and push each of the path to the specified Cachix store. More specifically,
+<code>cachix push</code> pushes the <em>closure</em> of the Nix path.</p>
+<p>For the case above, the build result of <code>fib(4)</code> does not have any runtime
+dependency, so only the build itself is pushed to Cachix.</p>
+<p>We can also try pushing <code>fib-4.drv</code> itself to Cachix, and we can see that
+it pushes the <code>.drv</code> derivation of all its dependencies as well.</p>
+<pre><code>echo $drv | cachix push $CACHIX_STORE
+compressing and pushing /nix/store/0hfyfy1wxlri4gdcmikg7v0ybvpkl3yl-Python-3.8.6.tar.xz.drv (856.00 B)
+compressing and pushing /nix/store/0vjq3889mc2z9v02hcw072ay0fivbshx-nuke-references.drv (1.41 KiB)
+compressing and pushing /nix/store/0rgf63snfi078knpghs1jf2q3913gd17-bootstrap-stage4-gcc-wrapper-10.2.0.drv (7.05 KiB)
+...
+compressing and pushing /nix/store/hj0g7hn703axx44x29l27xb1nrdg83rh-foo-fib-0.drv (1.41 KiB)
+...
+</code></pre>
+<p>Similarly if we instead try to push the build result of
+<a href="../04-derivations/02-dependencies/upper-greet.nix"><code>upper-greet.nix</code></a>,
+we can see that the build result of
+<a href="../04-derivations/02-dependencies/greet.nix"><code>greet.nix</code></a> is pushed as well.</p>
+<pre><code class="language-bash">$ drv=$(nix-instantiate ./code/04-derivations/02-dependencies/upper-greet.nix)
+these derivations will be built:
+  /nix/store/wirssa651gwxv6z8ik78ac05c7f9ml3b-greet.drv
+  /nix/store/aqznnbrbplwm2mvybzhp6wxw5inrq2aj-upper-greet.drv
+...
+compressing and pushing /nix/store/391ab6p11dh6gk4crc9a8pxym7c2v7lc-upper-greet (704.00 B)
+compressing and pushing /nix/store/ws8lpdazs14zjcsgifkpdy060qsiakk6-greet (568.00 B)
+All done.
+</code></pre>
+<p>However for neither approach can push the build output of <code>fib(0)</code> to <code>fib(3)</code>,
+which are <em>build dependencies</em> of <code>fib(4)</code>.</p>
+<h3><a class="header" href="#caching-build-dependencies" id="caching-build-dependencies">Caching Build Dependencies</a></h3>
+<p>In practice, when we are are caching a derivation such as <code>fib(4)</code>, we would also
+want to cache it together with all its build dependencies, including <code>fib(0)</code> to
+<code>fib(3)</code> which we have just built. To do that we have to use <code>cachix push</code> together
+with other Nix commands.</p>
+<p>Recall that the <code>nix-store -qR</code> command gives us all the dependencies of a
+derivation:</p>
+<pre><code class="language-bash">$ nix-store -qR $drv
+/nix/store/01n3wxxw29wj2pkjqimmmjzv7pihzmd7-which-2.21.tar.gz.drv
+/nix/store/03f77phmfdmsbfpcc6mspjfff3yc9fdj-setup-hook.sh
+...
+</code></pre>
+<p>We can <code>grep</code> specifically for the <code>fib</code> dependencies that we are interested in:</p>
+<pre><code class="language-bash">$ nix-store -qR $drv | grep fib-
+/nix/store/6mc3ccymdyfmqacrq5vyc43zb2gl81ml-foo-fib-1.drv
+/nix/store/hj0g7hn703axx44x29l27xb1nrdg83rh-foo-fib-0.drv
+/nix/store/k65i01s85dix9xcgxyaggc8l13lx1rrz-foo-fib-2.drv
+/nix/store/wgcp26v3g23x9i9iqiirn20pgmv4mgki-foo-fib-3.drv
+/nix/store/a4qb7vq7ws2q01jd5a07zpml5hw381nl-foo-fib-4.drv
+</code></pre>
+<p>To push the build result of all dependencies, we can add the
+<code>--include-outputs</code> option:</p>
+<pre><code class="language-bash">$ nix-store -qR --include-outputs $drv | grep fib-
+/nix/store/20flzbyx97kly3n34krlmjg9awjn6a5z-foo-fib-3
+/nix/store/52j5p1a03vi8dxn7rh4s8y6n5ml318rq-foo-fib-0
+/nix/store/6mc3ccymdyfmqacrq5vyc43zb2gl81ml-foo-fib-1.drv
+/nix/store/hj0g7hn703axx44x29l27xb1nrdg83rh-foo-fib-0.drv
+/nix/store/k65i01s85dix9xcgxyaggc8l13lx1rrz-foo-fib-2.drv
+/nix/store/wgcp26v3g23x9i9iqiirn20pgmv4mgki-foo-fib-3.drv
+/nix/store/a4qb7vq7ws2q01jd5a07zpml5hw381nl-foo-fib-4.drv
+/nix/store/c7lwn4mfn3pk0hhvc98lg1r6z6c8pb6c-foo-fib-1
+/nix/store/qih0iazs5yl3dg694a2fz0jzzlxzy7k8-foo-fib-2
+/nix/store/zdq2p21pq836n3k1xkh4yb8wkvl9fy0l-foo-fib-4
+</code></pre>
+<p>Finally, we don't really need to push the <code>.drv</code> files themselves
+to Cachix, as Nix always regenerate them during evaluation of the
+<code>.nix</code> files. We can use <code>grep -v</code> to exclude them:</p>
+<pre><code class="language-bash">$ nix-store -qR --include-outputs $drv | grep -v .drv | grep fib-
+/nix/store/20flzbyx97kly3n34krlmjg9awjn6a5z-foo-fib-3
+/nix/store/52j5p1a03vi8dxn7rh4s8y6n5ml318rq-foo-fib-0
+/nix/store/c7lwn4mfn3pk0hhvc98lg1r6z6c8pb6c-foo-fib-1
+/nix/store/qih0iazs5yl3dg694a2fz0jzzlxzy7k8-foo-fib-2
+/nix/store/zdq2p21pq836n3k1xkh4yb8wkvl9fy0l-foo-fib-4
+</code></pre>
+<p>Now that we got the list of build outputs to push, we can then pipe them
+to <code>cachix push</code>:</p>
+<pre><code class="language-bash">$ nix-build $drv &amp;&amp; nix-store -qR --include-outputs $drv | grep -v .drv | cachix push $CACHIX_STORE
+compressing and pushing /nix/store/20flzbyx97kly3n34krlmjg9awjn6a5z-foo-fib-3 (288.00 B)
+compressing and pushing /nix/store/52j5p1a03vi8dxn7rh4s8y6n5ml318rq-foo-fib-0 (288.00 B)
+compressing and pushing /nix/store/c7lwn4mfn3pk0hhvc98lg1r6z6c8pb6c-foo-fib-1 (288.00 B)
+compressing and pushing /nix/store/qih0iazs5yl3dg694a2fz0jzzlxzy7k8-foo-fib-2 (288.00 B)
+compressing and pushing /nix/store/zdq2p21pq836n3k1xkh4yb8wkvl9fy0l-foo-fib-4 (288.00 B)
+All done.
+</code></pre>
+<p>This time if we try to build <code>fib(6)</code> on a fresh machine, it will download the cache
+result of both <code>fib(3)</code> and <code>fib(4)</code> from Cachix:</p>
+<pre><code class="language-bash">$ nix-build -E '
+  import ./code/04-derivations/03-fibonacci/fib.nix
+    &quot;foo&quot; 6
+'
+these derivations will be built:
+  /nix/store/m3sspba1wz9ffp5qyjplg8fjbnhy7d73-foo-fib-5.drv
+  /nix/store/zyhq28hxak4jk7xak6lixa4lbfxdjwvz-foo-fib-6.drv
+these paths will be fetched (61.76 MiB download, 260.53 MiB unpacked):
+  /nix/store/20flzbyx97kly3n34krlmjg9awjn6a5z-foo-fib-3
+  /nix/store/zdq2p21pq836n3k1xkh4yb8wkvl9fy0l-foo-fib-4
+  ...
+building '/nix/store/m3sspba1wz9ffp5qyjplg8fjbnhy7d73-foo-fib-5.drv'...
+...
+building '/nix/store/zyhq28hxak4jk7xak6lixa4lbfxdjwvz-foo-fib-6.drv'...
+...
+/nix/store/vrzxqqj6q11lgpizsd78r2cx2c7zfban-foo-fib-6
+</code></pre>
+<h2><a class="header" href="#evaluation-time-dependencies" id="evaluation-time-dependencies">Evaluation-time Dependencies</a></h2>
+<p>As mentioned in
+<a href="../04-derivations/03-fibonacci.html#evaluation-time-dependencies">chapter 14</a>,
+It is much more tricky to find the evaluation time dependencies and
+push them to Cachix.</p>
+<p>If we try to Cache the build dependencies of
+<a href="../04-derivations/03-fibonacci/fib-serialized.nix"><code>fib-serialized.nix</code></a>,
+it wouldn't really workd.</p>
+<pre><code class="language-bash">$ drv=$(nix-instantiate -E '
+  import ./code/04-derivations/03-fibonacci/fib-serialized.nix
+    &quot;foo&quot; 4
+')
+building '/nix/store/6mc3ccymdyfmqacrq5vyc43zb2gl81ml-foo-fib-1.drv'...
+...
+building '/nix/store/hj0g7hn703axx44x29l27xb1nrdg83rh-foo-fib-0.drv'...
+...
+building '/nix/store/bg0kqrl14p99y1k0g47gcx7a4ik4qk1m-foo-fib-3.drv'...
+...
+
+$ nix-build $drv &amp;&amp; nix-store -qR --include-outputs $drv | grep -v .drv | cachix push $CACHIX_STORE
+compressing and pushing /nix/store/rlllddnljlv1qzlizdr97q5wbzlqpq5k-foo-fib-4 (288.00 B)
+All done.
+</code></pre>
+<p>At this point, there is no simple way to find out all evaluation time
+dependencies to push. But in case we really want to push all evaluation time
+dependencies, there is still one nuclear option</p>
+<h2><a class="header" href="#push-all-nix-derivations" id="push-all-nix-derivations">Push All Nix Derivations</a></h2>
+<p><code>cachix push</code> provides a <code>-w,--watch-store</code> option to watch the global Nix
+store, and push <em>all</em> new paths that are added to the Nix store after the
+command is called.</p>
+<p>With that we can run <code>cachix push</code> in the background, and then run <code>nix-build</code>:</p>
+<pre><code class="language-bash">$ cachix push -w $CACHIX_STORE &amp;
+$ nix-build -E '
+  import ./code/04-derivations/03-fibonacci/fib-serialized.nix
+    &quot;foo&quot; 4'
+...
+compressing and pushing /nix/store/6mc3ccymdyfmqacrq5vyc43zb2gl81ml-foo-fib-1.drv (1.41 KiB)
+building '/nix/store/6mc3ccymdyfmqacrq5vyc43zb2gl81ml-foo-fib-1.drv'...
+...
+compressing and pushing /nix/store/c7lwn4mfn3pk0hhvc98lg1r6z6c8pb6c-foo-fib-1 (288.00 B)
+compressing and pushing /nix/store/74x1nl7paqin5zcrkkj94bbkm25shpx9-foo-fib-2.drv (1.52 KiB)
+building '/nix/store/74x1nl7paqin5zcrkkj94bbkm25shpx9-foo-fib-2.drv'...
+...
+compressing and pushing /nix/store/ia5arkikhbyd9drjzxm2lqgr5a1b6n9m-foo-fib-2 (288.00 B)
+compressing and pushing /nix/store/bg0kqrl14p99y1k0g47gcx7a4ik4qk1m-foo-fib-3.drv (1.52 KiB)
+building '/nix/store/bg0kqrl14p99y1k0g47gcx7a4ik4qk1m-foo-fib-3.drv'...
+...
+compressing and pushing /nix/store/ykvgv0hvpm93glrjzpyb7hkashq5rr1q-foo-fib-3 (288.00 B)
+compressing and pushing /nix/store/m25lspbpyv09vl3pz3sf3q20ndcrilq9-foo-fib-4.drv (1.52 KiB)
+these derivations will be built:
+  /nix/store/m25lspbpyv09vl3pz3sf3q20ndcrilq9-foo-fib-4.drv
+...
+/nix/store/rlllddnljlv1qzlizdr97q5wbzlqpq5k-foo-fib-4
+compressing and pushing /nix/store/rlllddnljlv1qzlizdr97q5wbzlqpq5k-foo-fib-4 (288.00 B)
+</code></pre>
+<p>We can see during the build that Nix pushes a lot of things to Cachix, including all the
+intermediary <code>.drv</code> files and also the downloaded tarballs from sources like nixpkgs,
+which are in fact also evaluation time dependencies.</p>
+<p>Now if we go to a fresh machine and try to build <code>fib-serialized</code>, we can see
+that this time it is correctly downloading the build results of <code>fib(0)</code> to
+<code>fib(4)</code> from Cachix:</p>
+<pre><code class="language-bash">$ nix-build -E '
+  import ./code/04-derivations/03-fibonacci/fib-serialized.nix
+    &quot;foo&quot; 6'
+...
+copying path '/nix/store/c7lwn4mfn3pk0hhvc98lg1r6z6c8pb6c-foo-fib-1' from 'https://scrive-nix-workshop.cachix.org'...
+copying path '/nix/store/52j5p1a03vi8dxn7rh4s8y6n5ml318rq-foo-fib-0' from 'https://scrive-nix-workshop.cachix.org'...
+copying path '/nix/store/ia5arkikhbyd9drjzxm2lqgr5a1b6n9m-foo-fib-2' from 'https://scrive-nix-workshop.cachix.org'...
+copying path '/nix/store/ykvgv0hvpm93glrjzpyb7hkashq5rr1q-foo-fib-3' from 'https://scrive-nix-workshop.cachix.org'...
+copying path '/nix/store/rlllddnljlv1qzlizdr97q5wbzlqpq5k-foo-fib-4' from 'https://scrive-nix-workshop.cachix.org'...
+...
+building '/nix/store/9ykk0mg8b72nr73hfb82vs49pfyqinzg-foo-fib-5.drv'...
+...
+these derivations will be built:
+  /nix/store/wfqhsi5rccz5wb620axn1w3sbjhalw1s-foo-fib-6.drv
+building '/nix/store/wfqhsi5rccz5wb620axn1w3sbjhalw1s-foo-fib-6.drv'...
+/nix/store/7rx619rpisnh9sw2g3sk6yq07jb563yh-foo-fib-6
+</code></pre>
+<p>The <code>-w</code> option provides very coarse-grained control for caching everything to
+Cachix. This can be useful if we do not care about what is being cached, and
+instead just want to cache everything.</p>
+<p>However as we will see in the next chapter, there might be things that we
+do <em>not</em> want to cache to Cachix, such as proprietary source code or
+secret credentials.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../05-package-management/06-other-strategies.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../06-infrastructure/02-caching-haskell.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../05-package-management/06-other-strategies.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../06-infrastructure/02-caching-haskell.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

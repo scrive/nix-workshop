@@ -1,0 +1,412 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Derivation Basics - Scrive Nix Workshop</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Scrive Nix Workshop</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="../01-getting-started/01-introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../01-getting-started/02-installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../01-getting-started/03-resources.html"><strong aria-hidden="true">4.</strong> Resources</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Commands</li><li class="chapter-item expanded "><a href="../02-nix-commands/01-install-global-packages.html"><strong aria-hidden="true">5.</strong> Installing Global Packages</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/02-use-packages-in-nix-shell.html"><strong aria-hidden="true">6.</strong> Using Packages in Nix shell</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/03-nix-repl.html"><strong aria-hidden="true">7.</strong> Nix Repl</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Basics</li><li class="chapter-item expanded "><a href="../03-nix-basics/01-primitives.html"><strong aria-hidden="true">8.</strong> Nix Primitives</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/02-expressions.html"><strong aria-hidden="true">9.</strong> Expressions</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/03-files.html"><strong aria-hidden="true">10.</strong> Files</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/04-import.html"><strong aria-hidden="true">11.</strong> Import</a></li><li class="chapter-item expanded affix "><li class="part-title">Derivations</li><li class="chapter-item expanded "><a href="../04-derivations/01-derivation-basics.html" class="active"><strong aria-hidden="true">12.</strong> Derivation Basics</a></li><li class="chapter-item expanded "><a href="../04-derivations/02-dependencies.html"><strong aria-hidden="true">13.</strong> Dependencies</a></li><li class="chapter-item expanded "><a href="../04-derivations/03-fibonacci.html"><strong aria-hidden="true">14.</strong> Fibonacci</a></li><li class="chapter-item expanded "><a href="../04-derivations/04-raw-derivation.html"><strong aria-hidden="true">15.</strong> Raw Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/05-standard-derivation.html"><strong aria-hidden="true">16.</strong> Standard Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/06-build-phases.html"><strong aria-hidden="true">17.</strong> Build Phases</a></li><li class="chapter-item expanded affix "><li class="part-title">Package Management</li><li class="chapter-item expanded "><a href="../05-package-management/01-dependency-management.html"><strong aria-hidden="true">18.</strong> Dependency Management</a></li><li class="chapter-item expanded "><a href="../05-package-management/02-basic-haskell.html"><strong aria-hidden="true">19.</strong> Basic Haskell Project</a></li><li class="chapter-item expanded "><a href="../05-package-management/03-version-conflicts.html"><strong aria-hidden="true">20.</strong> Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/04-transitive-version-conflicts.html"><strong aria-hidden="true">21.</strong> Transitive Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/05-multi-versioned-haskell-packages.html"><strong aria-hidden="true">22.</strong> Multi-versioned Haskell Packages</a></li><li class="chapter-item expanded "><a href="../05-package-management/06-other-strategies.html"><strong aria-hidden="true">23.</strong> Other Package Management Strategies</a></li><li class="chapter-item expanded affix "><li class="part-title">Infrastructure</li><li class="chapter-item expanded "><a href="../06-infrastructure/01-caching-nix.html"><strong aria-hidden="true">24.</strong> Caching Nix Packages</a></li><li class="chapter-item expanded "><a href="../06-infrastructure/02-caching-haskell.html"><strong aria-hidden="true">25.</strong> Caching Haskell Nix Packages</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Scrive Nix Workshop</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#nix-derivation-basics" id="nix-derivation-basics">Nix Derivation Basics</a></h1>
+<p>First import a pinned version of <code>nixpkgs</code> so that we all get the same result:</p>
+<pre><code class="language-nix">nix-repl&gt; nixpkgs-src = builtins.fetchTarball {
+            url = &quot;https://github.com/NixOS/nixpkgs/archive/c1e5f8723ceb684c8d501d4d4ae738fef704747e.tar.gz&quot;;
+            sha256 = &quot;02k3l9wnwpmq68xmmfy4wb2panqa1rs04p1mzh2kiwn0449hl86j&quot;;
+          }
+
+nix-repl&gt; nixpkgs = import nixpkgs-src {}
+</code></pre>
+<p>We use the pinned version of <code>nixpkgs</code> so that everyone following the
+tutorial will get the exact same derivation.</p>
+<h2><a class="header" href="#standard-derivation" id="standard-derivation">Standard Derivation</a></h2>
+<pre><code class="language-nix">nix-repl&gt; hello-drv = nixpkgs.stdenv.mkDerivation {
+            name = &quot;hello.txt&quot;;
+            unpackPhase = &quot;true&quot;;
+            installPhase = ''
+              echo -n &quot;Hello World!&quot; &gt; $out
+            '';
+          }
+
+nix-repl&gt; hello-drv
+«derivation /nix/store/ad6c51ia15p9arjmvvqkn9fys9sf1kdw-hello.txt.drv»
+</code></pre>
+<pre><code class="language-bash">$ cat /nix/store/ad6c51ia15p9arjmvvqkn9fys9sf1kdw-hello.txt.drv
+Derive([(&quot;out&quot;,&quot;/nix/store/f6qq9bwv0lxw5glzjmin1y1r1s3kangv-hello.txt&quot;,&quot;&quot;,&quot;&quot;)],...)
+
+$ nix show-derivation /nix/store/ad6c51ia15p9arjmvvqkn9fys9sf1kdw-hello.txt.drv
+{
+  &quot;/nix/store/ad6c51ia15p9arjmvvqkn9fys9sf1kdw-hello.txt.drv&quot;: {
+    &quot;outputs&quot;: {
+      &quot;out&quot;: {
+        &quot;path&quot;: &quot;/nix/store/z449wrqvwncs8clk7bsliabv1g1ci3n3-hello.txt&quot;
+      }
+    },
+    &quot;inputSrcs&quot;: [
+      &quot;/nix/store/9krlzvny65gdc8s7kpb6lkx8cd02c25b-default-builder.sh&quot;
+    ],
+    ...
+  }
+}
+</code></pre>
+<h2><a class="header" href="#building-derivation" id="building-derivation">Building Derivation</a></h2>
+<p>We can now build our derivation:</p>
+<pre><code class="language-bash">$ nix-build /nix/store/ad6c51ia15p9arjmvvqkn9fys9sf1kdw-hello.txt.drv
+/nix/store/z449wrqvwncs8clk7bsliabv1g1ci3n3-hello.txt
+
+$ cat /nix/store/z449wrqvwncs8clk7bsliabv1g1ci3n3-hello.txt
+Hello World!
+</code></pre>
+<p>This may take some time to load on your computer, as Nix fetches the essential
+build tools that are commonly needed to build Nix packages.</p>
+<p>We can also build the derivation within Nix repl using the <code>:b</code> command:</p>
+<pre><code class="language-nix">nix-repl&gt; :b hello-drv
+[1 built, 0.0 MiB DL]
+
+this derivation produced the following outputs:
+  out -&gt; /nix/store/z449wrqvwncs8clk7bsliabv1g1ci3n3-hello.txt
+</code></pre>
+<h2><a class="header" href="#tracing-derivation" id="tracing-derivation">Tracing Derivation</a></h2>
+<p>Our <code>hello-drv</code> produce the same output as <code>hello.txt</code> in previous chapter,
+but produce different output in the Nix store. (previously we had
+<code>/nix/store/925f1jb1ajrypjbyq7rylwryqwizvhp0-hello.txt</code>)</p>
+<p>We can trace the dependencies of the derivation back to its source:</p>
+<pre><code class="language-bash">$ nix-store --query --deriver /nix/store/z449wrqvwncs8clk7bsliabv1g1ci3n3-hello.txt
+/nix/store/ad6c51ia15p9arjmvvqkn9fys9sf1kdw-hello.txt.drv
+
+$ nix-store --query --deriver /nix/store/925f1jb1ajrypjbyq7rylwryqwizvhp0-hello.txt
+unknown-deriver
+</code></pre>
+<p>Our <code>hello.txt</code> built from <code>stdenv.mkDerivation</code> is built from a derivation
+artifact <code>hello.txt.drv</code>, but our <code>hello.txt</code> created from <code>builtins.path</code>
+has no deriver.
+In other words, the Nix artifacts are different because they are produced from
+different derivations.</p>
+<p>We can further trace the dependencies of <code>hello.txt.drv</code>:</p>
+<pre><code class="language-bash">$ nix-store -qR /nix/store/ad6c51ia15p9arjmvvqkn9fys9sf1kdw-hello.txt.drv
+/nix/store/01n3wxxw29wj2pkjqimmmjzv7pihzmd7-which-2.21.tar.gz.drv
+/nix/store/03f77phmfdmsbfpcc6mspjfff3yc9fdj-setup-hook.sh
+...
+</code></pre>
+<p>That's a lot of dependencies! Where are they being used? We will learn about it
+in the next chapter.</p>
+<h2><a class="header" href="#derivation-in-a-nix-file" id="derivation-in-a-nix-file">Derivation in a Nix File</a></h2>
+<p>We save the same earlier derivation we defined inside a Nix file named
+<a href="01-derivation-basics/hello.nix"><code>hello.nix</code></a>. Now we can build our derivation directly:</p>
+<pre><code class="language-bash">$ nix-build 04-derivations/01-derivation-basics/hello.nix
+/nix/store/z449wrqvwncs8clk7bsliabv1g1ci3n3-hello.txt
+</code></pre>
+<p>We can also get the derivation without building it using <code>nix-instantiate</code>:</p>
+<pre><code class="language-bash">$ nix-instantiate 04-derivations/01-derivation-basics/hello.nix
+warning: you did not specify '--add-root'; the result might be removed by the garbage collector
+/nix/store/ad6c51ia15p9arjmvvqkn9fys9sf1kdw-hello.txt.drv
+</code></pre>
+<p>Ignore the warning from <code>nix-instantiate</code>, as we don't care whether the derivation
+is deleted during Nix garbage collection.</p>
+<p>Notice that both the derivation and the build output have the same hash
+as the earlier result we had in <code>nix repl</code>.</p>
+<h2><a class="header" href="#caching-nix-build-artifacts" id="caching-nix-build-artifacts">Caching Nix Build Artifacts</a></h2>
+<p>We create <a href="01-derivation-basics/hello-sleep.nix"><code>hello-sleep.nix</code></a> as a variant of
+<code>hello.nix</code> which sleeps for 10 seconds in its <code>buildPhase</code>.
+(We will go through how each phases work in the next chapter)
+The 10 seconds sleep simulates the time taken to compile a program.
+We can see what happens when we try to build the same Nix derivation
+multiple times.</p>
+<p>First, instantiating a derivation is not affected by the build time:</p>
+<pre><code class="language-bash">$ time nix-instantiate 04-derivations/01-derivation-basics/hello-sleep.nix
+/nix/store/58ngrpwgv6hl633a1iyjbmjqlbdqjw92-hello.txt.drv
+
+real    0m0,217s
+user    0m0,179s
+sys     0m0,032s
+</code></pre>
+<p>The first time we build <code>hello-sleep.nix</code>, it is going to take about 10 seconds.
+We can also see the logs we printed during the build phase is shown:</p>
+<pre><code class="language-bash">$ time nix-build 04-derivations/01-derivation-basics/hello-sleep.nix
+these derivations will be built:
+  /nix/store/58ngrpwgv6hl633a1iyjbmjqlbdqjw92-hello.txt.drv
+building '/nix/store/58ngrpwgv6hl633a1iyjbmjqlbdqjw92-hello.txt.drv'...
+unpacking sources
+patching sources
+configuring
+no configure script, doing nothing
+building
+Building hello world...
+Finished building hello world!
+installing
+post-installation fixup
+shrinking RPATHs of ELF executables and libraries in /nix/store/lm801yriwjj4298ry74hdv5j0rpkpacq-hello.txt
+strip is /nix/store/bnjps68g8ax6abzvys2xpx12imrx8949-binutils-2.31.1/bin/strip
+patching script interpreter paths in /nix/store/lm801yriwjj4298ry74hdv5j0rpkpacq-hello.txt
+checking for references to /build/ in /nix/store/lm801yriwjj4298ry74hdv5j0rpkpacq-hello.txt...
+/nix/store/lm801yriwjj4298ry74hdv5j0rpkpacq-hello.txt
+
+real    0m12,202s
+user    0m0,371s
+sys     0m0,084s
+</code></pre>
+<p>But the next time we build <code>hello-sleep.nix</code>, it will take no time to build,
+and there is no build output:</p>
+<pre><code class="language-bash">$ time nix-build 03-nix-basics/05-derivation/hello-sleep.nix
+/nix/store/lm801yriwjj4298ry74hdv5j0rpkpacq-hello.txt
+
+real    0m0,310s
+user    0m0,256s
+sys     0m0,047s
+</code></pre>
+<p>Nix determines whether a derivation needs to be rebuilt based on the input
+derivation. For our case, in both calls to <code>hello-sleep.nix</code>,
+<code>nix-build</code> instantiates the derivation behind the scene at got
+<code>/nix/store/k3cq3qn2cx7vmqjrzlc5wcbm3ci75yxy-hello.txt.drv</code>
+as the result. So it determines that the result has previously already
+been built, and reuse the same Nix artifact.</p>
+<h2><a class="header" href="#derivation-as-file" id="derivation-as-file">Derivation as File</a></h2>
+<p>With the duck-typing nature of Nix, derivations acts just like files in Nix.
+We can actually treat the <code>hello-drv</code> we defined earlier as a file and
+read from it:</p>
+<pre><code class="language-nix">nix-repl&gt; builtins.readFile hello-drv
+querying info about missing paths&quot;Hello World!&quot;
+</code></pre>
+<p>How does that works? Internally Nix lazily builds a
+derivation when it is evaluated, and turn it into
+a file path. We can verify that by using <code>builtins.toPath</code>:</p>
+<pre><code class="language-nix">nix-repl&gt; builtins.toPath hello-drv
+&quot;/nix/store/z449wrqvwncs8clk7bsliabv1g1ci3n3-hello.txt&quot;
+</code></pre>
+<p>With this property, we can also import derivations
+from a Nix file, and then use it as if the derivation
+has been built:</p>
+<pre><code class="language-nix">nix-repl&gt; hello = import ./code/04-derivations/01-derivation-basics/hello.nix
+
+nix-repl&gt; builtins.readFile hello
+querying info about missing paths&quot;Hello World!&quot;
+</code></pre>
+<p>We can even use a derivation as a string. Nix automatically
+builds the derivation when it is evaluated as a string:</p>
+<pre><code class="language-nix">nix-repl&gt; &quot;path of hello: ${hello}&quot;
+&quot;path of hello: /nix/store/z449wrqvwncs8clk7bsliabv1g1ci3n3-hello.txt&quot;
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../03-nix-basics/04-import.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../04-derivations/02-dependencies.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../03-nix-basics/04-import.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../04-derivations/02-dependencies.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

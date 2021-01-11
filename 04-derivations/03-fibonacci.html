@@ -1,0 +1,658 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Fibonacci - Scrive Nix Workshop</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Scrive Nix Workshop</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="../01-getting-started/01-introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../01-getting-started/02-installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../01-getting-started/03-resources.html"><strong aria-hidden="true">4.</strong> Resources</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Commands</li><li class="chapter-item expanded "><a href="../02-nix-commands/01-install-global-packages.html"><strong aria-hidden="true">5.</strong> Installing Global Packages</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/02-use-packages-in-nix-shell.html"><strong aria-hidden="true">6.</strong> Using Packages in Nix shell</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/03-nix-repl.html"><strong aria-hidden="true">7.</strong> Nix Repl</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Basics</li><li class="chapter-item expanded "><a href="../03-nix-basics/01-primitives.html"><strong aria-hidden="true">8.</strong> Nix Primitives</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/02-expressions.html"><strong aria-hidden="true">9.</strong> Expressions</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/03-files.html"><strong aria-hidden="true">10.</strong> Files</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/04-import.html"><strong aria-hidden="true">11.</strong> Import</a></li><li class="chapter-item expanded affix "><li class="part-title">Derivations</li><li class="chapter-item expanded "><a href="../04-derivations/01-derivation-basics.html"><strong aria-hidden="true">12.</strong> Derivation Basics</a></li><li class="chapter-item expanded "><a href="../04-derivations/02-dependencies.html"><strong aria-hidden="true">13.</strong> Dependencies</a></li><li class="chapter-item expanded "><a href="../04-derivations/03-fibonacci.html" class="active"><strong aria-hidden="true">14.</strong> Fibonacci</a></li><li class="chapter-item expanded "><a href="../04-derivations/04-raw-derivation.html"><strong aria-hidden="true">15.</strong> Raw Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/05-standard-derivation.html"><strong aria-hidden="true">16.</strong> Standard Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/06-build-phases.html"><strong aria-hidden="true">17.</strong> Build Phases</a></li><li class="chapter-item expanded affix "><li class="part-title">Package Management</li><li class="chapter-item expanded "><a href="../05-package-management/01-dependency-management.html"><strong aria-hidden="true">18.</strong> Dependency Management</a></li><li class="chapter-item expanded "><a href="../05-package-management/02-basic-haskell.html"><strong aria-hidden="true">19.</strong> Basic Haskell Project</a></li><li class="chapter-item expanded "><a href="../05-package-management/03-version-conflicts.html"><strong aria-hidden="true">20.</strong> Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/04-transitive-version-conflicts.html"><strong aria-hidden="true">21.</strong> Transitive Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/05-multi-versioned-haskell-packages.html"><strong aria-hidden="true">22.</strong> Multi-versioned Haskell Packages</a></li><li class="chapter-item expanded "><a href="../05-package-management/06-other-strategies.html"><strong aria-hidden="true">23.</strong> Other Package Management Strategies</a></li><li class="chapter-item expanded affix "><li class="part-title">Infrastructure</li><li class="chapter-item expanded "><a href="../06-infrastructure/01-caching-nix.html"><strong aria-hidden="true">24.</strong> Caching Nix Packages</a></li><li class="chapter-item expanded "><a href="../06-infrastructure/02-caching-haskell.html"><strong aria-hidden="true">25.</strong> Caching Haskell Nix Packages</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Scrive Nix Workshop</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#fibonacci" id="fibonacci">Fibonacci</a></h1>
+<p>Nix dependencies can be nested arbitrarily deep. We can demonstrate that by building
+a fibonacci Nix derivation with the following behavior:</p>
+<ul>
+<li>Answers are produced in <code>$out/answer</code>.</li>
+<li>Each build takes 3 seconds to produce the answer.</li>
+<li><code>fib(0)</code> is 0, and <code>fib(1)</code> is 1.</li>
+<li><code>fib(n)</code> depends on the answers from <code>fib(n-1)</code> and <code>fib(n-2)</code>.</li>
+<li>The builds are prefixed with a name, so that we can force Nix to re-evaluate
+the whole sequence by changing the name.</li>
+</ul>
+<p><a href="./03-fibonacci/fib.nix">fib.nix</a>:</p>
+<pre><code class="language-nix">let
+  nixpkgs = import ../../nixpkgs.nix;
+
+  inherit (nixpkgs) stdenv;
+
+  prefixed-fib = prefix:
+    let fib = n:
+      assert builtins.isInt n;
+      assert n &gt;= 0;
+      let
+        n-str = builtins.toString n;
+      in
+        if n == 0 || n == 1
+        then
+          stdenv.mkDerivation {
+            name = &quot;${prefix}-fib-${n-str}&quot;;
+            unpackPhase = &quot;true&quot;;
+
+            buildPhase = ''
+              echo &quot;Producing base case fib(${n-str})...&quot;
+              sleep 3
+              echo &quot;The answer to fib(${n-str}) is ${n-str}&quot;
+            '';
+
+            installPhase = ''
+              mkdir -p $out
+              echo &quot;${n-str}&quot; &gt; $out/answer
+            '';
+          }
+        else
+          let
+            fib-1 = fib (n - 1);
+            fib-2 = fib (n - 2);
+
+            n-1-str = builtins.toString (n - 1);
+            n-2-str = builtins.toString (n - 2);
+          in
+          stdenv.mkDerivation {
+            name = &quot;${prefix}-fib-${n-str}&quot;;
+            unpackPhase = &quot;true&quot;;
+
+            buildPhase = ''
+              fib_1=$(cat ${fib-1}/answer)
+              fib_2=$(cat ${fib-2}/answer)
+
+              echo &quot;Calculating the answer of fib(${n-str})..&quot;
+              echo &quot;Given fib(${n-1-str}) = $fib_1,&quot;
+              echo &quot;and given fib(${n-2-str}) = $fib_2..&quot;
+
+              sleep 3
+
+              answer=$(( $fib_1 + $fib_2 ))
+              echo &quot;The answer to fib(${n-str}) is $answer&quot;
+            '';
+
+            installPhase = ''
+              mkdir -p $out
+              echo &quot;$answer&quot; &gt; $out/answer
+            '';
+          }
+    ;
+  in fib;
+in
+prefixed-fib
+</code></pre>
+<p>To make sure we build the fibonacci sequence from scratch each time, we can use
+<code>$(date +%s)</code> with the Unix timestamp as the prefix to our builds.</p>
+<p>Let's try <code>fib(0)</code> and <code>fib(1)</code>:</p>
+<pre><code class="language-bash">$ time nix-build -E &quot;import ./code/04-derivations/03-fibonacci/fib.nix \&quot;$(date +%s)\&quot; 0&quot;
+these derivations will be built:
+  /nix/store/yyy5fz5rsws6a812c9xc5ps1hwh9lm98-1605561354-fib-0.drv
+building '/nix/store/yyy5fz5rsws6a812c9xc5ps1hwh9lm98-1605561354-fib-0.drv'...
+...
+no configure script, doing nothing
+building
+Producing base case fib(0)...
+The answer to fib(0) is 0
+...
+checking for references to /build/ in /nix/store/9kvw6x88l9nx42mvrgzif60a72h66fqz-1605561354-fib-0...
+/nix/store/9kvw6x88l9nx42mvrgzif60a72h66fqz-1605561354-fib-0
+
+real    0m4,763s
+user    0m0,476s
+sys     0m0,130s
+</code></pre>
+<pre><code class="language-bash">$ time nix-build -E &quot;import ./code/04-derivations/03-fibonacci/fib.nix \&quot;$(date +%s)\&quot; 1&quot;
+these derivations will be built:
+  /nix/store/qs2pc54dmd21xlhlqgzwmgfj98y1kr8n-1605561412-fib-1.drv
+building '/nix/store/qs2pc54dmd21xlhlqgzwmgfj98y1kr8n-1605561412-fib-1.drv'...
+...
+Producing base case fib(1)...
+The answer to fib(1) is 1
+...
+checking for references to /build/ in /nix/store/426cpqvvr7lbg92hywmbw7552vggpway-1605561412-fib-1...
+/nix/store/426cpqvvr7lbg92hywmbw7552vggpway-1605561412-fib-1
+
+real    0m5,279s
+user    0m0,415s
+sys     0m0,102s
+</code></pre>
+<p>So both <code>fib(0)</code> and <code>fib(1)</code> takes roughly 4~5 seconds to build.</p>
+<p>Let's try <code>fib(2)</code>:</p>
+<pre><code class="language-bash">$ time nix-build -E &quot;import ./code/04-derivations/03-fibonacci/fib.nix \&quot;$(date +%s)\&quot; 2&quot;
+these derivations will be built:
+  /nix/store/r8n1v9ifk0q6mf75j35scn3s2dwa03j7-1605561535-fib-1.drv
+  /nix/store/xxrzkbsnq1jpp4s5fdkpklxr3fbc0aq6-1605561535-fib-0.drv
+  /nix/store/1bgy17jbakr9yn1yz0bnwhnnz1y1xsdc-1605561535-fib-2.drv
+building '/nix/store/xxrzkbsnq1jpp4s5fdkpklxr3fbc0aq6-1605561535-fib-0.drv'...
+...
+Producing base case fib(0)...
+The answer to fib(0) is 0
+...
+checking for references to /build/ in /nix/store/8k74irn8w8rzpccd30wdn8589nq0wdv5-1605561535-fib-0...
+building '/nix/store/r8n1v9ifk0q6mf75j35scn3s2dwa03j7-1605561535-fib-1.drv'...
+...
+Producing base case fib(1)...
+The answer to fib(1) is 1
+...
+checking for references to /build/ in /nix/store/p716qrpmyi4649k2njfy7gb97ksyi5y3-1605561535-fib-1...
+building '/nix/store/1bgy17jbakr9yn1yz0bnwhnnz1y1xsdc-1605561535-fib-2.drv'...
+...
+Calculating the answer of fib(2)..
+Given fib(1) = 1,
+and given fib(0) = 0..
+The answer to fib(2) is 1
+...
+checking for references to /build/ in /nix/store/qnaad56wgknlgki9r3kpmr4fhc7x8vxv-1605561535-fib-2...
+/nix/store/qnaad56wgknlgki9r3kpmr4fhc7x8vxv-1605561535-fib-2
+
+real    0m12,599s
+user    0m0,658s
+sys     0m0,198s
+</code></pre>
+<p>So building <code>fib(2)</code> causes <code>fib(1)</code> and <code>fib(0)</code> to also be built.</p>
+<p>With this going on, if we are going to build <code>fib(5)</code>, then in total it is going to take a lot of time!
+but if we have built <code>fib(4)</code> already, then building <code>fib(5)</code> will be very fast.</p>
+<p>Let's fix our prefix to see Nix cache in effect:</p>
+<pre><code class="language-bash">$ prefix=$(date +%s)
+$ time nix-build -E &quot;import ./code/04-derivations/03-fibonacci/fib.nix \&quot;$prefix\&quot; 4&quot;
+these derivations will be built:
+  /nix/store/gz9bgzmna8v7pw5giclfhrk81dp1z0rw-1605561962-fib-1.drv
+  /nix/store/y2waqw60jqawallz4q3r64iwrrihnd1p-1605561962-fib-0.drv
+  /nix/store/nwj4bmrqgfv1fkvhh00bl2v03c3zqpy1-1605561962-fib-2.drv
+  /nix/store/17d2r2dd52qvmfa5k3dm9gkl1k09wdb8-1605561962-fib-3.drv
+  /nix/store/w4w4la01p9a2i8mlg6fm15il6vmgcqzl-1605561962-fib-4.drv
+building '/nix/store/y2waqw60jqawallz4q3r64iwrrihnd1p-1605561962-fib-0.drv'...
+...
+Calculating the answer of fib(4)..
+Given fib(3) = 2,
+and given fib(2) = 1..
+The answer to fib(4) is 3
+...
+checking for references to /build/ in /nix/store/c26q5vs8vdfr268nqgamjk8bcypf8b7r-1605561962-fib-4...
+/nix/store/c26q5vs8vdfr268nqgamjk8bcypf8b7r-1605561962-fib-4
+
+real    0m19,486s
+user    0m0,910s
+sys     0m0,253s
+</code></pre>
+<p>Now run <code>fib(5)</code>:</p>
+<pre><code class="language-bash">$ time nix-build -E &quot;import ./code/04-derivations/03-fibonacci/fib.nix \&quot;$prefix\&quot; 5&quot;
+these derivations will be built:
+  /nix/store/nyb25403l4m5n69y3djlffsyzvpwyv6g-1605561962-fib-5.drv
+building '/nix/store/nyb25403l4m5n69y3djlffsyzvpwyv6g-1605561962-fib-5.drv'...
+unpacking sources
+patching sources
+configuring
+no configure script, doing nothing
+building
+Calculating the answer of fib(5)..
+Given fib(4) = 3,
+and given fib(3) = 2..
+The answer to fib(5) is 5
+installing
+post-installation fixup
+shrinking RPATHs of ELF executables and libraries in /nix/store/p4iq9jaiid469ycgjm5v3ks3w0v35spi-1605561962-fib-5
+strip is /nix/store/bnjps68g8ax6abzvys2xpx12imrx8949-binutils-2.31.1/bin/strip
+patching script interpreter paths in /nix/store/p4iq9jaiid469ycgjm5v3ks3w0v35spi-1605561962-fib-5
+checking for references to /build/ in /nix/store/p4iq9jaiid469ycgjm5v3ks3w0v35spi-1605561962-fib-5...
+/nix/store/p4iq9jaiid469ycgjm5v3ks3w0v35spi-1605561962-fib-5
+
+real    0m7,916s
+user    0m0,461s
+sys     0m0,151s
+</code></pre>
+<p>Now only <code>fib-5.drv</code> needs to be built.</p>
+<h2><a class="header" href="#lazy-evaluation" id="lazy-evaluation">Lazy Evaluation</a></h2>
+<p>A derivation like <code>fib(10)</code> is going to take a long time to build. So we don't really want to build
+it unless we actually need it. In fact, we also wouldn't want to build <code>fib(0)</code> through <code>fib(10)</code>
+unless they are actually needed.</p>
+<p>With Nix's lazy evaluation strategy, we in fact get the laziness property that none of
+the fibonacci derivations are going to be built unless they are needed:</p>
+<pre><code class="language-bash">$ time nix-instantiate -E &quot;import ./code/04-derivations/03-fibonacci/fib.nix \&quot;$(date +%s)\&quot; 10&quot;
+warning: you did not specify '--add-root'; the result might be removed by the garbage collector
+/nix/store/dwjxm9rqxfbhf4m8nbg5wzddx1j4rcpl-1605562192-fib-10.drv
+
+real    0m0,235s
+user    0m0,182s
+sys     0m0,038s
+</code></pre>
+<p>We can see that while <code>fib(10)</code> has <code>fib(0)</code> through <code>fib(9)</code> as its dependencies,
+but they are not being built just yet.</p>
+<pre><code class="language-bash">$ nix-store -qR /nix/store/dwjxm9rqxfbhf4m8nbg5wzddx1j4rcpl-1605562192-fib-10.drv | grep fib
+/nix/store/31xdxhxynqndaiym043bjjky0l229vlg-1605562192-fib-1.drv
+/nix/store/r4wkf6774ahva1zchk77kpvjf14xigrl-1605562192-fib-0.drv
+/nix/store/8agah8vidgxi6yp9ki066yimfr16kigg-1605562192-fib-2.drv
+/nix/store/ka3glx20pgzkvgan88xl87xki51y5pmi-1605562192-fib-3.drv
+/nix/store/v5zra6kayssdg04n7xpjljqa1q5jjyqn-1605562192-fib-4.drv
+/nix/store/1cqwdhnk8f55lxlajmjw6rzq2lq12x5l-1605562192-fib-5.drv
+/nix/store/qrbrgdv16f7mc2xfalrgmypfz6c7yljq-1605562192-fib-6.drv
+/nix/store/p5chc4l9mjqw5871lkd6har4hyjp55fj-1605562192-fib-7.drv
+/nix/store/gn9hp9jcsfclrsdx6qlvjd051w4rsx8b-1605562192-fib-8.drv
+/nix/store/6av3vlibm4knm4m3djcrfrhhb6jck3zx-1605562192-fib-9.drv
+/nix/store/dwjxm9rqxfbhf4m8nbg5wzddx1j4rcpl-1605562192-fib-10.drv
+</code></pre>
+<h3><a class="header" href="#input-derivations" id="input-derivations">Input Derivations</a></h3>
+<p>If we inspect the derivation, the derivations <code>fib-9.drv</code> and <code>fib-8.drv</code>
+are listed as one of the input derivations:</p>
+<pre><code class="language-bash">$ nix show-derivation /nix/store/dwjxm9rqxfbhf4m8nbg5wzddx1j4rcpl-1605562192-fib-10.drv
+{
+  &quot;/nix/store/dwjxm9rqxfbhf4m8nbg5wzddx1j4rcpl-1605562192-fib-10.drv&quot;: {
+    &quot;outputs&quot;: {
+      &quot;out&quot;: {
+        &quot;path&quot;: &quot;/nix/store/g7415lrzl6b43vnw58dgkxg5nzbjplp0-1605562192-fib-10&quot;
+      }
+    },
+    &quot;inputSrcs&quot;: [
+      &quot;/nix/store/9krlzvny65gdc8s7kpb6lkx8cd02c25b-default-builder.sh&quot;
+    ],
+    &quot;inputDrvs&quot;: {
+      &quot;/nix/store/6av3vlibm4knm4m3djcrfrhhb6jck3zx-1605562192-fib-9.drv&quot;: [
+        &quot;out&quot;
+      ],
+      &quot;/nix/store/gn9hp9jcsfclrsdx6qlvjd051w4rsx8b-1605562192-fib-8.drv&quot;: [
+        &quot;out&quot;
+      ],
+      &quot;/nix/store/l54djrh1n7d8zdfn26w7v6zjh5wp7faa-bash-4.4-p23.drv&quot;: [
+        &quot;out&quot;
+      ],
+      &quot;/nix/store/x9why09hwx2pcnmw0fw7hhh1511hyskl-stdenv-linux.drv&quot;: [
+        &quot;out&quot;
+      ]
+    },
+    ...
+    &quot;env&quot;: {
+      &quot;buildInputs&quot;: &quot;&quot;,
+      &quot;buildPhase&quot;: &quot;fib_1=$(cat /nix/store/zr1ziy94ig8isdg0gdliz0sm59abh2l1-1605562192-fib-9/answer)\nfib_2=$(cat /nix/store/zvivby98nbjlb6pszp6qla4v1r6zwj82
+-1605562192-fib-8/answer)\n\necho \&quot;Calculating the answer of fib(10)..\&quot;\necho \&quot;Given fib(9) = $fib_1,\&quot;\necho \&quot;and given fib(8) = $fib_2..\&quot;\n\nsleep 3\n\
+nanswer=$(( $fib_1 + $fib_2 ))\necho \&quot;The answer to fib(10) is $answer\&quot;\n&quot;,
+...
+</code></pre>
+<h3><a class="header" href="#building-actual-derivation" id="building-actual-derivation">Building Actual Derivation</a></h3>
+<p>We can build them later on when <code>nix-build</code> is actually called, or we can get the cached result
+from else where before building them.</p>
+<pre><code class="language-bash">$ time nix-build /nix/store/dwjxm9rqxfbhf4m8nbg5wzddx1j4rcpl-1605562192-fib-10.drv
+these derivations will be built:
+  /nix/store/31xdxhxynqndaiym043bjjky0l229vlg-1605562192-fib-1.drv
+  /nix/store/r4wkf6774ahva1zchk77kpvjf14xigrl-1605562192-fib-0.drv
+  /nix/store/8agah8vidgxi6yp9ki066yimfr16kigg-1605562192-fib-2.drv
+  /nix/store/ka3glx20pgzkvgan88xl87xki51y5pmi-1605562192-fib-3.drv
+  /nix/store/v5zra6kayssdg04n7xpjljqa1q5jjyqn-1605562192-fib-4.drv
+  /nix/store/1cqwdhnk8f55lxlajmjw6rzq2lq12x5l-1605562192-fib-5.drv
+  /nix/store/qrbrgdv16f7mc2xfalrgmypfz6c7yljq-1605562192-fib-6.drv
+  /nix/store/p5chc4l9mjqw5871lkd6har4hyjp55fj-1605562192-fib-7.drv
+  /nix/store/gn9hp9jcsfclrsdx6qlvjd051w4rsx8b-1605562192-fib-8.drv
+  /nix/store/6av3vlibm4knm4m3djcrfrhhb6jck3zx-1605562192-fib-9.drv
+  /nix/store/dwjxm9rqxfbhf4m8nbg5wzddx1j4rcpl-1605562192-fib-10.drv
+building '/nix/store/r4wkf6774ahva1zchk77kpvjf14xigrl-1605562192-fib-0.drv'...
+...
+Calculating the answer of fib(10)..
+Given fib(9) = 34,
+and given fib(8) = 21..
+The answer to fib(10) is 55
+...
+checking for references to /build/ in /nix/store/g7415lrzl6b43vnw58dgkxg5nzbjplp0-1605562192-fib-10...
+/nix/store/g7415lrzl6b43vnw58dgkxg5nzbjplp0-1605562192-fib-10
+
+real    0m39,818s
+user    0m1,260s
+sys     0m0,413s
+</code></pre>
+<h2><a class="header" href="#evaluation-time-dependencies" id="evaluation-time-dependencies">Evaluation-Time Dependencies</a></h2>
+<p>In our original <code>fib.nix</code>, the build output of earlier fibonacci
+numbers are used during the build phase of the current derivation.
+But if we somehow uses the earlier fibonacci numbers to build
+the derviation itself, Nix would behave quite differently.</p>
+<p><a href="./code/03-fibonacci/fib-serialized.nix"><code>fib-serialized.nix</code></a>:</p>
+<pre><code class="language-nix">let
+  fib-1 = fib (n - 1);
+  fib-2 = fib (n - 2);
+
+  n-1-str = builtins.toString (n - 1);
+  n-2-str = builtins.toString (n - 2);
+
+  fib-1-answer = nixpkgs.lib.removeSuffix &quot;\n&quot;
+    (builtins.readFile &quot;${fib-1}/answer&quot;);
+  fib-2-answer = nixpkgs.lib.removeSuffix &quot;\n&quot;
+    (builtins.readFile &quot;${fib-2}/answer&quot;);
+in
+stdenv.mkDerivation {
+  name = &quot;${prefix}-fib-${n-str}&quot;;
+  unpackPhase = &quot;true&quot;;
+
+  buildPhase = ''
+    echo &quot;Calculating the answer of fib(${n-str})..&quot;
+    echo &quot;Given fib(${n-1-str}) = ${fib-1-answer},&quot;
+    echo &quot;and given fib(${n-2-str}) = ${fib-2-answer}..&quot;
+
+    sleep 3
+
+    answer=$(( ${fib-1-answer} + ${fib-2-answer} ))
+    echo &quot;The answer to fib(${n-str}) is $answer&quot;
+  '';
+  ...
+}
+</code></pre>
+<p>Let's try to instantiate the serialized version of <code>fib(4)</code>:</p>
+<pre><code class="language-bash">$ time nix-instantiate -E &quot;import ./code/04-derivations/03-fibonacci/fib-serialized.nix \&quot;$(date +%s)\&quot; 4&quot;
+building '/nix/store/97h18adc1358s8ri9mjzmnbvbbsj7p0a-1606145205-fib-1.drv'...
+...
+Producing base case fib(1)...
+The answer to fib(1) is 1
+...
+building '/nix/store/fyizpk51qr2k6pm6v2pbqynfqf8ws68p-1606145205-fib-0.drv'...
+...
+Producing base case fib(0)...
+The answer to fib(0) is 0
+...
+building '/nix/store/8qglzk0vq984mx65f3993rqjpipc3q9j-1606145205-fib-2.drv'...
+...
+Calculating the answer of fib(2)..
+Given fib(1) = 1,
+and given fib(0) = 0..
+The answer to fib(2) is 1
+...
+building '/nix/store/4p8xy858gwc348576h6rz39a3l7wk64l-1606145205-fib-3.drv'...
+...
+Calculating the answer of fib(3)..
+Given fib(2) = 1,
+and given fib(1) = 1..
+The answer to fib(3) is 2
+...
+/nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv
+
+real    0m20,016s
+user    0m1,221s
+sys     0m0,261s
+</code></pre>
+<p>What happened here? <code>fib(0)</code> to <code>fib(3)</code> are built even though we are just
+instantiating <code>fib(4)</code>.</p>
+<h3><a class="header" href="#inspecting-input-derivation" id="inspecting-input-derivation">Inspecting Input Derivation</a></h3>
+<p>Showing the derivation of <code>fib-4.drv</code> gives us a better idea:</p>
+<pre><code class="language-bash">$ nix show-derivation /nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv
+{
+  &quot;/nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv&quot;: {
+    &quot;outputs&quot;: {
+      &quot;out&quot;: {
+        &quot;path&quot;: &quot;/nix/store/fgq0j5mlqpy99mfdfc3v4bvbd6wr2slg-1606145205-fib-4&quot;
+      }
+    },
+    ...
+    &quot;inputDrvs&quot;: {
+      &quot;/nix/store/l54djrh1n7d8zdfn26w7v6zjh5wp7faa-bash-4.4-p23.drv&quot;: [
+        &quot;out&quot;
+      ],
+      &quot;/nix/store/x9why09hwx2pcnmw0fw7hhh1511hyskl-stdenv-linux.drv&quot;: [
+        &quot;out&quot;
+      ]
+    },
+    &quot;env&quot;: {
+      &quot;buildInputs&quot;: &quot;&quot;,
+      &quot;buildPhase&quot;: &quot;echo \&quot;Calculating the answer of fib(4)..\&quot;\necho \&quot;Given fib(3) = 2,\&quot;\necho \&quot;and given fib(2) = 1..\&quot;\n\nsleep 3\n\nanswer=$(( 2 + 1 ))\necho \&quot;The answer to fib(4) is $answer\&quot;\n&quot;,
+  ...
+</code></pre>
+<p>Thanks to <code>builtins.readFile</code>, the results for <code>fib(3)</code> and <code>fib(2)</code> have in fact
+been calculated and inlined inside the the derivation itself. They are no longer
+listed in the input derivation.</p>
+<h2><a class="header" href="#caching-problem-of-evaluation-time-dependencies" id="caching-problem-of-evaluation-time-dependencies">Caching Problem of Evaluation-Time Dependencies</a></h2>
+<p>In fact, <code>fib(3)</code> and <code>fib(2)</code> are not even shown as dependencies in <code>fib(4)</code> anymore:</p>
+<pre><code class="language-bash">$ nix-store -qR --include-outputs /nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv | grep fib
+/nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv
+/nix/store/fgq0j5mlqpy99mfdfc3v4bvbd6wr2slg-1606145205-fib-4
+</code></pre>
+<p>This has a consequence in caching Nix dependencies. Not knowing <code>fib(0)</code> to
+<code>fib(3)</code> are actually input to <code>fib(4)</code>, it would be difficult to properly
+cache these dependencies to Cachix.</p>
+<h2><a class="header" href="#import-from-derivation" id="import-from-derivation">Import From Derivation</a></h2>
+<p>Evaluation-time dependencies can also occur if we import a <code>.nix</code> file from a derivation.
+Since Nix has to read the file content to be able to import the <code>.nix</code> file, the
+derivation has to be built at evaluation time. This is more commonly known as
+<a href="https://nixos.wiki/wiki/Import_From_Derivation">Import From Derivation</a>, or
+IFD in short.</p>
+<p>IFD should be avoided if possible. However as we will see in later chapters,
+there are valid use cases that can only be solved using IFD.</p>
+<h3><a class="header" href="#non-lazy-build" id="non-lazy-build">Non-Lazy Build</a></h3>
+<p>If we build <code>fib(4)</code> now, indeed only <code>fib(4)</code> itself is being built.</p>
+<pre><code class="language-bash">$ nix-build /nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv
+these derivations will be built:
+  /nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv
+building '/nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-1606145205-fib-4.drv'...
+...
+Calculating the answer of fib(4)..
+Given fib(3) = 2,
+and given fib(2) = 1..
+The answer to fib(4) is 3
+...
+/nix/store/fgq0j5mlqpy99mfdfc3v4bvbd6wr2slg-1606145205-fib-4
+</code></pre>
+<p>The same effect can also happen if we import <code>.nix</code> files from derivation outputs.</p>
+<p>Lesson learnt: parallelization in Nix can still be tricky. Try your best to
+include dependencies as input derivations, and lazily refer to the built output
+of dependencies only during build time.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../04-derivations/02-dependencies.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../04-derivations/04-raw-derivation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../04-derivations/02-dependencies.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../04-derivations/04-raw-derivation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

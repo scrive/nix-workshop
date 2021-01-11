@@ -1,0 +1,587 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Multi-versioned Haskell Packages - Scrive Nix Workshop</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Scrive Nix Workshop</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="../01-getting-started/01-introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../01-getting-started/02-installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../01-getting-started/03-resources.html"><strong aria-hidden="true">4.</strong> Resources</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Commands</li><li class="chapter-item expanded "><a href="../02-nix-commands/01-install-global-packages.html"><strong aria-hidden="true">5.</strong> Installing Global Packages</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/02-use-packages-in-nix-shell.html"><strong aria-hidden="true">6.</strong> Using Packages in Nix shell</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/03-nix-repl.html"><strong aria-hidden="true">7.</strong> Nix Repl</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Basics</li><li class="chapter-item expanded "><a href="../03-nix-basics/01-primitives.html"><strong aria-hidden="true">8.</strong> Nix Primitives</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/02-expressions.html"><strong aria-hidden="true">9.</strong> Expressions</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/03-files.html"><strong aria-hidden="true">10.</strong> Files</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/04-import.html"><strong aria-hidden="true">11.</strong> Import</a></li><li class="chapter-item expanded affix "><li class="part-title">Derivations</li><li class="chapter-item expanded "><a href="../04-derivations/01-derivation-basics.html"><strong aria-hidden="true">12.</strong> Derivation Basics</a></li><li class="chapter-item expanded "><a href="../04-derivations/02-dependencies.html"><strong aria-hidden="true">13.</strong> Dependencies</a></li><li class="chapter-item expanded "><a href="../04-derivations/03-fibonacci.html"><strong aria-hidden="true">14.</strong> Fibonacci</a></li><li class="chapter-item expanded "><a href="../04-derivations/04-raw-derivation.html"><strong aria-hidden="true">15.</strong> Raw Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/05-standard-derivation.html"><strong aria-hidden="true">16.</strong> Standard Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/06-build-phases.html"><strong aria-hidden="true">17.</strong> Build Phases</a></li><li class="chapter-item expanded affix "><li class="part-title">Package Management</li><li class="chapter-item expanded "><a href="../05-package-management/01-dependency-management.html"><strong aria-hidden="true">18.</strong> Dependency Management</a></li><li class="chapter-item expanded "><a href="../05-package-management/02-basic-haskell.html"><strong aria-hidden="true">19.</strong> Basic Haskell Project</a></li><li class="chapter-item expanded "><a href="../05-package-management/03-version-conflicts.html"><strong aria-hidden="true">20.</strong> Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/04-transitive-version-conflicts.html"><strong aria-hidden="true">21.</strong> Transitive Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/05-multi-versioned-haskell-packages.html" class="active"><strong aria-hidden="true">22.</strong> Multi-versioned Haskell Packages</a></li><li class="chapter-item expanded "><a href="../05-package-management/06-other-strategies.html"><strong aria-hidden="true">23.</strong> Other Package Management Strategies</a></li><li class="chapter-item expanded affix "><li class="part-title">Infrastructure</li><li class="chapter-item expanded "><a href="../06-infrastructure/01-caching-nix.html"><strong aria-hidden="true">24.</strong> Caching Nix Packages</a></li><li class="chapter-item expanded "><a href="../06-infrastructure/02-caching-haskell.html"><strong aria-hidden="true">25.</strong> Caching Haskell Nix Packages</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Scrive Nix Workshop</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#multi-versioned-haskell-packages" id="multi-versioned-haskell-packages">Multi-versioned Haskell Packages</a></h1>
+<p>As we seens in the previous chapters, the mono-versioned Haskell packages
+provided by nixpkgs do not always provide the exact versions of Haskell
+packages that we need. When version conflicts happen, it often require
+manual intervention, because there is no mechanism to automatically
+resolve the new set of dependency versions based on custom requirements.</p>
+<p>In comparison, package managers like cabal-install are built with
+multi-versioned Haskell packages in mind. We can give various
+requirements of our dependencies to cabal by specifying version
+bounds. If a solution exists, cabal can automatically generate a
+dependency graph for us.</p>
+<h2><a class="header" href="#haskellnix" id="haskellnix">Haskell.nix</a></h2>
+<p>Haskell.nix takes multi-versioned approach toward managing Haskell
+packages in Nix. It does so by making use of cabal-install to
+resolve the dependency graph, and converting it into Nix expressions.</p>
+<p>Since Haskell.nix uses cabal-install for the actual package management,
+it can usually work out of the box for existing cabal-based Haskell
+projects.</p>
+<p>Nevertheless, Cabal offers a wide range of features, some of which
+are not currently well supported by Haskell.nix. Because of this,
+it is important to understand how Haskell.nix works internally.
+This would help us understand why certain limitations are present
+in Haskell.nix.</p>
+<p>Haskell.nix also provides other mode of Haskell development in Nix,
+such as Stack-based Haskell projects. However in this chapter we
+will focus only on using Haskell.nix for cabal projects.</p>
+<h2><a class="header" href="#hackage-index" id="hackage-index">Hackage Index</a></h2>
+<p>To understand how Haskell.nix resolves dependencies, we have to first
+understand how Cabal resolves dependencies. Recall from the chapter
+<a href="./01-dependency-management.html">Dependency Management</a> that for
+a package manager to resolve dependencies, it has to run the
+dependency resolution algorithm against the state of a package
+registry.</p>
+<p>For the case of Cabal, the dependency resolution is done against
+the <a href="https://hackage.haskell.org">Hackage</a> registry.
+More specifically, Cabal resolves the dependencies by downloading
+the <a href="https://hackage.haskell.org/01-index.tar.gz">entire state</a>
+of the Hackage index to your local machine.</p>
+<p>Every time new packages are added to Hackage, a new Hackage index
+snapshot is generated, and the entire index has to be re-downloaded.
+(Technically, the update is incremental with append-only update to
+the snapshot. However this relies on explicit HTTP caching mechanism
+to work.)</p>
+<p>Currently the Hackage index snapshot takes about 100 MiB after
+compression. Furthermore the official Hackage bandwidth is pretty
+low and do not always stay available. Because of this, it can often
+take a long time to update cabal, especially when running it for
+the first time.</p>
+<p>When we build Haskell projects with <code>cabal</code>, the local Hackage
+index is not updated automatically. Instead we have to manually
+run <code>cabal update</code> to update the local Hackage index. As a result,
+it is a common problem that a new Haskell package is published
+to Hackage, but it cannot be found in local builds because
+the local index is not updated.</p>
+<h2><a class="header" href="#accessing-hackage-index-inside-nix" id="accessing-hackage-index-inside-nix">Accessing Hackage Index Inside Nix</a></h2>
+<p>Since Haskell.nix uses Cabal to resolve the dependencies inside
+Nix, it needs to download and provide the Hackage snapshot
+inside of a Nix build.</p>
+<p>By default, Cabal downloads the Hackage snapshot into
+<code>~/.cabal/packages</code>. However since there is no home directory
+inside a Nix build, we need to put it somewhere local.
+This can be done by specifying a <code>--remote-repo-cache</code>
+option when running Cabal.</p>
+<p>Even so, the next challenge is that we need to download
+the Hackage snapshot, and save it to the Nix store.
+The SHA256 checksum of the Hackage snapshot is also
+needed, so that Nix can be sure that all Nix builds are using the exact
+version of Hackage snapshot.</p>
+<p>Fortunately Haskell.nix takes care of all these details for us. However this
+comes at a cost: Haskell.nix needs to regularly update and convert the
+Hackage snapshot into Nix expressions.</p>
+<p>In fact, Haskell.nix manages this through the
+<a href="https://github.com/input-output-hk/hackage.nix">Hackage.nix</a> project.
+It triggers regular CI builds to update to the latest Hackage snapshot,
+and save the result as Nix expressions. Haskell.nix itself is also
+regularly updated, to update the Hackage snapshot through
+updating the version of Hackage.nix used in Haskell.nix.</p>
+<p>Regardless, the state update do not run continuously, but rather
+usually once every day. There can be up to a few days delay
+for the Hackage snapshot to be included in Haskell.nix.
+This also means that when a new Haskell package is published
+to Hackage, we cannot always use it immediately in Haskell.nix.</p>
+<p>If we really insist on getting the bleeding edge Haskell packages,
+a workaround would be that we can maintain our own Hackage snapshot.
+Since Hackage.nix is open source, there is no problem doing that.
+However this would also adds a lot of overhead, as we would
+have to regularly keep up to date our own version of Hackage.nix.
+Because of this, we recommend readers to be patient and wait for
+few days for a new Haskell packge to become available in Haskell.nix.</p>
+<h2><a class="header" href="#freezing-hackage-index" id="freezing-hackage-index">Freezing Hackage Index</a></h2>
+<p>The Hackage index at hackage.haskell.org is constantly updated, and there is
+no straightforward way to go back in time and get the old state of Hackage
+at a time in the past.</p>
+<p>This can cause issue when we try to download the Hackage snapshot from Nix.
+To ensure reproducibility, the downloaded <code>01-index.tar.gz</code> is supposed
+to have the exact same content for everyone by checking the SHA256
+checksum. But since the Hackage index keeps changing, we cannot ask
+Nix to just download the index from the URL.</p>
+<p>As a workaround, Hackage instead guarantees that the index state is
+updated in append-only mode. With this Haskell.nix uses a workaround
+to <em>truncate</em> the downloaded index with a known length of the
+snapshot at a particular time during fetching. This helps make sure
+that when Nix finally sees the index archive, the content is exactly
+the same regardless of when the code is evaluated.</p>
+<p>Nevertheless, this workaround is one part of the complexity in Haskell.nix.
+In the daily update to Hackage.nix, it has to regularly check the new
+length of the latest Hackage index, while keeping the old lengths for
+each day in the past. As a <code>.tar.gz</code> file, the format is opaque, and
+it needs to rely on the obscure interaction of Hackage with the file
+compression to create a reproducible index snapshot.</p>
+<h2><a class="header" href="#source-repository-package" id="source-repository-package">Source Repository Package</a></h2>
+<p>Haskell.nix also allows Haskell packages to be provided outside of Hackage.
+This can be done by adding
+<a href="https://cabal.readthedocs.io/en/3.4/cabal-project.html#specifying-packages-from-remote-version-control-locations"><code>source-repository-package</code></a>
+fields in your cabal.project file. Haskell.nix automatically takes into
+consideration these fields when resolving the depdendencies.</p>
+<p>One additional detail that is needed when using <code>source-repository-package</code>
+with Haskell.nix is that you may optionally needs to add the SHA256
+checksum of the Haskell package with a <code>--sha256</code> comment line. More details
+<a href="https://input-output-hk.github.io/haskell.nix/tutorials/source-repository-hashes/#cabalproject">here</a>.</p>
+<h2><a class="header" href="#resolving-dependencies" id="resolving-dependencies">Resolving Dependencies</a></h2>
+<p>We have learned <a href="../04-derivations/03-fibonacci.html">earlier</a> that
+evaluation-time dependencies can cause various issues in Nix. However
+Haskell.nix uses evaluation-time dependency, or more specifically
+Import From Derivation (IFD), to resolve the dependency graph
+of our Haskell projects.</p>
+<p>To understand why IFD is needed, we need to first look at how Cabal
+resolves the dependencies, and where it stores the dependency graph.</p>
+<p>We can ask Cabal to resolve the dependencies of our Haskell project
+by running <code>cabal configure</code>. Inside this command, Cabal will read the
+cabal.project and .cabal file, read the local Hackage snapshot,
+and try to come out with a dependency graph as the solution. When successful,
+cabal stores the result locally in the <code>dist-newstyle/cache</code> directory.</p>
+<p>Inside the <code>dist-newstyle/cache</code> directory, there is a <code>plan.json</code> file
+which contains the dependency graph that third party tools such as
+Haskell.nix can use to extract the result. There are libraries such as
+<a href="https://hackage.haskell.org/package/cabal-plan">cabal-plan</a> that are available,
+which Haskell.nix uses to parse the dependency graph.</p>
+<p>Now remember that to build a Haskell project with Nix, we need to construct
+one or more Nix derivations that encapsulate our project and all its
+dependencies. Since a Haskell project contains many dependencies, we want to
+define each Haskell package as their own Nix derivation. This way Nix can
+parallellize the build for each of our dependencies, and also reuse the build
+result if only some of the dependencies changes.</p>
+<p>However to construct our derivation, we need to first call <code>cabal configure</code>
+to resolve the dependency graph, and then extract the result from <code>plan.json</code>.
+In other words, to construct the actual Nix derivation of our project, we need
+to first construct another derivation that produces a build plan that tells us
+what dependencies are needed.</p>
+<h2><a class="header" href="#derivation-plan" id="derivation-plan">Derivation Plan</a></h2>
+<p>In Haskell.nix, the build plan that is produced from calling Cabal is called
+a <em>plan</em>. The name might be a bit confusing, but essentially
+it represents the evaluation-time dependency of a Haskell project, of which the
+Nix derivation that needs to be built first before the actual Nix derivation
+for the Haskell project can be constructed.</p>
+<p>Recall that Nix cannot identify which derivation is an evaluation-time
+dependency of another package. This means that if we try to inspect the
+derivation for our Haskell project, the derivation for the plan
+would never show up there. This also means that the plan
+cannot be cached easily.</p>
+<p>Haskell.nix exports the plan for a Haskell project in
+the <code>plan-nix</code> attribute. We can build this to see how the plan looks like:</p>
+<pre><code class="language-bash">$ nix-build -A plan-nix 05-package-management/haskell-project-v3/nix/06-haskell.nix/project.nix
+trace: No index state specified, using the latest index state that we know about (2020-12-04T00:00:00Z)!
+checking outputs of '/nix/store/5v1835nh26s8dldssz03cysm3aay6d7q-plan-to-nix-pkgs.drv'...
+Using index-state 2020-12-04T00:00:00Z
+Warning: The package list for 'hackage.haskell.org-at-2020-12-04T000000Z' is
+18610 days old.
+Run 'cabal update' to get the latest list of available packages.
+Warning: Requested index-state2020-12-04T00:00:00Z is newer than
+'hackage.haskell.org-at-2020-12-04T000000Z'! Falling back to older state
+(2020-12-03T20:14:57Z).
+Resolving dependencies...
+Build profile: -w ghc-8.10.2 -O1
+In order, the following would be built (use -v for more details):
+ - splitmix-0.1.0.3 (lib) (requires download &amp; build)
+ - random-1.2.0 (lib) (requires download &amp; build)
+ - QuickCheck-2.14.1 (lib) (requires download &amp; build)
+ - haskell-project-0.1.0.0 (exe:hello) (first run)
+/nix/store/pgdqan44d8ky1yz0d687d2nhqsqflc48-plan-to-nix-pkgs
+
+$ cat /nix/store/pgdqan44d8ky1yz0d687d2nhqsqflc48-plan-to-nix-pkgs/default.nix
+{
+  pkgs = hackage:
+    {
+      packages = {
+        &quot;ghc-prim&quot;.revision = (((hackage.&quot;ghc-prim&quot;).&quot;0.6.1&quot;).revisions).default;
+        &quot;mtl&quot;.revision = (((hackage.&quot;mtl&quot;).&quot;2.2.2&quot;).revisions).default;
+        &quot;rts&quot;.revision = (((hackage.&quot;rts&quot;).&quot;1.0&quot;).revisions).default;
+        &quot;QuickCheck&quot;.revision = (((hackage.&quot;QuickCheck&quot;).&quot;2.14.1&quot;).revisions).default;
+        ...
+      }
+      compiler = {
+        version = &quot;8.10.2&quot;;
+        nix-name = &quot;ghc8102&quot;;
+        packages = {
+          &quot;ghc-prim&quot; = &quot;0.6.1&quot;;
+          &quot;mtl&quot; = &quot;2.2.2&quot;;
+          ...
+        }
+      }
+    }
+  ...
+}
+</code></pre>
+<p>We can see that the plan contains quite detailed information on
+the exact versions of dependencies that are needed to build our Haskell
+project.</p>
+<h2><a class="header" href="#caching-plans-with-materialization" id="caching-plans-with-materialization">Caching Plans with Materialization</a></h2>
+<p>The dependency resolution algorithm is not a cheap operation to run, especially
+in large Haskell projects. This is why Cabal caches the result inside of
+<code>dist-newstyle/cache</code> instead of recomputing it every time commands such as
+<code>cabal build</code> are called.</p>
+<p>In the case of Nix, we know that a Nix build can be cached and reused if there
+are no changes in the build inputs. However for the case of a materialized
+plan, the result of the plan depends on the input source code of the Haskell
+project. This means that every time the source code changes, the plan
+needs to be recomputed from scratch.</p>
+<p>Furthermore, computing the materialized plan requires a number of dependencies
+that are not needed when building the Haskell project itself. On the other
+hand, We know that the materialized plan only changes when either the dependencies
+list is updated, or when the Hackage index state is updated. So we should be
+able to cache the materialized plan so that there is no need for Haskell.nix
+to recompute the dependencies all the time.</p>
+<p>In Haskell.nix, the act of manually caching the derivation plan is called
+<a href="https://input-output-hk.github.io/haskell.nix/tutorials/materialization/"><em>materialization</em></a>.
+To put it simply, we can materialize the derivation plan by copying the
+build output of the <code>plan-nix</code> derivation and check that into the source
+control of the project.</p>
+<p>If we already have the plan files cached in version control, we can then
+pass the path to the .nix file as the <code>materialized</code> attribute when defining
+our Haskell.nix project.</p>
+<h2><a class="header" href="#example-materialized-haskell-project" id="example-materialized-haskell-project">Example Materialized Haskell Project</a></h2>
+<p>The Nix project
+<a href="./haskell-project-v3/nix/07-haskell.nix-materialized">07-haskell.nix-materialized</a>
+contains an example Haskell.nix project that provides basic support for
+materialization.</p>
+<p>As compared to the simplified version, the project.nix has a few more
+additional fields passed to Haskell.nix:</p>
+<pre><code class="language-nix">{ useMaterialization ? true }:
+let
+  sources = import ../sources.nix {};
+
+  haskell-nix = import sources.&quot;haskell.nix&quot; {};
+
+  nixpkgs = haskell-nix.pkgs;
+
+  src = builtins.path {
+    name = &quot;haskell-project-src&quot;;
+    path = ../../haskell;
+    filter = path: type:
+      let
+        basePath = builtins.baseNameOf path;
+      in
+      basePath != &quot;dist-newstyle&quot;
+    ;
+  };
+
+  project = nixpkgs.haskell-nix.cabalProject {
+    inherit src;
+
+    compiler-nix-name = &quot;ghc8102&quot;;
+
+    index-state = &quot;2020-12-04T00:00:00Z&quot;;
+
+    materialized = if useMaterialization
+      then ./plan else null;
+
+    plan-sha256 = if useMaterialization
+      then nixpkgs.lib.removeSuffix &quot;\n&quot;
+        (builtins.readFile ./plan-hash.txt)
+      else null;
+
+    exactDeps = true;
+  };
+in
+project
+</code></pre>
+<p>The project.nix file is now a function accepting a <code>useMaterialization</code> argument.
+If it is set to <code>true</code>, then the materialized plan is passed to Haskell.nix
+through the <code>materialized</code> attribute.</p>
+<p>We also need to explicitly provide Haskell.nix the version of Hackage snapshot
+we want to use, which we hard code to <code>&quot;2020-12-04T00:00:00Z&quot;</code>.</p>
+<p>We set the <code>exactDeps</code> option here to <code>true</code>, so that when the materialized
+plan is out of sync, we get error when running <code>cabal build</code> inside the Nix shell.</p>
+<p>There are also a new <a href="./haskell-project-v3/nix/07-haskell.nix-materialized/plan">plan</a>
+directory, a
+<a href="./haskell-project-v3/nix/07-haskell.nix-materialized/plan-hash.txt">plan-hash.txt</a>
+file, and a
+<a href="./haskell-project-v3/nix/07-haskell.nix-materialized/sync-materialized.sh">sync-materialized.sh</a>
+script:</p>
+<pre><code class="language-nix">#!/usr/bin/env bash
+
+plan=$(nix-build -j4 --no-out-link --arg useMaterialization false -A plan-nix project.nix)
+
+rm -rf plan
+
+cp -r $plan plan
+
+find plan -type d -exec chmod 755 {} \;
+
+nix-hash --base32 --type sha256 plan &gt; plan-hash.txt
+</code></pre>
+<p>The script <code>sync-materialized.sh</code> creates a Haskell.nix project with
+<code>useMaterialization</code> set to <code>false</code>. It then copies the build output of <code>plan-nix</code>
+to the <code>plan/</code> directory, and compute the SHA256 hash of the directory and save it to
+<code>plan-hash.txt</code>.</p>
+<p>As we can see, a Haskell.nix project using materialized plan is a bit more involved.
+However the performance trade off of using materialized plan in a large Haskell
+project can be significant. The example project template can hopefully
+serve as a reference on how to setup a Haskell.nix project with materialization.</p>
+<h2><a class="header" href="#syncing-materialized-plan" id="syncing-materialized-plan">Syncing Materialized Plan</a></h2>
+<p>When we explicitly cache the materialized plans, there is a risk of the plan
+file diverging from the actual Haskell dependencies when the .cabal file is
+updated. It can also introduce additional noise in git commits when
+dependencies are updated. This can introduce friction in Haskell projects,
+as all team members become responsible to update the materialized plans
+when the Haskell dependencies are updated.</p>
+<p>Checking in dependencies metadata into version control is a common problem
+in software projects, particularly Nix projects. As discussed in
+<a href="./01-dependency-management.html">Dependency Management</a>, this is a
+necessary evil to make sure that our dependencies are reproducible.
+Syncing materialized plans can be seen as the same methods as
+syncing other dependencies lock files such as <code>cabal.project.freeze</code>
+and <code>package-lock.json</code>.</p>
+<p>Nevertheless, the current workflow for managing materialization plans
+in Haskell.nix is not very convenient, and there are a lot of
+improvements that could have been made. We can only hope that
+these steps can be improved in future versions of Haskell.nix.</p>
+<p>Or perhaps there are better ways of managing Haskell dependencies,
+as described in the next chapter.</p>
+<h2><a class="header" href="#caching-haskellnix-dependencies" id="caching-haskellnix-dependencies">Caching Haskell.nix Dependencies</a></h2>
+<p>One of the downside of multi-versioning approach taken by Haskell.nix
+is that it is much more difficult to provide a general Nix cache for
+Haskell.nix projects.</p>
+<p>When Haskell projects are built using unmodified nixpkgs, there is
+usually no need to build any Haskell dependencies at all. Instead
+the Haskell packages are downloaded directly from cache.nixos.org.</p>
+<p>This is possible thanks to the mono-versioning approach of nixpkgs.
+Since there is exactly one version of each package and their
+dependencies, the build result of the same dependency can always be
+reused for multiple packages. As such, the number of Nix packages
+that need to be cached are relatively small, and the default NixOS
+cache takes care of caching all of them.</p>
+<p>In contrast, in Haskell.nix the dependencies for a package can
+change depending on the requirements of its dependents. So instead of
+caching one copy of each version of Haskell package, there is
+a combinatory explosion of packages to be cached - one for
+each possible combination of transitive dependencies for that package
+alone.</p>
+<p>Because of this, it is common that building a Haskell.nix project also
+requires building all the Haskell dependencies. We will discuss about
+how to use Cachix to cache such Nix dependencies in the future.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../05-package-management/04-transitive-version-conflicts.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../05-package-management/06-other-strategies.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../05-package-management/04-transitive-version-conflicts.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../05-package-management/06-other-strategies.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

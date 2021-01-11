@@ -1,0 +1,410 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Version Conflicts - Scrive Nix Workshop</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Scrive Nix Workshop</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="../01-getting-started/01-introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../01-getting-started/02-installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../01-getting-started/03-resources.html"><strong aria-hidden="true">4.</strong> Resources</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Commands</li><li class="chapter-item expanded "><a href="../02-nix-commands/01-install-global-packages.html"><strong aria-hidden="true">5.</strong> Installing Global Packages</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/02-use-packages-in-nix-shell.html"><strong aria-hidden="true">6.</strong> Using Packages in Nix shell</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/03-nix-repl.html"><strong aria-hidden="true">7.</strong> Nix Repl</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Basics</li><li class="chapter-item expanded "><a href="../03-nix-basics/01-primitives.html"><strong aria-hidden="true">8.</strong> Nix Primitives</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/02-expressions.html"><strong aria-hidden="true">9.</strong> Expressions</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/03-files.html"><strong aria-hidden="true">10.</strong> Files</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/04-import.html"><strong aria-hidden="true">11.</strong> Import</a></li><li class="chapter-item expanded affix "><li class="part-title">Derivations</li><li class="chapter-item expanded "><a href="../04-derivations/01-derivation-basics.html"><strong aria-hidden="true">12.</strong> Derivation Basics</a></li><li class="chapter-item expanded "><a href="../04-derivations/02-dependencies.html"><strong aria-hidden="true">13.</strong> Dependencies</a></li><li class="chapter-item expanded "><a href="../04-derivations/03-fibonacci.html"><strong aria-hidden="true">14.</strong> Fibonacci</a></li><li class="chapter-item expanded "><a href="../04-derivations/04-raw-derivation.html"><strong aria-hidden="true">15.</strong> Raw Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/05-standard-derivation.html"><strong aria-hidden="true">16.</strong> Standard Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/06-build-phases.html"><strong aria-hidden="true">17.</strong> Build Phases</a></li><li class="chapter-item expanded affix "><li class="part-title">Package Management</li><li class="chapter-item expanded "><a href="../05-package-management/01-dependency-management.html"><strong aria-hidden="true">18.</strong> Dependency Management</a></li><li class="chapter-item expanded "><a href="../05-package-management/02-basic-haskell.html"><strong aria-hidden="true">19.</strong> Basic Haskell Project</a></li><li class="chapter-item expanded "><a href="../05-package-management/03-version-conflicts.html" class="active"><strong aria-hidden="true">20.</strong> Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/04-transitive-version-conflicts.html"><strong aria-hidden="true">21.</strong> Transitive Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/05-multi-versioned-haskell-packages.html"><strong aria-hidden="true">22.</strong> Multi-versioned Haskell Packages</a></li><li class="chapter-item expanded "><a href="../05-package-management/06-other-strategies.html"><strong aria-hidden="true">23.</strong> Other Package Management Strategies</a></li><li class="chapter-item expanded affix "><li class="part-title">Infrastructure</li><li class="chapter-item expanded "><a href="../06-infrastructure/01-caching-nix.html"><strong aria-hidden="true">24.</strong> Caching Nix Packages</a></li><li class="chapter-item expanded "><a href="../06-infrastructure/02-caching-haskell.html"><strong aria-hidden="true">25.</strong> Caching Haskell Nix Packages</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Scrive Nix Workshop</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#version-conflicts-in-haskell-dependencies" id="version-conflicts-in-haskell-dependencies">Version Conflicts in Haskell Dependencies</a></h1>
+<p>In the previous chapter we have created a trivial Haskell project with no
+dependency other than <code>base</code>. Let's look at what happen when our Haskell
+project have some dependencies, which happen to conflict with the
+dependencies available in <code>nixpkgs</code>.</p>
+<p>We first define a new Haskell project,
+<a href="./haskell-project-v2/haskell/haskell-project.cabal">haskell-project-v2</a>:</p>
+<pre><code>cabal-version:       2.4
+name:                haskell-project
+version:             0.1.0.0
+license:             ISC
+build-type:          Simple
+
+executable hello
+  main-is:             Main.hs
+  build-depends:       base &gt;=4.13
+                     , yaml == 0.11.3.0
+  default-language:    Haskell2010
+</code></pre>
+<p>We add a new dependency <code>yaml</code> and explicitly requiring version <code>0.11.3.0</code>.
+At the time of writing, the latest version of <code>yaml</code> available on
+<a href="https://hackage.haskell.org/package/yaml">Hackage</a> is <code>0.11.5.0</code>.
+However let's pretend there are
+<a href="https://github.com/snoyberg/yaml/issues/173">breaking changes</a>
+in <code>0.11.5.0</code>, and we only support <code>0.11.3.0</code>.</p>
+<h2><a class="header" href="#nixpkgs" id="nixpkgs">Nixpkgs</a></h2>
+<p>Let's try to follow our previous approach to define our Haskell derivation
+using <code>callCabal2nix</code>. If we do that and try to build it, we would
+run into an error:</p>
+<pre><code class="language-bash">$ nix-build 05-package-management/haskell-project-v2/nix/01-nixpkgs-conflict/
+building '/nix/store/3gab06pwqjc16wdqhj5akxk21g1z0qnx-cabal2nix-haskell-project.drv'...
+these derivations will be built:
+  /nix/store/242x69pl2la3lb201qd57rghisrwclpy-haskell-project-0.1.0.0.drv
+building '/nix/store/242x69pl2la3lb201qd57rghisrwclpy-haskell-project-0.1.0.0.drv'...
+...
+Setup: Encountered missing or private dependencies:
+yaml ==0.11.3.0
+
+builder for '/nix/store/242x69pl2la3lb201qd57rghisrwclpy-haskell-project-0.1.0.0.drv' failed with exit code 1
+error: build of '/nix/store/242x69pl2la3lb201qd57rghisrwclpy-haskell-project-0.1.0.0.drv' failed
+</code></pre>
+<p>Why is that so?</p>
+<p>If we try to enter Nix shell, it will still succeed. But if we try to build
+our Haskell project in Nix shell, we will find out that the package <code>yaml</code>
+has to be explicitly built by cabal:</p>
+<pre><code class="language-bash">$ nix-shell 05-package-management/haskell-project-v2/nix/01-nixpkgs-conflict/shell.nix
+
+[nix-shell]$ cd 05-package-management/haskell-project-v2/haskell/
+
+[nix-shell]$ cabal --dry-run build all
+Resolving dependencies...
+Build profile: -w ghc-8.10.2 -O1
+In order, the following would be built (use -v for more details):
+ - yaml-0.11.3.0 (lib) (requires build)
+ - haskell-project-0.1.0.0 (exe:hello) (first run)
+</code></pre>
+<h2><a class="header" href="#problem-with-mono-versioning" id="problem-with-mono-versioning">Problem with Mono-versioning</a></h2>
+<p>If we look into
+<a href="https://raw.githubusercontent.com/NixOS/nixpkgs/c1e5f8723ceb684c8d501d4d4ae738fef704747e/pkgs/development/haskell-modules/hackage-packages.nix">nixpkgs source code</a>,
+we can in fact see that the version of <code>yaml</code> available in nixpkgs is the latest,
+<code>0.11.5.0</code>.</p>
+<p>As discussed earlier, with the mono-versioning approach by nixpkgs, there is
+exactly one version of each package available. Mono-versioning conflicts
+can happen when we need packages that are either older or newer than the version
+provided by nixpkgs.</p>
+<p>In theory we could switch to a version of nixpkgs that has <code>yaml-0.11.3.0</code>,
+however we would then have to buy into the versions of other Haskell packages
+available at that time.</p>
+<h2><a class="header" href="#overriding-versions" id="overriding-versions">Overriding Versions</a></h2>
+<p>Nixpkgs provides a workaround for mono-versioning conflicts, by using the
+<a href="https://nixos.org/guides/nix-pills/override-design-pattern.html">override pattern</a>.
+We can override the version of <code>yaml</code> to the one we want as follows:</p>
+<pre><code class="language-nix">let
+  sources = import ../sources.nix {};
+  nixpkgs = import sources.nixpkgs {};
+
+  hsLib = nixpkgs.haskell.lib;
+  hsPkgs-original = nixpkgs.haskell.packages.ghc8102;
+
+  hsPkgs = hsPkgs-original.override {
+    overrides = hsPkgs-old: hsPkgs-new: {
+      yaml = hsPkgs-new.callHackage
+        &quot;yaml&quot; &quot;0.11.3.0&quot; {};
+    };
+  };
+
+  src = builtins.path {
+    name = &quot;haskell-project-src&quot;;
+    path = ../../haskell;
+    filter = path: type:
+      let
+        basePath = builtins.baseNameOf path;
+      in
+      basePath != &quot;dist-newstyle&quot;
+    ;
+  };
+
+  project = hsPkgs.callCabal2nix &quot;haskell-project&quot; src;
+in
+hsPkgs.callPackage project {}
+</code></pre>
+<p>Essentially, we refer to the original haskell package set provided as
+<code>hsPkgs-original</code>, and we call <code>hsPkgs-original.override</code> to produce
+a new package set <code>hsPkgs</code> with <code>yaml</code> overridden to <code>0.11.3.0</code>.</p>
+<p>Using <code>callHackage</code>, we can fetch the version of <code>yaml</code> from the
+Hackage snapshot in nixpkgs. With that we can just provide the
+string <code>&quot;0.11.3.0&quot;</code> to specify the version that we want. Note
+however that this only works if the version can be found in the
+given Hackage snapshot, which may be outdated over time.</p>
+<p>An issue with overriding dependencies this way is that the override
+affects the entire Haskell package set. This means that all other
+Haskell packages that depend on <code>yaml</code> will also get <code>0.11.3.0</code>
+instead of <code>0.11.5.0</code>. As a result, this may have the unintended
+ripple effect of breaking other Haskell packages that we depends
+on.</p>
+<h2><a class="header" href="#building-overridden-package" id="building-overridden-package">Building Overridden Package</a></h2>
+<p>If we try to build our Haskell derivation with overridden <code>yaml</code>,
+it would work this time:</p>
+<pre><code class="language-bash">$ nix-build 05-package-management/haskell-project-v2/nix/02-nixpkgs-override/
+these derivations will be built:
+  /nix/store/l0v04zz36b5s5r3qc2jisvggyc0gkj5w-remove-references-to.drv
+  /nix/store/bg5z6b7m24fxqn8qq2l2w8c0w30wkbp3-yaml-0.11.3.0.drv
+  /nix/store/p5sr404mzr8bnqqprv72lxczdr9cnnim-haskell-project-0.1.0.0.drv
+...
+/nix/store/0m0mr11ncii3z4zkn9z0xkwk4nswprqm-haskell-project-0.1.0.0
+</code></pre>
+<p>We can also enter the Nix shell to verify that this time, cabal will
+not try to build <code>yaml</code> for us:</p>
+<pre><code class="language-bash">$ nix-shell 05-package-management/haskell-project-v2/nix/02-nixpkgs-override/shell.nix
+
+[nix-shell]$ cd 05-package-management/haskell-project-v2/haskell/
+
+[nix-shell]$ cabal --dry-run build all
+Resolving dependencies...
+Build profile: -w ghc-8.10.2 -O1
+In order, the following would be built (use -v for more details):
+ - haskell-project-0.1.0.0 (exe:hello) (first run)
+</code></pre>
+<h2><a class="header" href="#haskellnix" id="haskellnix">Haskell.nix</a></h2>
+<p>In comparison with the mono-versioned nixpkgs, Haskell.nix is much more flexible
+in allowing any version of Haskell packages that are supported by cabal.
+So we can leave the Nix project unchanged and still build it successfully:</p>
+<pre><code class="language-bash">$ nix-build 05-package-management/haskell-project-v2/nix/03-haskell.nix/
+trace: No index state specified, using the latest index state that we know about (2020-12-04T00:00:00Z)!
+building '/nix/store/v4pf9jffq0dh6xang25qviwb77947s7s-plan-to-nix-pkgs.drv'...
+Using index-state 2020-12-04T00:00:00Z
+Warning: The package list for 'hackage.haskell.org-at-2020-12-04T000000Z' is
+18603 days old.
+Run 'cabal update' to get the latest list of available packages.
+Warning: Requested index-state2020-12-04T00:00:00Z is newer than
+'hackage.haskell.org-at-2020-12-04T000000Z'! Falling back to older state
+(2020-12-03T20:14:57Z).
+Resolving dependencies...
+Build profile: -w ghc-8.10.2 -O1
+In order, the following would be built (use -v for more details):
+ - base-compat-0.11.2 (lib) (requires download &amp; build)
+ - base-orphans-0.8.3 (lib) (requires download &amp; build)
+ ...
+ - aeson-1.5.4.1 (lib) (requires download &amp; build)
+ - yaml-0.11.3.0 (lib) (requires download &amp; build)
+ - haskell-project-0.1.0.0 (exe:hello) (first run)
+these derivations will be built:
+these derivations will be built:
+...
+  /nix/store/y8vbr0b6y8bzgmadj0rfjp3d2rzx5wgs-yaml-lib-yaml-0.11.3.0-config.drv
+  /nix/store/fhmib5kqsxl82r1z23mm59njw2dn0c8v-yaml-lib-yaml-0.11.3.0-ghc-8.10.2-env.drv
+  /nix/store/j837v0cxk9dxqpxfjfngii007hq8wn3w-yaml-lib-yaml-0.11.3.0.drv
+  /nix/store/nxwvfjaj40adyq002khld7ngnq3wggn7-haskell-project-exe-hello-0.1.0.0-config.drv
+  /nix/store/y27wbd58f5d1k3lzbzpr5qcc4pgqrxg2-haskell-project-exe-hello-0.1.0.0-ghc-8.10.2-env.drv
+  /nix/store/b4i7xhnha8007zqxd4gidsf7xyy338an-haskell-project-exe-hello-0.1.0.0.drv
+...
+/nix/store/phm2jk6xnvxsgp640r66cwgipc62kbc5-haskell-project-exe-hello-0.1.0.0
+
+$ /nix/store/phm2jk6xnvxsgp640r66cwgipc62kbc5-haskell-project-exe-hello-0.1.0.0/bin/hello
+Hello, Haskell!
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../05-package-management/02-basic-haskell.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../05-package-management/04-transitive-version-conflicts.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../05-package-management/02-basic-haskell.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../05-package-management/04-transitive-version-conflicts.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

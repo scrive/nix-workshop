@@ -1,0 +1,355 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Build Phases - Scrive Nix Workshop</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Scrive Nix Workshop</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="../01-getting-started/01-introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../01-getting-started/02-installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../01-getting-started/03-resources.html"><strong aria-hidden="true">4.</strong> Resources</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Commands</li><li class="chapter-item expanded "><a href="../02-nix-commands/01-install-global-packages.html"><strong aria-hidden="true">5.</strong> Installing Global Packages</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/02-use-packages-in-nix-shell.html"><strong aria-hidden="true">6.</strong> Using Packages in Nix shell</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/03-nix-repl.html"><strong aria-hidden="true">7.</strong> Nix Repl</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Basics</li><li class="chapter-item expanded "><a href="../03-nix-basics/01-primitives.html"><strong aria-hidden="true">8.</strong> Nix Primitives</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/02-expressions.html"><strong aria-hidden="true">9.</strong> Expressions</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/03-files.html"><strong aria-hidden="true">10.</strong> Files</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/04-import.html"><strong aria-hidden="true">11.</strong> Import</a></li><li class="chapter-item expanded affix "><li class="part-title">Derivations</li><li class="chapter-item expanded "><a href="../04-derivations/01-derivation-basics.html"><strong aria-hidden="true">12.</strong> Derivation Basics</a></li><li class="chapter-item expanded "><a href="../04-derivations/02-dependencies.html"><strong aria-hidden="true">13.</strong> Dependencies</a></li><li class="chapter-item expanded "><a href="../04-derivations/03-fibonacci.html"><strong aria-hidden="true">14.</strong> Fibonacci</a></li><li class="chapter-item expanded "><a href="../04-derivations/04-raw-derivation.html"><strong aria-hidden="true">15.</strong> Raw Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/05-standard-derivation.html"><strong aria-hidden="true">16.</strong> Standard Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/06-build-phases.html" class="active"><strong aria-hidden="true">17.</strong> Build Phases</a></li><li class="chapter-item expanded affix "><li class="part-title">Package Management</li><li class="chapter-item expanded "><a href="../05-package-management/01-dependency-management.html"><strong aria-hidden="true">18.</strong> Dependency Management</a></li><li class="chapter-item expanded "><a href="../05-package-management/02-basic-haskell.html"><strong aria-hidden="true">19.</strong> Basic Haskell Project</a></li><li class="chapter-item expanded "><a href="../05-package-management/03-version-conflicts.html"><strong aria-hidden="true">20.</strong> Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/04-transitive-version-conflicts.html"><strong aria-hidden="true">21.</strong> Transitive Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/05-multi-versioned-haskell-packages.html"><strong aria-hidden="true">22.</strong> Multi-versioned Haskell Packages</a></li><li class="chapter-item expanded "><a href="../05-package-management/06-other-strategies.html"><strong aria-hidden="true">23.</strong> Other Package Management Strategies</a></li><li class="chapter-item expanded affix "><li class="part-title">Infrastructure</li><li class="chapter-item expanded "><a href="../06-infrastructure/01-caching-nix.html"><strong aria-hidden="true">24.</strong> Caching Nix Packages</a></li><li class="chapter-item expanded "><a href="../06-infrastructure/02-caching-haskell.html"><strong aria-hidden="true">25.</strong> Caching Haskell Nix Packages</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Scrive Nix Workshop</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#build-phases" id="build-phases">Build Phases</a></h1>
+<p><code>stdenv</code> provides many different phases, with default behavior of
+what to run if no script for that phase is provided.</p>
+<p>Many of the phases follow the build steps introduced by
+<a href="https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html">Autotools</a>.
+When we are building non-C/C++ projects, only a few phases are essential.
+Still, it is useful to take a quick look at what phases are there,
+and what they offers.</p>
+<p>The <a href="https://nixos.org/manual/nixpkgs/unstable/#sec-stdenv-phases">nixpkgs manual</a>
+has the full list of phases.</p>
+<h2><a class="header" href="#the-phases-attribute" id="the-phases-attribute">The <code>phases</code> Attribute</a></h2>
+<p>We can force <code>stdenv</code> to run only specific phases by specifying them
+in the <code>phases</code> attribute.</p>
+<pre><code class="language-nix">nix-repl&gt; nixpkgs.stdenv.mkDerivation {
+            name = &quot;hello&quot;;
+            phases = [ &quot;installPhase&quot; ];
+            installPhase = &quot;echo 'Hello World!' &gt; $out&quot;;
+          }
+«derivation /nix/store/m09hj2xs3yc45y3d4rdm8wks7cay00ak-hello.drv»
+</code></pre>
+<pre><code class="language-bash">$ nix-build /nix/store/m09hj2xs3yc45y3d4rdm8wks7cay00ak-hello.drv
+these derivations will be built:
+  /nix/store/m09hj2xs3yc45y3d4rdm8wks7cay00ak-hello.drv
+building '/nix/store/m09hj2xs3yc45y3d4rdm8wks7cay00ak-hello.drv'...
+installing
+/nix/store/hpj3y6as9s07444qi6nap0f5dp5k84b6-hello
+
+$ cat /nix/store/hpj3y6as9s07444qi6nap0f5dp5k84b6-hello
+Hello World!
+</code></pre>
+<p>You may notice that the build log for this version of <code>hello</code> is much shorter
+than the usual output of standard derivations. Messages such as
+<code>post-installation fixup</code> are not shown here.</p>
+<p>This is because those are implicit steps performed in phases such as <code>fixupPhase</code>.
+We will go through later why those phases are there. But as you can see, these
+phases can be disabled by explicitly specifying the <code>phases</code> to run.</p>
+<p>There is also no need to explicitly skip required phases like <code>unpackPhase</code>,
+which we previously set to <code>true</code>.</p>
+<h2><a class="header" href="#unpack-phase" id="unpack-phase">Unpack Phase</a></h2>
+<p>The unpack phase is used to unpack source code into temporary directories
+to be used for compilation. By default, <code>unpackPhase</code> unpacks the source
+code specified in <code>$src</code>, and if none is provided, it will abort with an error.</p>
+<pre><code class="language-nix">nix-repl&gt; nixpkgs.stdenv.mkDerivation {
+            name = &quot;hello&quot;;
+            installPhase = &quot;echo 'Hello World!' &gt; $out&quot;;
+          }
+«derivation /nix/store/cx3p30jp0y0l8ixl426drsp81vcqagpr-hello.drv»
+</code></pre>
+<pre><code class="language-bash">$ nix-build /nix/store/cx3p30jp0y0l8ixl426drsp81vcqagpr-hello.drv
+these derivations will be built:
+  /nix/store/cx3p30jp0y0l8ixl426drsp81vcqagpr-hello.drv
+building '/nix/store/cx3p30jp0y0l8ixl426drsp81vcqagpr-hello.drv'...
+unpacking sources
+variable $src or $srcs should point to the source
+builder for '/nix/store/cx3p30jp0y0l8ixl426drsp81vcqagpr-hello.drv' failed with exit code 1
+error: build of '/nix/store/cx3p30jp0y0l8ixl426drsp81vcqagpr-hello.drv' failed
+</code></pre>
+<p>This is why when we don't have any source code, we have to explicitly skip
+the <code>unpackPhase</code> by telling it to run <code>true</code> instead.</p>
+<p>Let's try to see what is done in <code>unpackPhase</code> when we give it some source directories.</p>
+<pre><code class="language-nix">nix-repl&gt; nixpkgs.stdenv.mkDerivation {
+            name = &quot;fibonacci-src&quot;;
+            src = ./04-derivations/03-fibonacci;
+            installPhase = ''
+              set -x
+
+              pwd
+              ls -la .
+              cp -r ./ $out/
+
+              set +x
+            '';
+          }
+«derivation /nix/store/8l0s01nk0fc1zicb9qkdmpwsw01qr5p8-fibonacci.drv»
+</code></pre>
+<pre><code class="language-bash">$ nix-build /nix/store/8l0s01nk0fc1zicb9qkdmpwsw01qr5p8-fibonacci.drv
+these derivations will be built:
+  /nix/store/8l0s01nk0fc1zicb9qkdmpwsw01qr5p8-fibonacci.drv
+building '/nix/store/8l0s01nk0fc1zicb9qkdmpwsw01qr5p8-fibonacci.drv'...
+unpacking sources
+unpacking source archive /nix/store/a5f73yy0a8dn0p12pfriqbqyag0ksfkq-03-fibonacci
+source root is 03-fibonacci
+patching sources
+configuring
+no configure script, doing nothing
+building
+no Makefile, doing nothing
+installing
+++ pwd
+/build/03-fibonacci
+++ ls -la .
+total 16
+drwxr-xr-x 2 nixbld nixbld 4096 Jan  1  1970 .
+drwx------ 3 nixbld nixbld 4096 Dec  1 09:19 ..
+-rw-r--r-- 1 nixbld nixbld 1772 Jan  1  1970 fib-serialized.nix
+-rw-r--r-- 1 nixbld nixbld 1602 Jan  1  1970 fib.nix
+++ cp -r ./ /nix/store/qqd4msyqya0xhqxcyra0lf7v09z2q522-fibonacci/
+++ set +x
+post-installation fixup
+shrinking RPATHs of ELF executables and libraries in /nix/store/qqd4msyqya0xhqxcyra0lf7v09z2q522-fibonacci
+strip is /nix/store/bnjps68g8ax6abzvys2xpx12imrx8949-binutils-2.31.1/bin/strip
+patching script interpreter paths in /nix/store/qqd4msyqya0xhqxcyra0lf7v09z2q522-fibonacci
+checking for references to /build/ in /nix/store/qqd4msyqya0xhqxcyra0lf7v09z2q522-fibonacci...
+/nix/store/qqd4msyqya0xhqxcyra0lf7v09z2q522-fibonacci
+
+$ ls -la /nix/store/qqd4msyqya0xhqxcyra0lf7v09z2q522-fibonacci
+total 5728
+dr-xr-xr-x    2 user user    4096 Jan  1  1970 .
+drwxr-xr-x 5403 user user 5849088 Dez  1 10:19 ..
+-r--r--r--    1 user user    1602 Jan  1  1970 fib.nix
+-r--r--r--    1 user user    1772 Jan  1  1970 fib-serialized.nix
+</code></pre>
+<p>As we can see, <code>unpackPhase</code> copies the content of the source code specified in <code>$src</code>
+into the temporary build directory. It also modifies the chmod permissions to
+allow write permission to the files and directories.</p>
+<h2><a class="header" href="#patch-phase" id="patch-phase">Patch Phase</a></h2>
+<h2><a class="header" href="#configure-phase" id="configure-phase">Configure Phase</a></h2>
+<h2><a class="header" href="#build-phase" id="build-phase">Build Phase</a></h2>
+<h2><a class="header" href="#check-phase" id="check-phase">Check Phase</a></h2>
+<h2><a class="header" href="#install-phase" id="install-phase">Install Phase</a></h2>
+<h2><a class="header" href="#fixup-phase" id="fixup-phase">Fixup Phase</a></h2>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../04-derivations/05-standard-derivation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../05-package-management/01-dependency-management.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../04-derivations/05-standard-derivation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../05-package-management/01-dependency-management.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

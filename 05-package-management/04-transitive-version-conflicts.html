@@ -1,0 +1,581 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Transitive Version Conflicts - Scrive Nix Workshop</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Scrive Nix Workshop</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="../01-getting-started/01-introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../01-getting-started/02-installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../01-getting-started/03-resources.html"><strong aria-hidden="true">4.</strong> Resources</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Commands</li><li class="chapter-item expanded "><a href="../02-nix-commands/01-install-global-packages.html"><strong aria-hidden="true">5.</strong> Installing Global Packages</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/02-use-packages-in-nix-shell.html"><strong aria-hidden="true">6.</strong> Using Packages in Nix shell</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/03-nix-repl.html"><strong aria-hidden="true">7.</strong> Nix Repl</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Basics</li><li class="chapter-item expanded "><a href="../03-nix-basics/01-primitives.html"><strong aria-hidden="true">8.</strong> Nix Primitives</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/02-expressions.html"><strong aria-hidden="true">9.</strong> Expressions</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/03-files.html"><strong aria-hidden="true">10.</strong> Files</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/04-import.html"><strong aria-hidden="true">11.</strong> Import</a></li><li class="chapter-item expanded affix "><li class="part-title">Derivations</li><li class="chapter-item expanded "><a href="../04-derivations/01-derivation-basics.html"><strong aria-hidden="true">12.</strong> Derivation Basics</a></li><li class="chapter-item expanded "><a href="../04-derivations/02-dependencies.html"><strong aria-hidden="true">13.</strong> Dependencies</a></li><li class="chapter-item expanded "><a href="../04-derivations/03-fibonacci.html"><strong aria-hidden="true">14.</strong> Fibonacci</a></li><li class="chapter-item expanded "><a href="../04-derivations/04-raw-derivation.html"><strong aria-hidden="true">15.</strong> Raw Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/05-standard-derivation.html"><strong aria-hidden="true">16.</strong> Standard Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/06-build-phases.html"><strong aria-hidden="true">17.</strong> Build Phases</a></li><li class="chapter-item expanded affix "><li class="part-title">Package Management</li><li class="chapter-item expanded "><a href="../05-package-management/01-dependency-management.html"><strong aria-hidden="true">18.</strong> Dependency Management</a></li><li class="chapter-item expanded "><a href="../05-package-management/02-basic-haskell.html"><strong aria-hidden="true">19.</strong> Basic Haskell Project</a></li><li class="chapter-item expanded "><a href="../05-package-management/03-version-conflicts.html"><strong aria-hidden="true">20.</strong> Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/04-transitive-version-conflicts.html" class="active"><strong aria-hidden="true">21.</strong> Transitive Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/05-multi-versioned-haskell-packages.html"><strong aria-hidden="true">22.</strong> Multi-versioned Haskell Packages</a></li><li class="chapter-item expanded "><a href="../05-package-management/06-other-strategies.html"><strong aria-hidden="true">23.</strong> Other Package Management Strategies</a></li><li class="chapter-item expanded affix "><li class="part-title">Infrastructure</li><li class="chapter-item expanded "><a href="../06-infrastructure/01-caching-nix.html"><strong aria-hidden="true">24.</strong> Caching Nix Packages</a></li><li class="chapter-item expanded "><a href="../06-infrastructure/02-caching-haskell.html"><strong aria-hidden="true">25.</strong> Caching Haskell Nix Packages</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Scrive Nix Workshop</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#transitive-haskell-version-conflicts" id="transitive-haskell-version-conflicts">Transitive Haskell Version Conflicts</a></h1>
+<p>Let's look at another example of nixpkgs-based Haskell project, where version
+conflicts are propagated to transitive dependencies.</p>
+<p>We have another Haskell project,
+<a href="./haskell-project-v3/haskell/haskell-project.cabal">haskell-project-v3</a>
+with a dependency on the latest <code>QuickCheck-2.14.2</code>:</p>
+<pre><code>cabal-version:       2.4
+name:                haskell-project
+version:             0.1.0.0
+license:             ISC
+build-type:          Simple
+
+executable hello
+  main-is:             Main.hs
+  build-depends:       base &gt;=4.13
+                     , QuickCheck == 2.14.2
+  default-language:    Haskell2010
+</code></pre>
+<p>Now try building the project with the default <code>callCabal2nix</code>:</p>
+<pre><code class="language-nix">let
+  sources = import ../sources.nix {};
+  nixpkgs = import sources.nixpkgs {};
+
+  hsPkgs = nixpkgs.haskell.packages.ghc8102;
+
+  src = builtins.path {
+    name = &quot;haskell-project-src&quot;;
+    path = ../../haskell;
+    filter = path: type:
+      let
+        basePath = builtins.baseNameOf path;
+      in
+      basePath != &quot;dist-newstyle&quot;
+    ;
+  };
+
+  project = hsPkgs.callCabal2nix &quot;haskell-project&quot; src;
+in
+hsPkgs.callPackage project {}
+</code></pre>
+<p>We should see that the building failed, because the
+<a href="https://raw.githubusercontent.com/NixOS/nixpkgs/c1e5f8723ceb684c8d501d4d4ae738fef704747e/pkgs/development/haskell-modules/hackage-packages.nix">version of nixpkgs</a>
+we are using only has <code>QuickCheck-2.13.2</code> in it.</p>
+<pre><code class="language-bash">$ nix-build 05-package-management/haskell-project-v3/nix/01-nixpkgs-conflict
+building '/nix/store/12qzjbk3514sj9v4j99brbxr4b83bzy5-cabal2nix-haskell-project.drv'...
+installing
+these derivations will be built:
+  /nix/store/d5jyli1v9y12il9wyzs5x6gyx6q68gig-haskell-project-0.1.0.0.drv
+...
+Setup: Encountered missing or private dependencies:
+QuickCheck ==2.14.2
+
+builder for '/nix/store/d5jyli1v9y12il9wyzs5x6gyx6q68gig-haskell-project-0.1.0.0.drv' failed with exit code 1
+error: build of '/nix/store/d5jyli1v9y12il9wyzs5x6gyx6q68gig-haskell-project-0.1.0.0.drv' failed
+</code></pre>
+<h2><a class="header" href="#using-latest-hackage-package" id="using-latest-hackage-package">Using Latest Hackage Package</a></h2>
+<p>Now we try using the override pattern in the previous chapter to override the
+version of <code>QuickCheck</code>:</p>
+<pre><code class="language-nix">let
+  sources = import ../sources.nix {};
+  nixpkgs = import sources.nixpkgs {};
+
+  hsLib = nixpkgs.haskell.lib;
+  hsPkgs-original = nixpkgs.haskell.packages.ghc8102;
+
+  hsPkgs = hsPkgs-original.override {
+    overrides = hsPkgs-old: hsPkgs-new: {
+      QuickCheck = hsPkgs-new.callHackage &quot;QuickCheck&quot; &quot;2.14.2&quot; {};
+    };
+  };
+
+  src = builtins.path {
+    name = &quot;haskell-project-src&quot;;
+    path = ../../haskell;
+    filter = path: type:
+      let
+        basePath = builtins.baseNameOf path;
+      in
+      basePath != &quot;dist-newstyle&quot;
+    ;
+  };
+
+  project = hsPkgs.callCabal2nix &quot;haskell-project&quot; src;
+in
+hsPkgs.callPackage project {}
+</code></pre>
+<p>This time the build actually failed with another error:</p>
+<pre><code class="language-bash">$ nix-build 05-package-management/haskell-project-v3/nix/01-nixpkgs-conflict
+building '/nix/store/12qzjbk3514sj9v4j99brbxr4b83bzy5-cabal2nix-haskell-project.drv'...
+installing
+these derivations will be built:
+  /nix/store/d5jyli1v9y12il9wyzs5x6gyx6q68gig-haskell-project-0.1.0.0.drv
+...
+Configuring haskell-project-0.1.0.0...
+CallStack (from HasCallStack):
+  $, called at libraries/Cabal/Cabal/Distribution/Simple/Configure.hs:1024:20 in Cabal-3.2.0.0:Distribution.Simple.Configure
+  configureFinalizedPackage, called at libraries/Cabal/Cabal/Distribution/Simple/Configure.hs:477:12 in Cabal-3.2.0.0:Distribution.Simple.Configure
+  configure, called at libraries/Cabal/Cabal/Distribution/Simple.hs:625:20 in Cabal-3.2.0.0:Distribution.Simple
+  confHook, called at libraries/Cabal/Cabal/Distribution/Simple/UserHooks.hs:65:5 in Cabal-3.2.0.0:Distribution.Simple.UserHooks
+  configureAction, called at libraries/Cabal/Cabal/Distribution/Simple.hs:180:19 in Cabal-3.2.0.0:Distribution.Simple
+  defaultMainHelper, called at libraries/Cabal/Cabal/Distribution/Simple.hs:116:27 in Cabal-3.2.0.0:Distribution.Simple
+  defaultMain, called at Setup.hs:2:8 in main:Main
+Setup: Encountered missing or private dependencies:
+QuickCheck ==2.14.2
+
+builder for '/nix/store/d5jyli1v9y12il9wyzs5x6gyx6q68gig-haskell-project-0.1.0.0.drv' failed with exit code 1
+error: build of '/nix/store/d5jyli1v9y12il9wyzs5x6gyx6q68gig-haskell-project-0.1.0.0.drv' failed
+soares@soares-workstation:~/scrive/nix-workshop/code$ nix-build 05-package-management/haskell-project-v3/nix/02-nixpkgs-not-found
+building '/nix/store/ybvimf0jbsbx997588kbipkpbq97iv3d-all-cabal-hashes-component-QuickCheck-2.14.2.drv'...
+tar: */QuickCheck/2.14.2/QuickCheck.json: Not found in archive
+tar: */QuickCheck/2.14.2/QuickCheck.cabal: Not found in archive
+tar: Exiting with failure status due to previous errors
+builder for '/nix/store/ybvimf0jbsbx997588kbipkpbq97iv3d-all-cabal-hashes-component-QuickCheck-2.14.2.drv' failed with exit code 2
+cannot build derivation '/nix/store/73pfc98xfaj7l818nznr8r4gbls5xmls-cabal2nix-QuickCheck-2.14.2.drv': 1 dependencies couldn't be built
+error: build of '/nix/store/73pfc98xfaj7l818nznr8r4gbls5xmls-cabal2nix-QuickCheck-2.14.2.drv' failed
+(use '--show-trace' to show detailed location information)
+</code></pre>
+<p>What happened this time? If we check the
+<a href="https://github.com/NixOS/nixpkgs/commit/c1e5f8723ceb684c8d501d4d4ae738fef704747e">commit log</a>
+of our nixpkgs version, we will find out that the nixpkgs we have is commited
+on 9 November 2020, but on
+<a href="https://hackage.haskell.org/package/QuickCheck">Hackage</a>
+<code>QuickCheck-2.14.2</code> is only released on 14 November 2020.</p>
+<h2><a class="header" href="#hackage-index-in-nixpkgs" id="hackage-index-in-nixpkgs">Hackage Index in Nixpkgs</a></h2>
+<p>Inside the override call, when we call <code>callHackage</code> to get a Haskell package
+from Hackage, we are really just downloading the Haskell source from Hackage
+based on the snapshot cached in nixpkgs.</p>
+<p>Recall from the principal of reproducibility, with just a version number, there
+is no way Nix can tell if we will always get the exact same source code from
+Hackage every time a source code is requested. In theory the
+<code>QuickCheck-2.14.2</code> we fetched today may be totally different from the
+<code>QuickCheck-2.14.2</code> we fetch tomorrow, or when it is fetched by someone else.</p>
+<p>Nixpkgs solves this by computing the content hash of every Hackage package
+at the time of snapshot. So we can know for sure that the same Hackage pacakge
+we fetch with the same nixpkgs will always give back the same result.
+Nixpkgs also does implicit patching on some Hackage package, if their
+default configuration breaks.</p>
+<p>One option for us may be to simply update to the latest version of nixpkgs
+so that it contains <code>QuickCheck-2.14.2</code>. However nixpkgs do not immediately
+update the Hackage snapshot every time a new Haskell pacakge is published.
+Rather there is usually 1~2 weeks lag as the Haskell packages are updated
+in bulk. So we can't rely on that if we want to use a Haskell package
+just published an hour ago.</p>
+<p>Furthermore, updating nixpkgs also means all other packages in nixpkgs
+also being updated. That may result in breaking some of our own Nix
+packages.</p>
+<p>In theory we could use a stable Nix channel like <code>nixos-20.09</code>
+instead of <code>nixpkgs-unstable</code> so that it is safer to update nixpkgs.
+But stability always needs tradeoff with rapid releases,
+so it will take even longer before the Hackage snapshot update
+is propagated there.</p>
+<h2><a class="header" href="#callhackagedirect" id="callhackagedirect">CallHackageDirect</a></h2>
+<p>If we want to get the latest Hackage package beyond what is available
+in nixpkgs, we can instead use <code>callHackageDirect</code> to directly
+download the package from Hackge, skipping nixpkgs entirely:</p>
+<pre><code class="language-nix">let
+  sources = import ../sources.nix {};
+  nixpkgs = import sources.nixpkgs {};
+
+  hsLib = nixpkgs.haskell.lib;
+  hsPkgs-original = nixpkgs.haskell.packages.ghc8102;
+
+  hsPkgs = hsPkgs-original.override {
+    overrides = hsPkgs-old: hsPkgs-new: {
+      QuickCheck = hsPkgs-new.callHackageDirect {
+        pkg = &quot;QuickCheck&quot;;
+        ver = &quot;2.14.2&quot;;
+        sha256 = &quot;0rx4lz5rj0s1v451cq6qdxhilq4rv9b9lnq6frm18h64civ2pwbq&quot;;
+      } {};
+    };
+  };
+
+  src = builtins.path {
+    name = &quot;haskell-project-src&quot;;
+    path = ../../haskell;
+    filter = path: type:
+      let
+        basePath = builtins.baseNameOf path;
+      in
+      basePath != &quot;dist-newstyle&quot;
+    ;
+  };
+
+  project = hsPkgs.callCabal2nix &quot;haskell-project&quot; src;
+in
+hsPkgs.callPackage project {}
+</code></pre>
+<p><code>callHackageDirect</code> works similarly to other ways of fetching source code,
+such as <code>builtins.fetchTarball</code> and <code>builtins.fetchgit</code>. In fact,
+we can also override a Haskell dependency with a GitHub commit or
+source tarball. Here we just need to provide an additional information,
+which is the SHA256 checksum of the package.</p>
+<p>There is currently straightforward way to compute the hash, but we can
+first supply a dummy hash such as
+<code>0000000000000000000000000000000000000000000000000000</code>,
+then copy the correct hash from the hash mismatch error when
+the derivation is built.</p>
+<h2><a class="header" href="#transitive-conflicts" id="transitive-conflicts">Transitive Conflicts</a></h2>
+<p>If we try to build it this time however, we are greeted with another error:</p>
+<pre><code class="language-bash">$ nix-build 05-package-management/haskell-project-v3/nix/03-nixpkgs-transitive-deps
+these derivations will be built:
+  /nix/store/6my008rqdjb9kbmx0pr80c0zc0fyqqyh-QuickCheck-2.14.2.drv
+  /nix/store/lvclw4q2jmk89v5ppkfw3mr72qb8ch2d-haskell-project-0.1.0.0.drv
+building '/nix/store/6my008rqdjb9kbmx0pr80c0zc0fyqqyh-QuickCheck-2.14.2.drv'...
+...
+Configuring QuickCheck-2.14.2...
+CallStack (from HasCallStack):
+  $, called at libraries/Cabal/Cabal/Distribution/Simple/Configure.hs:1024:20 in Cabal-3.2.0.
+  ...
+  defaultMain, called at Setup.lhs:8:10 in main:Main
+Setup: Encountered missing or private dependencies:
+splitmix ==0.1.*
+
+builder for '/nix/store/6my008rqdjb9kbmx0pr80c0zc0fyqqyh-QuickCheck-2.14.2.drv' failed with exit code 1
+cannot build derivation '/nix/store/lvclw4q2jmk89v5ppkfw3mr72qb8ch2d-haskell-project-0.1.0.0.drv': 1 dependencies couldn't be built
+error: build of '/nix/store/lvclw4q2jmk89v5ppkfw3mr72qb8ch2d-haskell-project-0.1.0.0.drv' failed
+</code></pre>
+<p>So it turns out that <code>QuickCheck-2.14.2</code> depends on <code>splitmix ==0.1.*</code>, but nixpkgs only
+have <code>splitmix-0.0.5</code>, despite <code>splitmix-0.1</code> has been released since May 2020.</p>
+<p>We can see this as the effect of transitive dependency update. If <code>splitmix</code> is upgraded
+to version <code>0.1</code>, it will break many packages that directly depend on it, which
+in turns breaks other packages that indirectly depend on it. With nixpkgs's
+mono-versioning approach, there is no easy way around this other than upgrading
+all affecting packages at once, or upgrading none of them. Mono-versioning
+is hard!</p>
+<p>Still, we can workaround this by overriding <code>splitmix</code> as well:</p>
+<pre><code class="language-nix">let
+  sources = import ../sources.nix {};
+  nixpkgs = import sources.nixpkgs {};
+
+  hsLib = nixpkgs.haskell.lib;
+  hsPkgs-original = nixpkgs.haskell.packages.ghc8102;
+
+  hsPkgs = hsPkgs-original.override {
+    overrides = hsPkgs-old: hsPkgs-new: {
+      QuickCheck = hsPkgs-new.callHackageDirect {
+        pkg = &quot;QuickCheck&quot;;
+        ver = &quot;2.14.2&quot;;
+        sha256 = &quot;0rx4lz5rj0s1v451cq6qdxhilq4rv9b9lnq6frm18h64civ2pwbq&quot;;
+      } {};
+
+      splitmix = hsPkgs-new.callHackage
+        &quot;splitmix&quot; &quot;0.1.0.3&quot; {};
+    };
+  };
+
+  src = builtins.path {
+    name = &quot;haskell-project-src&quot;;
+    path = ../../haskell;
+    filter = path: type:
+      let
+        basePath = builtins.baseNameOf path;
+      in
+      basePath != &quot;dist-newstyle&quot;
+    ;
+  };
+
+  project = hsPkgs.callCabal2nix &quot;haskell-project&quot; src;
+in
+hsPkgs.callPackage project {}
+</code></pre>
+<h2><a class="header" href="#infinite-recursion" id="infinite-recursion">Infinite Recursion</a></h2>
+<p>If we build this, we once again get another error: the infamous infinite recursion
+error:</p>
+<pre><code class="language-bash">$ nix-build --show-trace 05-package-management/haskell-project-v3/nix/04-nixpkgs-infinite-recursion/
+error: while evaluating the attribute 'buildInputs' of the derivation 'haskell-project-0.1.0.0' at /nix/store/kk346951sg2anjjh8cgfbmrijg983z5q-nixpkgs-src/pkgs/development/haskell-modules/generic-builder.nix:291:3:
+while evaluating the attribute 'propagatedBuildInputs' of the derivation 'QuickCheck-2.14.2' at /nix/store/kk346951sg2anjjh8cgfbmrijg983z5q-nixpkgs-src/pkgs/development/haskell-modules/generic-builder.nix:291:3:
+while evaluating the attribute 'buildInputs' of the derivation 'splitmix-0.1.0.3' at /nix/store/kk346951sg2anjjh8cgfbmrijg983z5q-nixpkgs-src/pkgs/development/haskell-modules/generic-builder.nix:291:3:
+while evaluating the attribute 'propagatedBuildInputs' of the derivation 'async-2.2.2' at /nix/store/kk346951sg2anjjh8cgfbmrijg983z5q-nixpkgs-src/pkgs/development/haskell-modules/generic-builder.nix:291:3:
+while evaluating the attribute 'buildInputs' of the derivation 'hashable-1.3.0.0' at /nix/store/kk346951sg2anjjh8cgfbmrijg983z5q-nixpkgs-src/pkgs/development/haskell-modules/generic-builder.nix:291:3:
+infinite recursion encountered, at undefined position
+</code></pre>
+<p>So <code>QuickCheck</code> depends on <code>splitmix</code>, but <code>splitmix</code> tests also indirectly depend on
+<code>QuickCheck</code>, causing a cyclic dependency. Unfortunately the callPackage
+pattern do not have a way to deal with cyclic dependencies, so we have to
+manually find ways around it.</p>
+<p>Fortunately in this case, it is simple to avoid it by no running unit tests on
+<code>splitmix</code>:</p>
+<pre><code class="language-nix">let
+  sources = import ../sources.nix {};
+  nixpkgs = import sources.nixpkgs {};
+
+  hsLib = nixpkgs.haskell.lib;
+  hsPkgs-original = nixpkgs.haskell.packages.ghc8102;
+
+  hsPkgs = hsPkgs-original.override {
+    overrides = hsPkgs-old: hsPkgs-new: {
+      QuickCheck = hsPkgs-new.callHackageDirect {
+        pkg = &quot;QuickCheck&quot;;
+        ver = &quot;2.14.2&quot;;
+        sha256 = &quot;0rx4lz5rj0s1v451cq6qdxhilq4rv9b9lnq6frm18h64civ2pwbq&quot;;
+      } {};
+
+      splitmix = hsLib.dontCheck
+        (hsPkgs-new.callHackage
+          &quot;splitmix&quot; &quot;0.1.0.3&quot; {});
+    };
+  };
+
+  src = builtins.path {
+    name = &quot;haskell-project-src&quot;;
+    path = ../../haskell;
+    filter = path: type:
+      let
+        basePath = builtins.baseNameOf path;
+      in
+      basePath != &quot;dist-newstyle&quot;
+    ;
+  };
+
+  project = hsPkgs.callCabal2nix &quot;haskell-project&quot; src;
+in
+hsPkgs.callPackage project {}
+</code></pre>
+<p>Now our package finally builds.</p>
+<h2><a class="header" href="#haskellnix" id="haskellnix">Haskell.nix</a></h2>
+<p>In comparison, there is no manual intervention needed for Haskell.nix-based
+derivation:</p>
+<pre><code class="language-nix">let
+  sources = import ../sources.nix {};
+
+  haskell-nix = import sources.&quot;haskell.nix&quot; {};
+
+  nixpkgs = haskell-nix.pkgs;
+
+  src = builtins.path {
+    name = &quot;haskell-project-src&quot;;
+    path = ../../haskell;
+    filter = path: type:
+      let
+        basePath = builtins.baseNameOf path;
+      in
+      basePath != &quot;dist-newstyle&quot;
+    ;
+  };
+
+  project = nixpkgs.haskell-nix.cabalProject {
+    inherit src;
+
+    compiler-nix-name = &quot;ghc8102&quot;;
+  };
+in
+project
+</code></pre>
+<p>Hoepfully this shows why we prefer to use Haskell.nix, especially if we
+want it to work the same way as cabal and get the latest Haskell packages
+from Hackage.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../05-package-management/03-version-conflicts.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../05-package-management/05-multi-versioned-haskell-packages.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../05-package-management/03-version-conflicts.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../05-package-management/05-multi-versioned-haskell-packages.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

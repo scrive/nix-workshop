@@ -1,0 +1,581 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Raw Derivation - Scrive Nix Workshop</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Scrive Nix Workshop</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="../01-getting-started/01-introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../01-getting-started/02-installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../01-getting-started/03-resources.html"><strong aria-hidden="true">4.</strong> Resources</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Commands</li><li class="chapter-item expanded "><a href="../02-nix-commands/01-install-global-packages.html"><strong aria-hidden="true">5.</strong> Installing Global Packages</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/02-use-packages-in-nix-shell.html"><strong aria-hidden="true">6.</strong> Using Packages in Nix shell</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/03-nix-repl.html"><strong aria-hidden="true">7.</strong> Nix Repl</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Basics</li><li class="chapter-item expanded "><a href="../03-nix-basics/01-primitives.html"><strong aria-hidden="true">8.</strong> Nix Primitives</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/02-expressions.html"><strong aria-hidden="true">9.</strong> Expressions</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/03-files.html"><strong aria-hidden="true">10.</strong> Files</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/04-import.html"><strong aria-hidden="true">11.</strong> Import</a></li><li class="chapter-item expanded affix "><li class="part-title">Derivations</li><li class="chapter-item expanded "><a href="../04-derivations/01-derivation-basics.html"><strong aria-hidden="true">12.</strong> Derivation Basics</a></li><li class="chapter-item expanded "><a href="../04-derivations/02-dependencies.html"><strong aria-hidden="true">13.</strong> Dependencies</a></li><li class="chapter-item expanded "><a href="../04-derivations/03-fibonacci.html"><strong aria-hidden="true">14.</strong> Fibonacci</a></li><li class="chapter-item expanded "><a href="../04-derivations/04-raw-derivation.html" class="active"><strong aria-hidden="true">15.</strong> Raw Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/05-standard-derivation.html"><strong aria-hidden="true">16.</strong> Standard Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/06-build-phases.html"><strong aria-hidden="true">17.</strong> Build Phases</a></li><li class="chapter-item expanded affix "><li class="part-title">Package Management</li><li class="chapter-item expanded "><a href="../05-package-management/01-dependency-management.html"><strong aria-hidden="true">18.</strong> Dependency Management</a></li><li class="chapter-item expanded "><a href="../05-package-management/02-basic-haskell.html"><strong aria-hidden="true">19.</strong> Basic Haskell Project</a></li><li class="chapter-item expanded "><a href="../05-package-management/03-version-conflicts.html"><strong aria-hidden="true">20.</strong> Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/04-transitive-version-conflicts.html"><strong aria-hidden="true">21.</strong> Transitive Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/05-multi-versioned-haskell-packages.html"><strong aria-hidden="true">22.</strong> Multi-versioned Haskell Packages</a></li><li class="chapter-item expanded "><a href="../05-package-management/06-other-strategies.html"><strong aria-hidden="true">23.</strong> Other Package Management Strategies</a></li><li class="chapter-item expanded affix "><li class="part-title">Infrastructure</li><li class="chapter-item expanded "><a href="../06-infrastructure/01-caching-nix.html"><strong aria-hidden="true">24.</strong> Caching Nix Packages</a></li><li class="chapter-item expanded "><a href="../06-infrastructure/02-caching-haskell.html"><strong aria-hidden="true">25.</strong> Caching Haskell Nix Packages</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Scrive Nix Workshop</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#raw-derivation" id="raw-derivation">Raw Derivation</a></h1>
+<p>We have previously used <code>stdenv.mkDerivation</code> to define toy derivations without
+looking into how derivations work. Here we will go deeper into Nix derivations,
+starting with the most basic derivation construct, <code>builtins.derivation</code>.</p>
+<p>From the repl, we can see that <code>builtins.derivation</code> is a function:</p>
+<pre><code class="language-nix">nix-repl&gt; builtins.derivation
+«lambda @ /nix/store/qxayqjmlpqnmwg5yfsjjayw220ls8i2r-nix-2.3.8/share/nix/corepkgs/derivation.nix:4:1»
+</code></pre>
+<p>Since <code>builtins.derviation</code> is more primitive as compared to <code>stdenv.mkDerivation</code>,
+the way we can build a derivation is also more involved:</p>
+<pre><code class="language-nix">nix-repl&gt; builtins.derivation {
+            name = &quot;hello&quot;;
+            system = builtins.currentSystem;
+            builder = &quot;${nixpkgs.bash}/bin/bash&quot;;
+            args = [
+              &quot;-c&quot;
+              ''
+              echo &quot;Hello World!&quot; &gt; $out
+              ''
+            ];
+          }
+«derivation /nix/store/hbsv13kn5imfri16f6g2l5c2jy6dfmxl-hello.drv»
+</code></pre>
+<h3><a class="header" href="#system" id="system">System</a></h3>
+<p>First we have to supply a <code>system</code> attribute, which we set it to
+the current OS we are running on. It is most common to have the
+system values as <code>&quot;x86_64-linux&quot;</code> or <code>&quot;x86_64-darwin&quot;</code>.</p>
+<pre><code class="language-nix">nix-repl&gt; builtins.currentSystem
+&quot;x86_64-linux&quot;
+</code></pre>
+<p>The <code>system</code> attribute is required because Nix supports cross compilation.
+So we can also define derivations that are built on different platforms
+than the one we are on.</p>
+<h3><a class="header" href="#builder" id="builder">Builder</a></h3>
+<p>The <code>builder</code> attribute expects a file path to an executable script that is
+called when the derivation is built. To keep things simple, we use the bash
+shell from <code>nixpkgs.bash</code> as the builder program.</p>
+<p>The <code>args</code> attribute is used to specify the command line line arguments
+passed to the builder program. Since bash itself do not know how to
+build the program we want, we pass the command string using <code>-c</code>
+to execute the bash script <code>echo &quot;Hello World!&quot; &gt; $out</code></p>
+<p>Now we can try to build the derivation and see that it works:</p>
+<pre><code class="language-bash">$ nix-build /nix/store/hbsv13kn5imfri16f6g2l5c2jy6dfmxl-hello.drv
+these derivations will be built:
+  /nix/store/hbsv13kn5imfri16f6g2l5c2jy6dfmxl-hello.drv
+building '/nix/store/hbsv13kn5imfri16f6g2l5c2jy6dfmxl-hello.drv'...
+/nix/store/dsgf85gxzw167v320sy08as72c0hk8wd-hello
+
+$ cat /nix/store/dsgf85gxzw167v320sy08as72c0hk8wd-hello
+Hello World!
+</code></pre>
+<h2><a class="header" href="#explicit-dependencies" id="explicit-dependencies">Explicit Dependencies</a></h2>
+<p>Inside <code>builtins.derivation</code>, almost all dependencies have to be provided
+explicitly, even then bash shell that we are running on. Since we specify
+<code>bash</code> as the builder program, it is also shown in the list of <code>inputDrvs</code>
+of our derivation.</p>
+<pre><code class="language-bash">$ nix show-derivation /nix/store/hbsv13kn5imfri16f6g2l5c2jy6dfmxl-hello.drv
+{
+  &quot;/nix/store/hbsv13kn5imfri16f6g2l5c2jy6dfmxl-hello.drv&quot;: {
+    &quot;outputs&quot;: {
+      &quot;out&quot;: {
+        &quot;path&quot;: &quot;/nix/store/dsgf85gxzw167v320sy08as72c0hk8wd-hello&quot;
+      }
+    },
+    &quot;inputSrcs&quot;: [],
+    &quot;inputDrvs&quot;: {
+      &quot;/nix/store/l54djrh1n7d8zdfn26w7v6zjh5wp7faa-bash-4.4-p23.drv&quot;: [
+        &quot;out&quot;
+      ]
+    },
+    &quot;platform&quot;: &quot;x86_64-linux&quot;,
+    &quot;builder&quot;: &quot;/nix/store/qdp56fi357fgxxnkjrwx1g67hrk775im-bash-4.4-p23/bin/bash&quot;,
+    &quot;args&quot;: [
+      &quot;-c&quot;,
+      &quot;echo \&quot;Hello World!\&quot; &gt; $out\n&quot;
+    ],
+    &quot;env&quot;: {
+      &quot;builder&quot;: &quot;/nix/store/qdp56fi357fgxxnkjrwx1g67hrk775im-bash-4.4-p23/bin/bash&quot;,
+      &quot;name&quot;: &quot;hello&quot;,
+      &quot;out&quot;: &quot;/nix/store/dsgf85gxzw167v320sy08as72c0hk8wd-hello&quot;,
+      &quot;system&quot;: &quot;x86_64-linux&quot;
+    }
+  }
+}
+
+</code></pre>
+<h2><a class="header" href="#inspecting-the-build-environment" id="inspecting-the-build-environment">Inspecting the Build Environment</a></h2>
+<p>We can use the <code>env</code> command to inspect the environment variables inside our build script.
+Let's try and build a derivation that prints the environment to the terminal.</p>
+<pre><code class="language-nix">nix-repl&gt; builtins.derivation {
+            name = &quot;env&quot;;
+            system = builtins.currentSystem;
+            builder = &quot;${nixpkgs.bash}/bin/bash&quot;;
+            args = [
+              &quot;-c&quot;
+              ''
+                set -x
+                ls -la .
+                ls -la /
+                env
+                touch $out
+              ''
+            ];
+          }
+«derivation /nix/store/4nq2kgcmryhwjh5sg05jgwsd4ixh81ia-env.drv»
+</code></pre>
+<pre><code class="language-bash">$ nix-build /nix/store/4nq2kgcmryhwjh5sg05jgwsd4ixh81ia-env.drv
++ nix-build /nix/store/4nq2kgcmryhwjh5sg05jgwsd4ixh81ia-env.drv
+these derivations will be built:
+  /nix/store/4nq2kgcmryhwjh5sg05jgwsd4ixh81ia-env.drv
+building '/nix/store/4nq2kgcmryhwjh5sg05jgwsd4ixh81ia-env.drv'...
++ ls -la .
+bash: line 1: ls: command not found
++ ls -la /
+bash: line 2: ls: command not found
++ env
+bash: line 3: env: command not found
++ touch /nix/store/blcl4m2vgga6i86kh13nqlvx1l2ha7v5-env
+bash: line 4: touch: command not found
+builder for '/nix/store/4nq2kgcmryhwjh5sg05jgwsd4ixh81ia-env.drv' failed with exit code 127
+error: build of '/nix/store/4nq2kgcmryhwjh5sg05jgwsd4ixh81ia-env.drv' failed
+</code></pre>
+<p>Not good, with <code>builtins.derivation</code>, not even basic commands like <code>ls</code>, <code>env</code>, and <code>touch</code>
+are provided. (As seen previously, <code>echo</code> is provided though)</p>
+<p>Instead, we also have to specify our build dependencies explicitly with <code>nixpkgs.coreutils</code>
+providing the basic shell commands:</p>
+<pre><code class="language-nix">nix-repl&gt; builtins.derivation {
+            name = &quot;env&quot;;
+            system = builtins.currentSystem;
+            builder = &quot;${nixpkgs.bash}/bin/bash&quot;;
+            args = [
+              &quot;-c&quot;
+              ''
+                set -x
+                ${nixpkgs.coreutils}/bin/ls -la .
+                ${nixpkgs.coreutils}/bin/ls -la /
+                ${nixpkgs.coreutils}/bin/env
+                ${nixpkgs.coreutils}/bin/touch $out
+              ''
+            ];
+          }
+«derivation /nix/store/c4bp5bvx73fz9jf1si64i00as30k9fga-env.drv»
+</code></pre>
+<pre><code class="language-bash">$ nix-build /nix/store/c4bp5bvx73fz9jf1si64i00as30k9fga-env.drv
+these derivations will be built:
+  /nix/store/c4bp5bvx73fz9jf1si64i00as30k9fga-env.drv
+building '/nix/store/c4bp5bvx73fz9jf1si64i00as30k9fga-env.drv'...
++ /nix/store/2shqhfsyzz4rnfyysbzgyp5kbfk29750-coreutils-8.32/bin/ls -la .
+total 8
+drwx------ 2 nixbld nixbld 4096 Nov 30 19:09 .
+drwxr-x--- 9 nixbld nixbld 4096 Nov 30 19:09 ..
++ /nix/store/2shqhfsyzz4rnfyysbzgyp5kbfk29750-coreutils-8.32/bin/ls -la /
+total 32
+drwxr-x---   9 nixbld nixbld  4096 Nov 30 19:09 .
+drwxr-x---   9 nixbld nixbld  4096 Nov 30 19:09 ..
+drwxr-xr-x   2 nixbld nixbld  4096 Nov 30 19:09 bin
+drwx------   2 nixbld nixbld  4096 Nov 30 19:09 build
+drwxr-xr-x   4 nixbld nixbld  4096 Nov 30 19:09 dev
+drwxr-xr-x   2 nixbld nixbld  4096 Nov 30 19:09 etc
+drwxr-xr-x   3 nixbld nixbld  4096 Nov 30 19:09 nix
+dr-xr-xr-x 410 nobody nogroup    0 Nov 30 19:09 proc
+drwxrwxrwt   2 nixbld nixbld  4096 Nov 30 19:09 tmp
++ /nix/store/2shqhfsyzz4rnfyysbzgyp5kbfk29750-coreutils-8.32/bin/env
+out=/nix/store/3rv14i75j4wyp6n9fila5rll4f99yksi-env
+builder=/nix/store/qdp56fi357fgxxnkjrwx1g67hrk775im-bash-4.4-p23/bin/bash
+NIX_LOG_FD=2
+system=x86_64-linux
+PWD=/build
+HOME=/homeless-shelter
+TMP=/build
+NIX_STORE=/nix/store
+TMPDIR=/build
+name=env
+TERM=xterm-256color
+TEMPDIR=/build
+SHLVL=1
+NIX_BUILD_CORES=8
+TEMP=/build
+PATH=/path-not-set
+NIX_BUILD_TOP=/build
+_=/nix/store/2shqhfsyzz4rnfyysbzgyp5kbfk29750-coreutils-8.32/bin/env
++ /nix/store/2shqhfsyzz4rnfyysbzgyp5kbfk29750-coreutils-8.32/bin/touch /nix/store/3rv14i75j4wyp6n9fila5rll4f99yksi-env
+/nix/store/3rv14i75j4wyp6n9fila5rll4f99yksi-env
+</code></pre>
+<h3><a class="header" href="#nix-sandbox" id="nix-sandbox">Nix Sandbox</a></h3>
+<p>From above we can see that the build environment inside a Nix build script
+is <em>sandboxed</em>.</p>
+<p>According to
+<a href="https://nixos.org/manual/nix/unstable/command-ref/conf-file.html">Nix manual</a>:</p>
+<blockquote>
+<p>If set to true, builds will be performed in a sandboxed environment, i.e., they’re isolated from the normal file system hierarchy and will only see their dependencies in the Nix store, the temporary build directory, private versions of /proc, /dev, /dev/shm and /dev/pts (on Linux), and the paths configured with the sandbox-paths option. This is useful to prevent undeclared dependencies on files in directories such as /usr/bin. In addition, on Linux, builds run in private PID, mount, network, IPC and UTS namespaces to isolate them from other processes in the system (except that fixed-output derivations do not run in private network namespace to ensure they can access the network).</p>
+</blockquote>
+<p>Nix sandbox should be enabled by default. You can check your sandbox configuration with:</p>
+<pre><code class="language-bash">$ nix show-config | grep sandbox
+extra-sandbox-paths =
+sandbox = true
+sandbox-build-dir = /build
+sandbox-dev-shm-size = 50%
+sandbox-fallback = true
+sandbox-paths = /bin/sh=/nix/store/w0xp1k96c1dvmx6m4wl1569cdzy47w5r-busybox-1.31.1-x86_64-unknown-linux-musl/bin/busybox
+</code></pre>
+<h2><a class="header" href="#capturing-build-environment" id="capturing-build-environment">Capturing Build Environment</a></h2>
+<p>We can capture the build environment as a file by saving the output of <code>env</code> to <code>$out</code>.</p>
+<pre><code class="language-nix">nix-repl&gt; builtins.derivation {
+            name = &quot;env&quot;;
+            system = builtins.currentSystem;
+            builder = &quot;${nixpkgs.bash}/bin/bash&quot;;
+            args = [
+              &quot;-c&quot;
+              &quot;${nixpkgs.coreutils}/bin/env &gt; $out&quot;
+            ];
+          }
+«derivation /nix/store/39ah25v6iwlka3jl2angxrlx00mk2ijd-env.drv»
+</code></pre>
+<pre><code class="language-bash">$ nix-build /nix/store/39ah25v6iwlka3jl2angxrlx00mk2ijd-env.drv
+these derivations will be built:
+  /nix/store/39ah25v6iwlka3jl2angxrlx00mk2ijd-env.drv
+building '/nix/store/39ah25v6iwlka3jl2angxrlx00mk2ijd-env.drv'...
+/nix/store/6kjgg8j3y44g1ja95swqdd1v8xp6mwi1-env
+
+$ cat /nix/store/6kjgg8j3y44g1ja95swqdd1v8xp6mwi1-env
+out=/nix/store/6kjgg8j3y44g1ja95swqdd1v8xp6mwi1-env
+builder=/nix/store/qdp56fi357fgxxnkjrwx1g67hrk775im-bash-4.4-p23/bin/bash
+NIX_LOG_FD=2
+system=x86_64-linux
+PWD=/build
+HOME=/homeless-shelter
+TMP=/build
+NIX_STORE=/nix/store
+TMPDIR=/build
+name=env
+TERM=xterm-256color
+TEMPDIR=/build
+SHLVL=1
+NIX_BUILD_CORES=8
+TEMP=/build
+PATH=/path-not-set
+NIX_BUILD_TOP=/build
+_=/nix/store/2shqhfsyzz4rnfyysbzgyp5kbfk29750-coreutils-8.32/bin/env
+</code></pre>
+<h2><a class="header" href="#nix-shell" id="nix-shell">Nix Shell</a></h2>
+<p>Nix achieves reproducible build by carefully setting/unsetting the appropriate
+environment variables, so that our derivations are always built with the same
+environment regardless of where it is being built.</p>
+<p>However since the derivation is built in a sandboxed environment, it may be difficult
+to debug when there are build errors, or rapid prototyping with the source code
+changed frequently.</p>
+<p>We can get almost the same environment as inside nix build by entering a <em>Nix shell</em>.</p>
+<pre><code>$ nix-shell --pure --run env /nix/store/39ah25v6iwlka3jl2angxrlx00mk2ijd-env.drv
+__ETC_PROFILE_SOURCED=1
+DISPLAY=:1
+out=/nix/store/6kjgg8j3y44g1ja95swqdd1v8xp6mwi1-env
+builder=/nix/store/qdp56fi357fgxxnkjrwx1g67hrk775im-bash-4.4-p23/bin/bash
+USER=user
+system=x86_64-linux
+PWD=/path/to/nix-workshop
+HOME=/home/user
+TMP=/run/user/1000
+NIX_STORE=/nix/store
+TMPDIR=/run/user/1000
+name=env
+IN_NIX_SHELL=pure
+TERM=xterm-256color
+TEMPDIR=/run/user/1000
+SHLVL=3
+NIX_BUILD_CORES=8
+TEMP=/run/user/1000
+LOGNAME=user
+PATH=/nix/store/lf467z8nr5y50q1vqnlbhpv2jachx3cs-bash-interactive-4.4-p23/bin:/home/user/.nix-profile/bin:...
+NIX_BUILD_TOP=/run/user/1000
+_=/usr/bin/env
+</code></pre>
+<p>Our pure Nix environment look pretty similar to the environment we captured in <code>nix-build</code>.
+There are however a few differences, in particular with <code>$PATH</code>.</p>
+<p><a href="https://nixos.org/manual/nix/unstable/command-ref/nix-shell.html">According the manual</a>
+for the <code>--pure</code> option in <code>nix-shell</code>:</p>
+<blockquote>
+<p>If this flag is specified, the environment is almost entirely cleared before the interactive shell is started, so you get an environment that more closely corresponds to the “real” Nix build. A few variables, in particular <code>HOME</code>, <code>USER</code> and <code>DISPLAY</code>, are retained. Note that (depending on your Bash installation) <code>/etc/bashrc</code> is still sourced, so any variables set there will affect the interactive shell.</p>
+</blockquote>
+<p>We can compare the differences by diffing the output of both environments:</p>
+<pre><code class="language-bash">$ drv=/nix/store/39ah25v6iwlka3jl2angxrlx00mk2ijd-env.drv
+$ diff --color &lt;(cat $(nix-build $drv)) &lt;(nix-shell $drv --pure --run env)
+</code></pre>
+<p>In contrast, the default impure Nix shell keeps all existing environment variables, and only
+add or override variables that are introduced by the derivation.</p>
+<pre><code class="language-bash">$ nix-shell $drv --run env
+</code></pre>
+<h2><a class="header" href="#environment-variables" id="environment-variables">Environment Variables</a></h2>
+<p>If we observe the captured build environment, almost all attributes we passed to
+<code>builtins.derivation</code> are converted into environment variables.</p>
+<p>In fact, we can define any number of attributes to be used as environment variables
+inside our build script.</p>
+<pre><code class="language-nix">nix-repl&gt; builtins.derivation {
+            name = &quot;foo&quot;;
+            foo = &quot;foo val&quot;;
+            system = builtins.currentSystem;
+            builder = &quot;${nixpkgs.bash}/bin/bash&quot;;
+            args = [
+              &quot;-c&quot;
+              &quot;echo $foo &gt; $out&quot;
+            ];
+          }
+«derivation /nix/store/v1i0khcvxy5bkyv2iq0kqzhcbfcfml8m-foo.drv»
+</code></pre>
+<p>We can see from the build output that the value of <code>$foo</code> is in fact
+captured.</p>
+<pre><code class="language-bash">$ nix-build /nix/store/v1i0khcvxy5bkyv2iq0kqzhcbfcfml8m-foo.drv
+these derivations will be built:
+  /nix/store/v1i0khcvxy5bkyv2iq0kqzhcbfcfml8m-foo.drv
+building '/nix/store/v1i0khcvxy5bkyv2iq0kqzhcbfcfml8m-foo.drv'...
+/nix/store/zmgp33rl2sh3l32syhq4h8gph3f4s1k9-foo
+
+$ cat /nix/store/zmgp33rl2sh3l32syhq4h8gph3f4s1k9-foo
+foo val
+</code></pre>
+<p>We can also get the same <code>$foo</code> variable set when entering Nix shell:</p>
+<pre><code class="language-bash">$ nix-shell --pure --run 'echo $foo' /nix/store/v1i0khcvxy5bkyv2iq0kqzhcbfcfml8m-foo.drv
+foo val
+</code></pre>
+<h2><a class="header" href="#setting-dependencies-as-variables" id="setting-dependencies-as-variables">Setting Dependencies as Variables</a></h2>
+<p>We can set out dependencies as custom attributes in a derivation
+and then refer to them as environment variables during the build.</p>
+<p>For example, we can add the <code>greet</code> package we defined earlier
+and set it as <code>$greet</code> in the shell.</p>
+<pre><code class="language-nix">nix-repl&gt; greet = import ./04-derivations/02-dependencies/greet.nix
+
+nix-repl&gt; builtins.derivation {
+            inherit greet;
+            name = &quot;greet-alice&quot;;
+            system = builtins.currentSystem;
+            builder = &quot;${nixpkgs.bash}/bin/bash&quot;;
+            args = [
+              &quot;-c&quot;
+              &quot;$greet/bin/greet Alice &gt; $out&quot;
+            ];
+          }
+«derivation /nix/store/68gdf6z0rjcyl8xcwix3gfafndsa50jj-greet-alice.drv»
+</code></pre>
+<pre><code class="language-bash">$ nix-build /nix/store/68gdf6z0rjcyl8xcwix3gfafndsa50jj-greet-alice.drv
+these derivations will be built:
+  /nix/store/68gdf6z0rjcyl8xcwix3gfafndsa50jj-greet-alice.drv
+building '/nix/store/68gdf6z0rjcyl8xcwix3gfafndsa50jj-greet-alice.drv'...
+/nix/store/dd290zmn983fs1w33nnq9gyh3cnj2jif-greet-alice
+
+$ cat /nix/store/dd290zmn983fs1w33nnq9gyh3cnj2jif-greet-alice
+Hello, Alice!
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../04-derivations/03-fibonacci.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../04-derivations/05-standard-derivation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../04-derivations/03-fibonacci.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../04-derivations/05-standard-derivation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

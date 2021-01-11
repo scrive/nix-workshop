@@ -1,0 +1,462 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Dependency Management - Scrive Nix Workshop</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Scrive Nix Workshop</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="../01-getting-started/01-introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../01-getting-started/02-installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../01-getting-started/03-resources.html"><strong aria-hidden="true">4.</strong> Resources</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Commands</li><li class="chapter-item expanded "><a href="../02-nix-commands/01-install-global-packages.html"><strong aria-hidden="true">5.</strong> Installing Global Packages</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/02-use-packages-in-nix-shell.html"><strong aria-hidden="true">6.</strong> Using Packages in Nix shell</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/03-nix-repl.html"><strong aria-hidden="true">7.</strong> Nix Repl</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Basics</li><li class="chapter-item expanded "><a href="../03-nix-basics/01-primitives.html"><strong aria-hidden="true">8.</strong> Nix Primitives</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/02-expressions.html"><strong aria-hidden="true">9.</strong> Expressions</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/03-files.html"><strong aria-hidden="true">10.</strong> Files</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/04-import.html"><strong aria-hidden="true">11.</strong> Import</a></li><li class="chapter-item expanded affix "><li class="part-title">Derivations</li><li class="chapter-item expanded "><a href="../04-derivations/01-derivation-basics.html"><strong aria-hidden="true">12.</strong> Derivation Basics</a></li><li class="chapter-item expanded "><a href="../04-derivations/02-dependencies.html"><strong aria-hidden="true">13.</strong> Dependencies</a></li><li class="chapter-item expanded "><a href="../04-derivations/03-fibonacci.html"><strong aria-hidden="true">14.</strong> Fibonacci</a></li><li class="chapter-item expanded "><a href="../04-derivations/04-raw-derivation.html"><strong aria-hidden="true">15.</strong> Raw Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/05-standard-derivation.html"><strong aria-hidden="true">16.</strong> Standard Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/06-build-phases.html"><strong aria-hidden="true">17.</strong> Build Phases</a></li><li class="chapter-item expanded affix "><li class="part-title">Package Management</li><li class="chapter-item expanded "><a href="../05-package-management/01-dependency-management.html" class="active"><strong aria-hidden="true">18.</strong> Dependency Management</a></li><li class="chapter-item expanded "><a href="../05-package-management/02-basic-haskell.html"><strong aria-hidden="true">19.</strong> Basic Haskell Project</a></li><li class="chapter-item expanded "><a href="../05-package-management/03-version-conflicts.html"><strong aria-hidden="true">20.</strong> Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/04-transitive-version-conflicts.html"><strong aria-hidden="true">21.</strong> Transitive Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/05-multi-versioned-haskell-packages.html"><strong aria-hidden="true">22.</strong> Multi-versioned Haskell Packages</a></li><li class="chapter-item expanded "><a href="../05-package-management/06-other-strategies.html"><strong aria-hidden="true">23.</strong> Other Package Management Strategies</a></li><li class="chapter-item expanded affix "><li class="part-title">Infrastructure</li><li class="chapter-item expanded "><a href="../06-infrastructure/01-caching-nix.html"><strong aria-hidden="true">24.</strong> Caching Nix Packages</a></li><li class="chapter-item expanded "><a href="../06-infrastructure/02-caching-haskell.html"><strong aria-hidden="true">25.</strong> Caching Haskell Nix Packages</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Scrive Nix Workshop</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#dependency-management" id="dependency-management">Dependency Management</a></h1>
+<p>We have seen in previous chapters that Nix makes it easy to construct
+complex build depedencies with several benefits:</p>
+<ul>
+<li>Non-related dependencies can be built in parallel.</li>
+<li>Reproducible builds make it easy to cache and reuse dependencies.</li>
+</ul>
+<p>However Nix does not provide any mechanism for dependency <em>resolution</em>,
+e.g. choose from multiple <em>versions</em> of dependencies and
+determining the most suitable versions.</p>
+<p>As an example, we will build hypothetical Nix packages resembling
+<a href="https://minecraft.gamepedia.com/Crafting">Minecraft crafting recipes</a>
+with versioning schemes following <a href="https://semver.org/">semver</a>.
+Let's first try to build our first version of <code>pickaxe</code>, which is
+made of wood:</p>
+<pre><code>pickaxe
+  - 1.0.0
+    - stick ^1.0.1
+    - planks ~2.1.0
+stick
+  - 1.0.3
+  - 1.1.2
+  - 2.0.0
+planks
+  - 2.1.0
+  - 2.1.1
+  - 2.2.1
+</code></pre>
+<p>The first step in deciding the appropriate versions to be used to build
+<code>pickaxe-1.0.0</code> is to rule out invalid versions. With that, <code>stick-2.0.0</code>
+is ruled out because it is outside of the <code>^1.0.1</code> range. Similarly
+<code>planks-2.2.1</code> is outside the bound for <code>~2.1.0</code>.</p>
+<p>After filtering out the invalid versions, there are still multiple versions
+of <code>stick</code> and <code>planks</code> available. As a result there can be multiple
+version candidates for building <code>pickaxe-1.0.0</code>. For example, we can use
+<code>stick-1.0.3</code> and <code>planks-2.1.1</code>. But are those the best versions to be used?</p>
+<p>Depending on the dependency resolution algorithm used, we may get different
+answers. Though in general, we can usually expect the algorithm to choose
+the latest versions that are compatible with the required range. So we should
+expect to get <code>stick-1.1.2</code> and <code>planks-2.1.1</code> as the answers.</p>
+<h2><a class="header" href="#nested-dependencies" id="nested-dependencies">Nested Dependencies</a></h2>
+<p>In reality, dependency resolution can be more complicated because of
+<em>nested</em> dependencies. Let's say both <code>stick</code> and <code>planks</code> both depend
+on <code>wood</code>:</p>
+<pre><code>stick
+  - 1.0.3
+    - wood ^1.5.0
+  - 1.1.2
+    - wood ~2.0.0
+
+planks
+  - 2.1.0
+    - wood ^2.0.0
+  - 2.1.1
+    - wood ~2.3.0
+
+wood
+  - 1.5.0
+  - 2.0.1
+  - 2.3.2
+</code></pre>
+<p>In such case, the only solution is to use <code>stick-1.1.2</code> and <code>planks-2.1.0</code>,
+because the other version combinations do not have a common <code>wood</code> version
+usable by both <code>stick</code> and <code>planks</code>.</p>
+<h2><a class="header" href="#package-managers" id="package-managers">Package Managers</a></h2>
+<p>Dependency resolution is a complex topic on its own. Different languages
+have their own package managers that deal with dependency resolution
+differently. e.g. cabal-install, npm, mvn, etc. There are also OS-level
+package managers that have to deal with dependencies resolution.
+e.g. Debian, Ubuntu, Fedora, Arch, etc.</p>
+<p>To support package management across multiple languages and multiple
+platforms, Nix has its own unique challenge of managing dependencies.
+At this point, Nix itself do not provide any mechanism for resolving
+dependencies. Instead Nix users have to come out with their own
+higher level design patterns to resolve dependencies, such as in
+nixpkgs.</p>
+<h2><a class="header" href="#package-registry" id="package-registry">Package Registry</a></h2>
+<p>For a dependency resolution algorithm to determine what versions of
+dependency to use, it must first refer to a <em>registry</em> that contains
+all versions available to all packages. Each package manager have
+their own registry, e.g. Hackage, npm registry, Debian registry, etc.</p>
+<p>Package registries are usually mutable databases that are constantly
+updated. This creates an issue with <em>reproducibility</em>: the result
+given back from a dependency resolution algorithm depends on
+the mutable state of the registry at the time the algorithm is
+executed.</p>
+<p>In other words, say if we try to resolve the dependencies of
+<code>pickaxe-1.0.0</code> today, we may get <code>stick-1.1.2</code> and <code>planks-2.1.0</code>.
+But if we resolve the same dependencies tomorrow, we might get
+<code>stick-1.1.3</code> because new version of <code>stick</code> is published.
+To make it worse, <code>stick-1.1.3</code> may contain unexpected changes
+that causes <code>pickaxe-1.0.0</code> to break.</p>
+<h2><a class="header" href="#version-pinning" id="version-pinning">Version Pinning</a></h2>
+<p>Even without Nix, there is a strong use case to fix the pin versions
+to a particular snapshot in time. This is to make sure no matter when
+we try to resolve the dependencies in the future, we will always get
+back the exact dependencies.</p>
+<h3><a class="header" href="#package-lock" id="package-lock">Package Lock</a></h3>
+<p>One common approach is to create a lock file containing the result of
+running the dependency resolution algorithm, and check in the lock file
+into the version control system. Examples are <code>package-lock.json</code> and
+<code>cabal.project.freeze</code>. With the lock files available, we can even
+skip dependency resolution in the future, and just use the result in the
+lock file.</p>
+<p>Although lock files help provide strong reproducibility to managing
+dependencies, it has the downside of adding noise to version control.
+When we generate a new lock file in the future to get new dependency
+versions, the new lock file may contain a lot of changes, and this
+may affect the diff output when inspect the commit history.</p>
+<h3><a class="header" href="#registry-snapshot" id="registry-snapshot">Registry Snapshot</a></h3>
+<p>An alternative approach would be to specify the snapshot of the
+package registry itself. For example, cabal accepts an
+<code>index-state</code> option for us to specify a timestamp of the
+Hackage snapshot that it should resolve the dependencies from.
+With that we can specify the timestamp of the time we first
+build our dependencies, and not worry about new versions of
+packages being added in the future.</p>
+<p>Specifying the snapshot version of the registry also result in
+cleaner commit logs. However there can still be other variables
+that can affect the outcome. For example, the package manager
+itself may update the dependency resolution algorithm, so we
+may still get different results depending on the version of
+package manager used.</p>
+<h2><a class="header" href="#upgrading-dependencies" id="upgrading-dependencies">Upgrading Dependencies</a></h2>
+<p>The strategies for pinning dependencies does not eliminate the
+need to resolving the plans in the first place, or the need
+to upgrade or install new depedencies.</p>
+<p>In the ideal world, we would like to be able to just specify
+the dependencies we need, and have the package manager give
+us the best versions that just work. But reality is messy,
+and dependencies can have breaking changes all the time.</p>
+<h3><a class="header" href="#versioning-schemes" id="versioning-schemes">Versioning Schemes</a></h3>
+<p>There are many attempts at coming up with versioning schemes
+that carry breakage information with them, such as
+<a href="https://semver.org/">semver</a> and
+<a href="https://pvp.haskell.org/">PVP</a>.
+However they require package authors to manually follow
+the rules, and rules can be broken, intentionally or not.</p>
+<h2><a class="header" href="#exponential-versions" id="exponential-versions">Exponential Versions</a></h2>
+<p>In reality, each combination of dependency versions produce
+a unique version of the full package that needs to be tested.
+There is never just one version of <code>pickaxe-1.0.0</code>, but
+exponential number of versions of <code>pickaxe-1.0.0</code> depending
+on the versions of <code>stick</code>, <code>planks</code>, and their transitive
+dependencies.</p>
+<p>To make matters worse, real world software also tend to have
+implicit dependencies on the runtime environment, such as
+executables, shared libraries, and operating system APIs.</p>
+<p>So for each of the versions of <code>pickaxe-1.0.0</code> with pinned
+dependencies, we would also have multiple versions of that
+software for different platforms, e.g. Linux, MacOS, Windows,
+Android, iOS, etc. Even among these platforms, there are
+also multiple releases of the platform, e.g. Debian 10,
+Ubuntu 20.04, MacOS Big Sur, etc.</p>
+<h2><a class="header" href="#mono-versioning" id="mono-versioning">Mono Versioning</a></h2>
+<p>Despite all these complexities, we still like to pretend
+that there is only one or few versions of <code>pickaxe-1.0.0</code>
+ever existed. One way to tame down this complexity is
+through <em>mono versioning</em>.</p>
+<h3><a class="header" href="#monorepo" id="monorepo">Monorepo</a></h3>
+<p>The simplest kind of mono versioning is by having a single repository
+that contains all its components and dependencies. For each commit
+in this repository, there is exactly one version each component
+and dependecy. We simply ignore the possibility of other
+valid combinations of component versions, and not support them.</p>
+<h3><a class="header" href="#lockfiles-in-monorepo" id="lockfiles-in-monorepo">Lockfiles in Monorepo</a></h3>
+<p>Package managers such as <code>godep</code> check in the source code of dependencies
+into a monorepo. However that can greatly pollute the commit history.
+As an alternative, we can check in just the lockfiles into the repostory,
+and have the package managers fetch them separately.</p>
+<p>Checking in the lock file is still effectively mono-versioning the
+dependencies. For each commit in the repository, we support only the
+exact dependencies specified in the lockfile of that commit. We simply
+pretend that no other versions of the dependencies are available.</p>
+<h3><a class="header" href="#mono-registry" id="mono-registry">Mono Registry</a></h3>
+<p>Taking the idea to extreme, we can also freeze all dependencies in a package
+registry and provide only one version of each dependency at any point in time.</p>
+<p>This is the approach for registries such as Stackage, which guarantees that
+all Haskell dependencies only have one version that always work.</p>
+<p>Mono registry tend to work more cleanly together with monorepo. In a project,
+we can specify just the snapshot version of the mono registry that we are
+using, and there is no need for messy details such as generating the lockfiles
+in the first place.</p>
+<h3><a class="header" href="#mono-environment" id="mono-environment">Mono Environment</a></h3>
+<p>Nixpkgs is also a mono registry for the standard packages in Nix. For each
+version of nixpkgs, there is exactly one version of packages such as <code>bash</code>,
+<code>gcc</code>, etc. But since these packages used to be provided by operating
+systems, we can say that nixpkgs is also providing a <em>mono environment</em>
+to our software.</p>
+<p>When we create a monorepo with pinned nixpkgs, we are not only providing
+exactly one version of each dependencies, but also exactly one version
+of the environment to run on.</p>
+<p>Mono environment restricts the specification of our software so that it
+does not just run on platforms such as any version of Linux or any
+version of Debian 10. We just pretend that there is exact one version
+of OS as specified in nixpkgs.</p>
+<h2><a class="header" href="#pros-and-cons-of-mono-versioning" id="pros-and-cons-of-mono-versioning">Pros and Cons of Mono Versioning</a></h2>
+<p>There is a fundamental difference in philosophy between multi-versioning
+and mono-versioning that makes it difficult for the two camps to reconcile.
+At its core, there are a few factors involved.</p>
+<h3><a class="header" href="#stability" id="stability">Stability</a></h3>
+<p>Mono-versioning places much higher value in stability. People in this camp
+want to make sure each version of the software always work. They achieve
+that by significantly limit the number of versions of the software,
+and throughoutly test the software before upgrading any version.</p>
+<p>Mono-versioning tend to put emphasis in LTS (long term support) releases,
+where its components are guaranteed to not have any breaking changes
+and be given years of support.</p>
+<h3><a class="header" href="#rapid-releases" id="rapid-releases">Rapid Releases</a></h3>
+<p>Mono versioning tend to suffer in providing slower releases. When a
+new version of component is available, it has to be tested to not
+break any other component before the new version can be released.</p>
+<p>In contrast, multi-versioning allows a new component to be released
+immediately. This allows software to independently upgrade the
+dependencies, at the risk of it may break on some of the software.</p>
+<h2><a class="header" href="#blurring-the-line" id="blurring-the-line">Blurring the Line</a></h2>
+<p>There is no clear cut of whether the mono-versioning or multi-versioning
+approaches are better. In practice, we tend to take a hybrid approach
+in large software projects.</p>
+<p>For example, in a company each team may have different monorepos for their
+projects to manage their own dependencies. The full release of the software
+suite is then a multi-versioning combination of each team's projects,
+which can break during development. Finally in production, the exact
+versions of each subprojects are pinned to specific versions before
+deployment.</p>
+<p>Although Nix is more suitable for mono-versioning development, some of
+its features also make it easier to manage multi-versioned projects,
+by building a mono &quot;Nixified&quot; version of the projects.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../04-derivations/06-build-phases.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../05-package-management/02-basic-haskell.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../04-derivations/06-build-phases.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../05-package-management/02-basic-haskell.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

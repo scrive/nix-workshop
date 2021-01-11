@@ -1,0 +1,647 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Basic Haskell Project - Scrive Nix Workshop</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Scrive Nix Workshop</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="../01-getting-started/01-introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../01-getting-started/02-installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../01-getting-started/03-resources.html"><strong aria-hidden="true">4.</strong> Resources</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Commands</li><li class="chapter-item expanded "><a href="../02-nix-commands/01-install-global-packages.html"><strong aria-hidden="true">5.</strong> Installing Global Packages</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/02-use-packages-in-nix-shell.html"><strong aria-hidden="true">6.</strong> Using Packages in Nix shell</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/03-nix-repl.html"><strong aria-hidden="true">7.</strong> Nix Repl</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Basics</li><li class="chapter-item expanded "><a href="../03-nix-basics/01-primitives.html"><strong aria-hidden="true">8.</strong> Nix Primitives</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/02-expressions.html"><strong aria-hidden="true">9.</strong> Expressions</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/03-files.html"><strong aria-hidden="true">10.</strong> Files</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/04-import.html"><strong aria-hidden="true">11.</strong> Import</a></li><li class="chapter-item expanded affix "><li class="part-title">Derivations</li><li class="chapter-item expanded "><a href="../04-derivations/01-derivation-basics.html"><strong aria-hidden="true">12.</strong> Derivation Basics</a></li><li class="chapter-item expanded "><a href="../04-derivations/02-dependencies.html"><strong aria-hidden="true">13.</strong> Dependencies</a></li><li class="chapter-item expanded "><a href="../04-derivations/03-fibonacci.html"><strong aria-hidden="true">14.</strong> Fibonacci</a></li><li class="chapter-item expanded "><a href="../04-derivations/04-raw-derivation.html"><strong aria-hidden="true">15.</strong> Raw Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/05-standard-derivation.html"><strong aria-hidden="true">16.</strong> Standard Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/06-build-phases.html"><strong aria-hidden="true">17.</strong> Build Phases</a></li><li class="chapter-item expanded affix "><li class="part-title">Package Management</li><li class="chapter-item expanded "><a href="../05-package-management/01-dependency-management.html"><strong aria-hidden="true">18.</strong> Dependency Management</a></li><li class="chapter-item expanded "><a href="../05-package-management/02-basic-haskell.html" class="active"><strong aria-hidden="true">19.</strong> Basic Haskell Project</a></li><li class="chapter-item expanded "><a href="../05-package-management/03-version-conflicts.html"><strong aria-hidden="true">20.</strong> Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/04-transitive-version-conflicts.html"><strong aria-hidden="true">21.</strong> Transitive Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/05-multi-versioned-haskell-packages.html"><strong aria-hidden="true">22.</strong> Multi-versioned Haskell Packages</a></li><li class="chapter-item expanded "><a href="../05-package-management/06-other-strategies.html"><strong aria-hidden="true">23.</strong> Other Package Management Strategies</a></li><li class="chapter-item expanded affix "><li class="part-title">Infrastructure</li><li class="chapter-item expanded "><a href="../06-infrastructure/01-caching-nix.html"><strong aria-hidden="true">24.</strong> Caching Nix Packages</a></li><li class="chapter-item expanded "><a href="../06-infrastructure/02-caching-haskell.html"><strong aria-hidden="true">25.</strong> Caching Haskell Nix Packages</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Scrive Nix Workshop</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#basic-haskell-project" id="basic-haskell-project">Basic Haskell Project</a></h1>
+<p>We will take a quick look on the Nix structure for a trivial Haskell project,
+in <a href="./haskell-project-v1">haskell-project-v1</a>.</p>
+<p><code>Main.hs</code>:</p>
+<pre><code class="language-haskell">module Main where
+
+main :: IO ()
+main = putStrLn &quot;Hello, Haskell!&quot;
+</code></pre>
+<p><code>haskell-project.cabal</code>:</p>
+<pre><code>cabal-version:       2.4
+name:                haskell-project
+version:             0.1.0.0
+license:             ISC
+build-type:          Simple
+
+executable hello
+  main-is:             Main.hs
+  build-depends:       base &gt;=4.13
+  default-language:    Haskell2010
+</code></pre>
+<h2><a class="header" href="#nix-dependency-management-with-niv" id="nix-dependency-management-with-niv">Nix Dependency Management with Niv</a></h2>
+<p>We will use multiple Nix sources including nixpkgs and Haskell.nix
+in our Haskell projects. However specifying the Nix dependencies
+explicitly like in <a href="../nixpkgs.nix"><code>nixpkgs.nix</code></a> can be a bit
+cumbersome.</p>
+<pre><code class="language-nix">let
+  nixpkgs-src = builtins.fetchTarball {
+    url = &quot;https://github.com/NixOS/nixpkgs/archive/fcc81bc974fabd86991b8962bd30a47eb43e7d34.tar.gz&quot;;
+    sha256 = &quot;1ysjmn79pl7srlzgfr35nsxq43rm1va8dqp60h09nlmw2fsq9zrc&quot;;
+  };
+
+  nixpkgs = import nixpkgs-src {};
+in
+nixpkgs
+</code></pre>
+<p>Instead we can use <a href="https://github.com/nmattia/niv.git">niv</a> to
+manage the dependencies for us. Niv allows us to easily add
+any remote sources as a Nix dependency, and provide them
+in a single <code>sources</code> object.</p>
+<p>We can initialize niv in the project directory as follows:</p>
+<pre><code class="language-bash">$ nix-shell -j4 -E \
+  'let nixpkgs = import ./nixpkgs.nix;
+    in nixpkgs.mkShell { buildInputs = [ nixpkgs.niv ]; }'
+
+[nix-shell]$ 05-package-management/haskell-project-v1
+
+[nix-shell]$ niv init
+</code></pre>
+<p>By default, niv will initialize with the latest nixpkgs version
+available. We can explicitly override the commit version of
+nixpkgs to the one in this tutorial.</p>
+<pre><code class="language-bash">[nix-shell]$ niv update nixpkgs --branch nixpkgs-unstable \
+              --rev c1e5f8723ceb684c8d501d4d4a
+e738fef704747e
+Update nixpkgs
+Done: Update nixpkgs
+</code></pre>
+<p>We can also add new dependencies such as Haskell.nix using
+<code>niv add</code>:</p>
+<pre><code class="language-bash">[nix-shell]$ niv add input-output-hk/haskell.nix \
+              --rev 180779b7f530dcd2a45c7d00541f0f3e3d8471b5
+Adding package haskell.nix
+  Writing new sources file
+Done: Adding package haskell.nix
+</code></pre>
+<p>Two new files, <code>nix/sources.json</code> and <code>sources.nix</code> will be created
+by niv. To load the source dependencies, we can simply do
+<code>sources = import ./nix/sources.nix {}</code> to import the source object.
+The source files are then available in the corresponding
+attributes of the sources object, such as <code>sources.nixpkgs</code>.</p>
+<h2><a class="header" href="#naive-attempt" id="naive-attempt">Naive Attempt</a></h2>
+<p>Let's try to create a naive
+<a href="./haskell-project-v1/nix/01-naive/default.nix">default.nix</a>
+that tries to build with cabal directly:</p>
+<pre><code class="language-nix">let
+  sources = import ../sources.nix {};
+  nixpkgs = import sources.nixpkgs {};
+
+  hsPkgs = nixpkgs.haskell.packages.ghc8102;
+
+  src = builtins.path {
+    name = &quot;haskell-project-src&quot;;
+    path = ../../haskell;
+    filter = path: type:
+      let
+        basePath = builtins.baseNameOf path;
+      in
+      basePath != &quot;dist-newstyle&quot;
+    ;
+  };
+in
+nixpkgs.stdenv.mkDerivation {
+  inherit src;
+
+  name = &quot;haskell-project&quot;;
+
+  buildInputs = [
+    hsPkgs.ghc
+    hsPkgs.cabal-install
+  ];
+
+  builPhase = ''
+    cabal build all
+  '';
+
+  installPhase = ''
+    cabal install --installdir=$out --install-method=copy
+  '';
+}
+</code></pre>
+<ul>
+<li>
+<p>We use <code>builtins.path</code> to include our Haskell source code, with
+a filter function to filter out the local <code>dist-newstyle</code>
+directory.</p>
+</li>
+<li>
+<p>We use GHC 8.10.2 provided from <code>nixpkgs.haskell.packages.ghc8102</code>.</p>
+</li>
+<li>
+<p>We add <code>ghc</code> and <code>cabal-install</code> into <code>buildInputs</code>.</p>
+</li>
+</ul>
+<p>Try building it:</p>
+<pre><code class="language-bash">$ nix-build 05-package-management/haskell-project-v1/nix/01-naive/
+these derivations will be built:
+  /nix/store/w1yscims73lrypddqcnri2vphqfnbim6-haskell-project.drv
+building '/nix/store/w1yscims73lrypddqcnri2vphqfnbim6-haskell-project.drv'...
+unpacking sources
+unpacking source archive /nix/store/rc0pr7b71fm84az7d3gk4pdk62v8s0j0-haskell-project-src
+source root is haskell-project-src
+patching sources
+configuring
+no configure script, doing nothing
+building
+no Makefile, doing nothing
+installing
+Config file path source is default config file.
+Config file /homeless-shelter/.cabal/config not found.
+Writing default configuration to /homeless-shelter/.cabal/config
+dieVerbatim: user error (cabal: Couldn't establish HTTP connection. Possible cause: HTTP proxy server
+is down.
+)
+builder for '/nix/store/w1yscims73lrypddqcnri2vphqfnbim6-haskell-project.drv' failed with exit code 1
+error: build of '/nix/store/w1yscims73lrypddqcnri2vphqfnbim6-haskell-project.drv' failed
+</code></pre>
+<p>Not good. Cabal tries to access the network to get the current Hackage
+registry state and fails. There is good reason for this - there is no way
+for Nix to know that cabal's access to network is reproducible.</p>
+<p>We can still use it as a Nix shell to build our project manually, because
+there is network access in Nix shell.</p>
+<pre><code class="language-bash">$ nix-shell 05-package-management/haskell-project-v1/nix/01-naive/
+
+[nix-shell]$ cd 05-package-management/haskell-project-v1/haskell
+
+[nix-shell]$ cabal build all
+Resolving dependencies...
+Build profile: -w ghc-8.10.2 -O1
+In order, the following will be built (use -v for more details):
+ - haskell-project-0.1.0.0 (exe:hello) (first run)
+Configuring executable 'hello' for haskell-project-0.1.0.0..
+Preprocessing executable 'hello' for haskell-project-0.1.0.0..
+Building executable 'hello' for haskell-project-0.1.0.0..
+[1 of 1] Compiling Main             ( Main.hs, /mnt/gamma/scrive/nix-workshop/code/05-package-management/haskell-project-v1/haskell/dist-newstyle/build/x86_64-linux/ghc-8.10.2/haskell-project-0.1.0.0/x/hello/build/hello/hello-tmp/Main.o )
+Linking /mnt/gamma/scrive/nix-workshop/code/05-package-management/haskell-project-v1/haskell/dist-newstyle/build/x86_64-linux/ghc-8.10.2/haskell-project-0.1.0.0/x/hello/build/hello/hello ...
+</code></pre>
+<h2><a class="header" href="#default-attempt" id="default-attempt">Default Attempt</a></h2>
+<p>We can instead try the default way of building Haskell packages in Nix.
+There is a full tutorial by
+<a href="https://github.com/Gabriel439/haskell-nix">Gabriel</a>. Here we will
+just take a quick tour.</p>
+<pre><code class="language-nix">let
+  sources = import ../sources.nix {};
+  nixpkgs = import sources.nixpkgs {};
+
+  hsPkgs = nixpkgs.haskell.packages.ghc8102;
+
+  src = builtins.path {
+    name = &quot;haskell-project-src&quot;;
+    path = ../../haskell;
+    filter = path: type:
+      let
+        basePath = builtins.baseNameOf path;
+      in
+      basePath != &quot;dist-newstyle&quot;
+    ;
+  };
+
+  project = hsPkgs.callCabal2nix &quot;haskell-project&quot; src;
+in
+hsPkgs.callPackage project {}
+</code></pre>
+<ul>
+<li>
+<p>We use the <code>hsPkgs.callCabal2nix</code> function to create a nixpkgs-style package.</p>
+</li>
+<li>
+<p>We then call <code>hsPkgs.callPackage</code> to &quot;instantiate&quot; our project with the
+dependencies taken from <code>hsPkgs</code>.</p>
+</li>
+</ul>
+<p>Now try to build it:</p>
+<pre><code class="language-bash">$ nix-build 05-package-management/haskell-project-v1/nix/02-nixpkgs/
+building '/nix/store/8rgnd9620lf287i0nw4j3z4wb01pd36a-cabal2nix-haskell-project.drv'...
+installing
+these derivations will be built:
+  /nix/store/as92yri0vvfi5yck5gajckfx064fy0qy-haskell-project-0.1.0.0.drv
+building '/nix/store/as92yri0vvfi5yck5gajckfx064fy0qy-haskell-project-0.1.0.0.drv'...
+...
+Preprocessing executable 'hello' for haskell-project-0.1.0.0..
+Building executable 'hello' for haskell-project-0.1.0.0..
+[1 of 1] Compiling Main             ( Main.hs, dist/build/hello/hello-tmp/Main.o )
+Linking dist/build/hello/hello ...
+...
+/nix/store/3aq34n1ba3pvl6cs6f63xd737fz6604r-haskell-project-0.1.0.0
+
+$ /nix/store/3aq34n1ba3pvl6cs6f63xd737fz6604r-haskell-project-0.1.0.0/bin/hello
+Hello, Haskell!
+</code></pre>
+<p>That works. We can also create a separate <code>shell.nix</code> to derive a Nix shell
+environment based on our Haskell environment.</p>
+<pre><code class="language-nix">let
+  sources = import ../sources.nix {};
+  nixpkgs = import sources.nixpkgs {};
+
+  hsPkgs = nixpkgs.haskell.packages.ghc8102;
+
+  project = import ./default.nix;
+in
+nixpkgs.mkShell {
+  name = &quot;cabal-shell&quot;;
+  inputsFrom = [ project.env ];
+  buildInputs = [
+    hsPkgs.cabal-install
+  ];
+}
+</code></pre>
+<p>We use <code>nixpkgs.mkShell</code> to create a Nix derivation that is explicitly used
+for Nix shell. <code>inputsFrom</code> propagates all build inputs of a derivation to
+the new derivation. We use <code>project.env</code> which is a sub-derivation given
+by <code>callCabal2nix</code> which contains the GHC shell environment for building
+our project.</p>
+<p>Notice that we have to explicitly provide <code>cabal-install</code> as <code>buildInput</code>
+to our shell derivation. This shows that internally, the Haskell packages
+in nixpkgs are built by directly calling GHC, skipping <code>cabal</code> entirely.</p>
+<h2><a class="header" href="#how-haskell-in-nixpkgs-work" id="how-haskell-in-nixpkgs-work">How Haskell in Nixpkgs Work</a></h2>
+<p>The Haskell packages in nixpkgs are <em>mono-versioned</em>. This means for each
+Haskell package such as <code>base</code>, <code>aeson</code>, etc, there is exactly one version
+provided by a Haskell packages set. There are however multiple versions
+of Haskell packages in nixpkgs, determined by the GHC versions.</p>
+<p>For instance, <code>nixpkgs.haskell.packages.ghc8102</code> contains mono-versioned
+Haskell packages that works in GHC 8.10.2, while
+<code>nixpkgs.haskell.packages.ghc884</code> contains mono-versioned Haskell packages
+that works in GHC 8.8.4.</p>
+<pre><code class="language-bash">$ nix-shell 05-package-management/haskell-project-v1/nix/02-nixpkgs/shell.nix
+
+[nix-shell]$ cd 05-package-management/haskell-project-v1/haskell/
+
+[nix-shell]$ cabal build all
+Resolving dependencies...
+Build profile: -w ghc-8.10.2 -O1
+In order, the following will be built (use -v for more details):
+ - haskell-project-0.1.0.0 (exe:hello) (first run)
+Configuring executable 'hello' for haskell-project-0.1.0.0..
+Preprocessing executable 'hello' for haskell-project-0.1.0.0..
+Building executable 'hello' for haskell-project-0.1.0.0..
+[1 of 1] Compiling Main             ( Main.hs, /mnt/gamma/scrive/nix-workshop/code/05-package-management/haskell-project-v1/haskell/dist-newstyle/build/x86_64-linux/ghc-8.10.2/haskell-project-0.1.0.0/x/hello/build/hello/hello-tmp/Main.o )
+Linking /mnt/gamma/scrive/nix-workshop/code/05-package-management/haskell-project-v1/haskell/dist-newstyle/build/x86_64-linux/ghc-8.10.2/haskell-project-0.1.0.0/x/hello/build/hello/hello ...
+</code></pre>
+<h3><a class="header" href="#stackage-upstream" id="stackage-upstream">Stackage Upstream</a></h3>
+<p>The mono versions of Haskell packages used to follow Stackage LTS,
+which is also mono-versioned. However recently the team have
+<a href="https://discourse.nixos.org/t/new-ghc-default-version-8-10-2-package-versions-now-from-stackage-nightly/10117">switched to Stackage nightly</a>
+to reduce the maintenance burden.</p>
+<h3><a class="header" href="#callpackage-pattern" id="callpackage-pattern">Callpackage Pattern</a></h3>
+<p>As we discussed in previous chapter, Nix itself do not provide any
+mechanism for dependency resolution. So nixpkgs come out with the
+<a href="https://nixos.org/guides/nix-pills/callpackage-design-pattern.html">Callpackge design pattern</a>
+to manage dependencies in nixpkgs.</p>
+<p>In short, we define new packages in function form which accept
+dependencies as function inputs. Let's call these functions
+<em>partial packages</em>, since they are packages with dependencies
+yet to be supplied.</p>
+<p>For example, the <code>pickaxe</code> package we defined previously would
+have a partial package definition that looks something like:</p>
+<pre><code class="language-nix">let pickaxe = { stick, planks }: ...
+</code></pre>
+<p>The partial package is then instantiated into a Nix derivation
+by calling <code>nixpkgs.callPackage</code> with the package set containing
+all its dependencies as partial packages.</p>
+<pre><code class="language-nix">let minePackages = {
+  wood = { ... }: ...;
+  stick = { wood, ... }: ...;
+  planks = { wood, ... }: ...;
+  ...
+}
+in
+nixpkgs.callPackage minePackages pickaxe {}
+</code></pre>
+<p>The <code>nixpkgs.callPackage</code> automagically inspects the function arguments
+as dependencies in the package set, and construct a dependency graph
+that connects all packages with their dependencies. If this succeeds
+we get a Nix derivation with the dependency derivations provided
+to our partial package.</p>
+<h3><a class="header" href="#dependency-injection" id="dependency-injection">Dependency Injection</a></h3>
+<p><code>callPackage</code> is essentially a dependency injection pattern, where
+components can specify what they need without hardcoding the
+reference. This allows dependencies to be <em>overridden</em> before
+the <code>callPackage</code> is called.</p>
+<p>Using functional programming techniques, it is relatively trivial
+to compose partial package functions so that dependencies can
+be overridden either locally or globally. For example, nixpkgs
+use the
+<a href="https://nixos.org/guides/nix-pills/override-design-pattern.html">override</a>
+pattern to allow dependencies of a package be overridden.</p>
+<p>While functional programming makes it easy to override dependencies,
+it does not make it easy to <em>inspect</em> the dependency graph to find
+out what is overridden. This is the downside of composing using
+closures as blackboxes, as compared to composing ADTs
+(algebraic data types) as whiteboxes.</p>
+<p>Because of this, heavy usage of <code>callPackage</code> and <code>override</code> may impact
+readability and maintainability. Readers of a Nix code base may no longer
+be able to statically infer which final versions of dependencies are
+linked to a package.</p>
+<h2><a class="header" href="#haskellnix" id="haskellnix">Haskell.nix</a></h2>
+<p>There is an alternative approach to managing Haskell dependencies
+using <a href="https://github.com/input-output-hk/haskell.nix">Haskell.nix</a>.
+Unlike the mono-versioned Haskell packages in nixpkgs, Haskell.nix
+gives more flexibilities and allows interoperability with the
+multi-versioned approach of package management with cabal.</p>
+<p>As we will see in the next chapter, the multi-versioned approach
+of Haskell.nix makes it much easier to add bleeding-edge dependencies
+from Hackage. Haskell.nix also offers many other features, such as
+cross compiling Haskell packages.</p>
+<p>The biggest hurdle of adopting Haskell.nix is unfortunately to
+properly add Haskell.nix as a dependency in your Nix project.
+From the first section of the
+<a href="https://github.com/input-output-hk/haskell.nix#help-something-isnt-working">project readme</a>:</p>
+<blockquote>
+<p><strong>Help! Something isn't working</strong></p>
+<p>The #1 problem that people have when using haskell.nix is that they find themselves building GHC. This should not happen, but you must follow the haskell.nix setup instructions properly to avoid it. If you find this happening to you, please check that you have followed the
+<a href="https://input-output-hk.github.io/haskell.nix/tutorials/getting-started/#setting-up-the-binary-cache">getting started instructions</a>
+and consult the corresponding
+<a href="https://input-output-hk.github.io/haskell.nix/troubleshooting/#why-am-i-building-ghc">troubleshooting section</a>.</p>
+</blockquote>
+<p>As mentioned, the most important step to start using Haskell.nix is to
+add the <code>hydra.iohk.io</code> Nix cache to your <code>~/.config/nix/nix.conf</code>:</p>
+<pre><code>trusted-public-keys = [...] hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= [...]
+substituters = [...] https://hydra.iohk.io [...]
+</code></pre>
+<h3><a class="header" href="#haskellnix-based-derivation" id="haskellnix-based-derivation">Haskell.nix-based derivation</a></h3>
+<p>Aside from that first hurdle, defining a Haskell.nix-based Nix derivation
+is relatively straightforward. First we define a <code>project.nix</code>:</p>
+<pre><code class="language-nix">let
+  sources = import ../sources.nix {};
+
+  haskell-nix = import sources.&quot;haskell.nix&quot; {};
+
+  nixpkgs = haskell-nix.pkgs;
+
+  src = builtins.path {
+    name = &quot;haskell-project-src&quot;;
+    path = ../../haskell;
+    filter = path: type:
+      let
+        basePath = builtins.baseNameOf path;
+      in
+      basePath != &quot;dist-newstyle&quot;
+    ;
+  };
+
+  project = nixpkgs.haskell-nix.cabalProject {
+    inherit src;
+
+    compiler-nix-name = &quot;ghc8102&quot;;
+  };
+in
+project
+</code></pre>
+<p>We use the version of Haskell.nix managed by niv and import it. Here we
+also use the version of nixpkgs provided by Haskell.nix, which adds
+additional functionalities in <code>nixpkgs.haskell-nix</code>. We then call the
+function <code>haskell-nix.pkgs.haskell-nix.cabalProject</code> to define a
+cabal-based Haskell.nix project.</p>
+<p>We provide the Haskell source code through the <code>src</code> attribute, and
+also a <code>compiler-nix-name</code> field to specify the GHC version we want
+to use, GHC 8.10.2.</p>
+<h3><a class="header" href="#project-outputs" id="project-outputs">Project Outputs</a></h3>
+<p>To actually build our Haskell project, we define a <code>default.nix</code> to
+build the <code>hello</code> executable we have in our project:</p>
+<pre><code class="language-nix">let
+  project = import ./project.nix;
+in
+project.haskell-project.components.exes.hello
+</code></pre>
+<p>A Haskell.nix project can have multiple derivation outputs for
+each cabal component. For our case, we do not have any library
+but have one executable named <code>hello</code>. To load that, the executable
+is unfortunately located in a long and obscure path
+<code>project.haskell-project.components.exes.hello</code>.</p>
+<pre><code class="language-bash">$ nix-build 05-package-management/haskell-project-v1/nix/03-haskell.nix/
+trace: No index state specified, using the latest index state that we know about (2020-12-04T00:00:00Z)!
+these derivations will be built:
+  /nix/store/xdpklq1y86h6jw6d8fyw6xwhr93l8g73-haskell-project-exe-hello-0.1.0.0-config.drv
+  /nix/store/j0azqvy5iccbfqp6s0gbfwdgjjp8x2ji-haskell-project-exe-hello-0.1.0.0-ghc-8.10.2-env.drv
+  /nix/store/mp20hw7kjpqfwqsspjff0h8w8qng8n9d-haskell-project-exe-hello-0.1.0.0.drv
+...
+/nix/store/yr533l33zrpri7n47lsfm2cih5i0800a-haskell-project-exe-hello-0.1.0.0
+
+$ /nix/store/yr533l33zrpri7n47lsfm2cih5i0800a-haskell-project-exe-hello-0.1.0.0/bin/hello
+Hello, Haskell!
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../05-package-management/01-dependency-management.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../05-package-management/03-version-conflicts.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../05-package-management/01-dependency-management.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../05-package-management/03-version-conflicts.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

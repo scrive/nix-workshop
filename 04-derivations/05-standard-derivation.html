@@ -1,0 +1,453 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Standard Derivation - Scrive Nix Workshop</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Scrive Nix Workshop</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="../01-getting-started/01-introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../01-getting-started/02-installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../01-getting-started/03-resources.html"><strong aria-hidden="true">4.</strong> Resources</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Commands</li><li class="chapter-item expanded "><a href="../02-nix-commands/01-install-global-packages.html"><strong aria-hidden="true">5.</strong> Installing Global Packages</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/02-use-packages-in-nix-shell.html"><strong aria-hidden="true">6.</strong> Using Packages in Nix shell</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/03-nix-repl.html"><strong aria-hidden="true">7.</strong> Nix Repl</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Basics</li><li class="chapter-item expanded "><a href="../03-nix-basics/01-primitives.html"><strong aria-hidden="true">8.</strong> Nix Primitives</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/02-expressions.html"><strong aria-hidden="true">9.</strong> Expressions</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/03-files.html"><strong aria-hidden="true">10.</strong> Files</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/04-import.html"><strong aria-hidden="true">11.</strong> Import</a></li><li class="chapter-item expanded affix "><li class="part-title">Derivations</li><li class="chapter-item expanded "><a href="../04-derivations/01-derivation-basics.html"><strong aria-hidden="true">12.</strong> Derivation Basics</a></li><li class="chapter-item expanded "><a href="../04-derivations/02-dependencies.html"><strong aria-hidden="true">13.</strong> Dependencies</a></li><li class="chapter-item expanded "><a href="../04-derivations/03-fibonacci.html"><strong aria-hidden="true">14.</strong> Fibonacci</a></li><li class="chapter-item expanded "><a href="../04-derivations/04-raw-derivation.html"><strong aria-hidden="true">15.</strong> Raw Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/05-standard-derivation.html" class="active"><strong aria-hidden="true">16.</strong> Standard Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/06-build-phases.html"><strong aria-hidden="true">17.</strong> Build Phases</a></li><li class="chapter-item expanded affix "><li class="part-title">Package Management</li><li class="chapter-item expanded "><a href="../05-package-management/01-dependency-management.html"><strong aria-hidden="true">18.</strong> Dependency Management</a></li><li class="chapter-item expanded "><a href="../05-package-management/02-basic-haskell.html"><strong aria-hidden="true">19.</strong> Basic Haskell Project</a></li><li class="chapter-item expanded "><a href="../05-package-management/03-version-conflicts.html"><strong aria-hidden="true">20.</strong> Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/04-transitive-version-conflicts.html"><strong aria-hidden="true">21.</strong> Transitive Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/05-multi-versioned-haskell-packages.html"><strong aria-hidden="true">22.</strong> Multi-versioned Haskell Packages</a></li><li class="chapter-item expanded "><a href="../05-package-management/06-other-strategies.html"><strong aria-hidden="true">23.</strong> Other Package Management Strategies</a></li><li class="chapter-item expanded affix "><li class="part-title">Infrastructure</li><li class="chapter-item expanded "><a href="../06-infrastructure/01-caching-nix.html"><strong aria-hidden="true">24.</strong> Caching Nix Packages</a></li><li class="chapter-item expanded "><a href="../06-infrastructure/02-caching-haskell.html"><strong aria-hidden="true">25.</strong> Caching Haskell Nix Packages</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Scrive Nix Workshop</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#standard-derivation" id="standard-derivation">Standard Derivation</a></h1>
+<p><code>builtins.derivation</code> provides the minimal functionality to define a Nix
+derivation. However all dependencies have to be manually managed, which
+can be pretty cumbersome. In practice, most Nix derivations are built
+on top of <code>stdenv.mkDerivation</code>, which provide many battery-included
+functionalities that helps make defining derivations easy.</p>
+<p>The tradeoff is that <code>stdenv.mkDerivation</code> is much more complex than
+<code>builtins.derivation</code>. With the detour to understand
+<code>builtins.derivation</code> first, we can hopefully have an easier time
+understanding <code>stdenv.mkDerivation</code></p>
+<h2><a class="header" href="#inspecting-build-environment" id="inspecting-build-environment">Inspecting Build Environment</a></h2>
+<p>We can inspect the standard environment in similar way.</p>
+<pre><code class="language-nix">nix-repl&gt; nixpkgs.stdenv.mkDerivation {
+            name = &quot;inspect&quot;;
+            unpackPhase = &quot;true&quot;;
+
+            buildPhase = ''
+              set -x
+              ls -la .
+              ls -la /
+              env
+              set +x
+            '';
+
+            installPhase = &quot;touch $out&quot;;
+          }
+«derivation /nix/store/vdyp9cxs0li87app03vm8zbxmq0lhw5l-inspect.drv»
+</code></pre>
+<pre><code class="language-bash">$ nix-build /nix/store/vdyp9cxs0li87app03vm8zbxmq0lhw5l-inspect.drv
+these derivations will be built:
+  /nix/store/vdyp9cxs0li87app03vm8zbxmq0lhw5l-inspect.drv
+building '/nix/store/vdyp9cxs0li87app03vm8zbxmq0lhw5l-inspect.drv'...
+unpacking sources
+patching sources
+configuring
+no configure script, doing nothing
+building
+++ ls -la .
+total 16
+drwx------ 2 nixbld nixbld 4096 Nov 30 19:42 .
+drwxr-x--- 9 nixbld nixbld 4096 Nov 30 19:42 ..
+-rw-r--r-- 1 nixbld nixbld 5013 Nov 30 19:42 env-vars
+++ ls -la /
+total 32
+drwxr-x---   9 nixbld nixbld  4096 Nov 30 19:42 .
+drwxr-x---   9 nixbld nixbld  4096 Nov 30 19:42 ..
+drwxr-xr-x   2 nixbld nixbld  4096 Nov 30 19:42 bin
+drwx------   2 nixbld nixbld  4096 Nov 30 19:42 build
+drwxr-xr-x   4 nixbld nixbld  4096 Nov 30 19:42 dev
+drwxr-xr-x   2 nixbld nixbld  4096 Nov 30 19:42 etc
+drwxr-xr-x   3 nixbld nixbld  4096 Nov 30 19:42 nix
+dr-xr-xr-x 405 nobody nogroup    0 Nov 30 19:42 proc
+drwxrwxrwt   2 nixbld nixbld  4096 Nov 30 19:42 tmp
+++ env
+...
+unpackPhase=true
+propagatedBuildInputs=
+stdenv=/nix/store/ajq5dfwn4hzlx1qf2xxwb6rj8a7s65nm-stdenv-linux
+TZ=UTC
+OLDPWD=/build
+out=/nix/store/a226brzfy71vr6vkfy4m188qs9f7k7g7-inspect
+CONFIG_SHELL=/nix/store/qdp56fi357fgxxnkjrwx1g67hrk775im-bash-4.4-p23/bin/bash
+buildInputs=
+builder=/nix/store/qdp56fi357fgxxnkjrwx1g67hrk775im-bash-4.4-p23/bin/bash
+...
+buildPhase=set -x
+ls -la .
+ls -la /
+env
+set +x
+
+PATH=/nix/store/cr86kfhzfwa558mzav4rnfkbz00hw27w-patchelf-0.12/bin:/nix/store/ppfvi0cfcpdr83klw5kx6si2l260n1gh-gcc-wrapper-9.3.0/bin:...
+NIX_BUILD_TOP=/build
+depsBuildTargetPropagated=
+NIX_ENFORCE_PURITY=1
+SIZE=size
+nativeBuildInputs=
+LD=ld
+patches=
+depsTargetTargetPropagated=
+_=/nix/store/2shqhfsyzz4rnfyysbzgyp5kbfk29750-coreutils-8.32/bin/env
+++ set +x
+installing
+post-installation fixup
+shrinking RPATHs of ELF executables and libraries in /nix/store/a226brzfy71vr6vkfy4m188qs9f7k7g7-inspect
+strip is /nix/store/bnjps68g8ax6abzvys2xpx12imrx8949-binutils-2.31.1/bin/strip
+patching script interpreter paths in /nix/store/a226brzfy71vr6vkfy4m188qs9f7k7g7-inspect
+checking for references to /build/ in /nix/store/a226brzfy71vr6vkfy4m188qs9f7k7g7-inspect...
+/nix/store/a226brzfy71vr6vkfy4m188qs9f7k7g7-inspect
+</code></pre>
+<p>As we can see, our standard environment is quite more complicated than the minimal environment
+provided by <code>builtins.derivation</code>. We also have a number of executables added to <code>$PATH</code>,
+which we can use without specifying them as dependencies.</p>
+<h2><a class="header" href="#capturing-the-build-environment" id="capturing-the-build-environment">Capturing the Build Environment</a></h2>
+<pre><code class="language-nix">nix-repl&gt; nixpkgs.stdenv.mkDerivation {
+            name = &quot;env&quot;;
+            unpackPhase = &quot;true&quot;;
+            installPhase = &quot;env &gt; $out&quot;;
+          }
+«derivation /nix/store/5rgcvwndbc4525ypbb0r1vgqpbxgcy2g-env.drv»
+</code></pre>
+<pre><code class="language-bash">$ cat $(nix-build /nix/store/5rgcvwndbc4525ypbb0r1vgqpbxgcy2g-env.drv)
+...
+unpackPhase=true
+propagatedBuildInputs=
+stdenv=/nix/store/ajq5dfwn4hzlx1qf2xxwb6rj8a7s65nm-stdenv-linux
+TZ=UTC
+OLDPWD=/build
+out=/nix/store/rkjhcjhdj6ba7r7n7fasq8gmzxi5hk72-env
+CONFIG_SHELL=/nix/store/qdp56fi357fgxxnkjrwx1g67hrk775im-bash-4.4-p23/bin/bash
+buildInputs=
+builder=/nix/store/qdp56fi357fgxxnkjrwx1g67hrk775im-bash-4.4-p23/bin/bash
+...
+</code></pre>
+<h2><a class="header" href="#build-inputs" id="build-inputs">Build Inputs</a></h2>
+<p><code>stdenv.mkDerivation</code> also provides a convenient way of adding dependencies
+to appropriate environment variables with the <code>buildInputs</code> attribute.</p>
+<pre><code class="language-nix">nix-repl&gt; nixpkgs.stdenv.mkDerivation {
+            name = &quot;greet-alice&quot;;
+            buildInputs = [ greet ];
+
+            unpackPhase = &quot;true&quot;;
+            installPhase = &quot;greet Alice &gt; $out&quot;;
+          }
+«derivation /nix/store/in40c5fl13ziqzds3wfg2ag7ax2xmq5l-greet-alice.drv»
+</code></pre>
+<pre><code class="language-bash">$ nix-build /nix/store/in40c5fl13ziqzds3wfg2ag7ax2xmq5l-greet-alice.drv
+these derivations will be built:
+  /nix/store/in40c5fl13ziqzds3wfg2ag7ax2xmq5l-greet-alice.drv
+building '/nix/store/in40c5fl13ziqzds3wfg2ag7ax2xmq5l-greet-alice.drv'...
+...
+/nix/store/kp32rzq63barqa55q3mf761gsggi2bq6-greet-alice
+
+$ cat /nix/store/kp32rzq63barqa55q3mf761gsggi2bq6-greet-alice
+Hello, Alice!
+</code></pre>
+<p>We can check that <code>greet</code> is added to <code>$PATH</code> using Nix shell:</p>
+<pre><code class="language-bash">$ drv=/nix/store/in40c5fl13ziqzds3wfg2ag7ax2xmq5l-greet-alice.drv
+
+$ nix-shell $drv --pure --run &quot;command -v greet&quot;
+/nix/store/l6xy4qjr8x3ni16skfilw0fvnda13szq-greet/bin/greet
+
+$ nix-shell $drv --pure --run 'echo $PATH' | tr ':' '\n'
+...
+/nix/store/2shqhfsyzz4rnfyysbzgyp5kbfk29750-coreutils-8.32/bin
+/nix/store/l6xy4qjr8x3ni16skfilw0fvnda13szq-greet/bin
+...
+</code></pre>
+<p><code>stdenv</code> also adds the build inputs to other variables.</p>
+<pre><code>$ nix-shell $drv --pure --run 'echo $NIX_LDFLAGS'
+-rpath /nix/store/kp32rzq63barqa55q3mf761gsggi2bq6-greet-alice/lib64 -rpath /nix/store/kp32rzq63barqa55q3mf761gsggi2bq6-greet-alice/lib
+</code></pre>
+<p>Note that the paths /nix/store/kp32rzq63barqa55q3mf761gsggi2bq6-greet-alice/lib
+does not exist, but <code>stdenv</code> still sets the variables anyway.</p>
+<h2><a class="header" href="#stdenv-script" id="stdenv-script">Stdenv Script</a></h2>
+<p>How do <code>stdenv.mkDerivation</code> do the magic compared to <code>builtins.derivation</code>?
+We can find out by first inspecting the derivation:</p>
+<pre><code class="language-bash">$ nix show-derivation $drv
+{
+  &quot;/nix/store/in40c5fl13ziqzds3wfg2ag7ax2xmq5l-greet-alice.drv&quot;: {
+    ...
+    &quot;builder&quot;: &quot;/nix/store/qdp56fi357fgxxnkjrwx1g67hrk775im-bash-4.4-p23/bin/bash&quot;,
+    &quot;args&quot;: [
+      &quot;-e&quot;,
+      &quot;/nix/store/9krlzvny65gdc8s7kpb6lkx8cd02c25b-default-builder.sh&quot;
+    ],
+    &quot;env&quot;: {
+      &quot;buildInputs&quot;: &quot;/nix/store/l6xy4qjr8x3ni16skfilw0fvnda13szq-greet&quot;,
+      &quot;builder&quot;: &quot;/nix/store/qdp56fi357fgxxnkjrwx1g67hrk775im-bash-4.4-p23/bin/bash&quot;,
+      ...
+      &quot;installPhase&quot;: &quot;greet Alice &gt; $out&quot;,
+      &quot;name&quot;: &quot;greet-alice&quot;,
+      ...
+      &quot;stdenv&quot;: &quot;/nix/store/ajq5dfwn4hzlx1qf2xxwb6rj8a7s65nm-stdenv-linux&quot;,
+      ...
+    }
+
+  }
+}
+</code></pre>
+<p><code>stdenv</code> is also using <code>bash</code> as the builder, and have it evaluate the
+script at <code>/nix/store/9krlzvny65gdc8s7kpb6lkx8cd02c25b-default-builder.sh</code>.
+Let's see what's inside there:</p>
+<pre><code>$ cat /nix/store/9krlzvny65gdc8s7kpb6lkx8cd02c25b-default-builder.sh
+source $stdenv/setup
+genericBuild
+</code></pre>
+<p>So the magic is hidden inside <code>$stdenv/setup</code>, with the <code>$stdenv</code>
+variable set to <code>/nix/store/ajq5dfwn4hzlx1qf2xxwb6rj8a7s65nm-stdenv-linux</code>.</p>
+<p>We can open it and see what's inside.</p>
+<pre><code class="language-bash">nix-shell $drv --run 'cat $stdenv/setup'
+</code></pre>
+<p>There are quite a lot of shell scripts happening. If we search through the script,
+we can see that environment variables such as <code>buildInputs</code>, <code>buildPhase</code>, and
+<code>installPhase</code> are being referred inside <code>$stdenv/setup</code>.</p>
+<p>In other words, instead of having to figure how to setup various environment
+variables to work with various dependencies, <code>$stdenv/setup</code> provides a higher
+level abstraction of doing the setup for us. We just have to define
+the build inputs and steps that we need, and <code>$stdenv/setup</code> will fill
+in the missing pieces from us.</p>
+<p>In fact, <code>$stdenv/setup</code> is also being sourced when we enter a Nix shell of a
+<code>stdenv</code> derivation.
+From the <a href="https://nixos.org/manual/nix/unstable/command-ref/nix-shell.html">nix-shell manual</a>:</p>
+<blockquote>
+<p>The command nix-shell will build the dependencies of the specified derivation, but not the derivation itself. It will then start an interactive shell in which all environment variables defined by the derivation path have been set to their corresponding values, and the script $stdenv/setup has been sourced. This is useful for reproducing the environment of a derivation for development.</p>
+</blockquote>
+<h2><a class="header" href="#deriving-environment-at-build-time" id="deriving-environment-at-build-time">Deriving Environment at Build Time</a></h2>
+<p>One question we might ask is, why is <code>stdenv</code> doing the heavyweight steps only
+at build time inside a shell script. We could as well parse the dependencies
+inside Nix at evaluation time, and produce a derivation with everything
+setup already.</p>
+<p>However recall from the <a href="./03-fibonacci.html">previous example</a> of
+<code>fib-serialized.nix</code>. If we try to peek into the content of a dependency derivation,
+that would instead become an evaluation time dependency. If <code>stdenv</code> is
+looking into the content of all dependencies inside Nix, then we can
+only know how to build the derivation after all dependencies have been built.</p>
+<p>Instead, <code>stdenv</code> avoids this to allow the derivation dependencies to
+be built in parallel by Nix. With that, we can only read the content
+of our dependencies at build time, which happens inside the build script.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../04-derivations/04-raw-derivation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../04-derivations/06-build-phases.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../04-derivations/04-raw-derivation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../04-derivations/06-build-phases.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

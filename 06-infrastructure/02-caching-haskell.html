@@ -1,0 +1,509 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Caching Haskell Nix Packages - Scrive Nix Workshop</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Scrive Nix Workshop</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="../01-getting-started/01-introduction.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../01-getting-started/02-installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../01-getting-started/03-resources.html"><strong aria-hidden="true">4.</strong> Resources</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Commands</li><li class="chapter-item expanded "><a href="../02-nix-commands/01-install-global-packages.html"><strong aria-hidden="true">5.</strong> Installing Global Packages</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/02-use-packages-in-nix-shell.html"><strong aria-hidden="true">6.</strong> Using Packages in Nix shell</a></li><li class="chapter-item expanded "><a href="../02-nix-commands/03-nix-repl.html"><strong aria-hidden="true">7.</strong> Nix Repl</a></li><li class="chapter-item expanded affix "><li class="part-title">Nix Basics</li><li class="chapter-item expanded "><a href="../03-nix-basics/01-primitives.html"><strong aria-hidden="true">8.</strong> Nix Primitives</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/02-expressions.html"><strong aria-hidden="true">9.</strong> Expressions</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/03-files.html"><strong aria-hidden="true">10.</strong> Files</a></li><li class="chapter-item expanded "><a href="../03-nix-basics/04-import.html"><strong aria-hidden="true">11.</strong> Import</a></li><li class="chapter-item expanded affix "><li class="part-title">Derivations</li><li class="chapter-item expanded "><a href="../04-derivations/01-derivation-basics.html"><strong aria-hidden="true">12.</strong> Derivation Basics</a></li><li class="chapter-item expanded "><a href="../04-derivations/02-dependencies.html"><strong aria-hidden="true">13.</strong> Dependencies</a></li><li class="chapter-item expanded "><a href="../04-derivations/03-fibonacci.html"><strong aria-hidden="true">14.</strong> Fibonacci</a></li><li class="chapter-item expanded "><a href="../04-derivations/04-raw-derivation.html"><strong aria-hidden="true">15.</strong> Raw Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/05-standard-derivation.html"><strong aria-hidden="true">16.</strong> Standard Derivation</a></li><li class="chapter-item expanded "><a href="../04-derivations/06-build-phases.html"><strong aria-hidden="true">17.</strong> Build Phases</a></li><li class="chapter-item expanded affix "><li class="part-title">Package Management</li><li class="chapter-item expanded "><a href="../05-package-management/01-dependency-management.html"><strong aria-hidden="true">18.</strong> Dependency Management</a></li><li class="chapter-item expanded "><a href="../05-package-management/02-basic-haskell.html"><strong aria-hidden="true">19.</strong> Basic Haskell Project</a></li><li class="chapter-item expanded "><a href="../05-package-management/03-version-conflicts.html"><strong aria-hidden="true">20.</strong> Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/04-transitive-version-conflicts.html"><strong aria-hidden="true">21.</strong> Transitive Version Conflicts</a></li><li class="chapter-item expanded "><a href="../05-package-management/05-multi-versioned-haskell-packages.html"><strong aria-hidden="true">22.</strong> Multi-versioned Haskell Packages</a></li><li class="chapter-item expanded "><a href="../05-package-management/06-other-strategies.html"><strong aria-hidden="true">23.</strong> Other Package Management Strategies</a></li><li class="chapter-item expanded affix "><li class="part-title">Infrastructure</li><li class="chapter-item expanded "><a href="../06-infrastructure/01-caching-nix.html"><strong aria-hidden="true">24.</strong> Caching Nix Packages</a></li><li class="chapter-item expanded "><a href="../06-infrastructure/02-caching-haskell.html" class="active"><strong aria-hidden="true">25.</strong> Caching Haskell Nix Packages</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Scrive Nix Workshop</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#caching-haskell-nix-packages" id="caching-haskell-nix-packages">Caching Haskell Nix Packages</a></h1>
+<p>Similar to the previous chapter, we can cache our Haskell.nix project in similar way.</p>
+<pre><code class="language-bash">$ drv=$(nix-instantiate ./code/05-package-management/haskell-project-v3/nix/07-haskell.nix-materialized)
+
+$ nix-build $drv &amp;&amp; nix-store -qR --include-outputs $drv | grep -v .drv | cachix push $CACHIX_STORE
+...
+/nix/store/8vrdfinxxnwczn4jzknm44bsn3k5nghl-haskell-project-exe-hello-0.1.0.0
+compressing and pushing /nix/store/8vrdfinxxnwczn4jzknm44bsn3k5nghl-haskell-project-exe-hello-0.1.0.0 (3.60 MiB)
+compressing and pushing /nix/store/6apx83l6ss3hkn0kd4z4rkjbkgs0w4w2-default-Setup-setup (18.07 MiB)
+compressing and pushing /nix/store/3pfy3dd8ch77km1wkwd6cdgqn57d4347-haskell-project-exe-hello-0.1.0.0-config (304.02 KiB)
+compressing and pushing /nix/store/b2j1nrsjr8cpzmk58d476fc2snz17w75-ghc-8.10.2 (1.71 GiB)
+...
+All done.
+</code></pre>
+<p>As simple as it might look, the naive approach however has some flaws,
+especially when dealing with private projects.</p>
+<h2><a class="header" href="#leaking-source-code" id="leaking-source-code">Leaking Source Code</a></h2>
+<p>The first issue with pushing everything is source code contamination, i.e.
+the source code of the project leaking to the cache. For instance, suppose
+we modify the <a href="../05-package-management/haskell-project-v3/haskell/Main.hs">main</a>
+function to print &quot;Hello, World!&quot; instead of &quot;Hello, Haskell!&quot;:</p>
+<pre><code class="language-bash">$ sed -i 's/Hello, Haskell!/Hello, World!/g' ./code/05-package-management/haskell-project-v3/haskell/Main.hs
+$ cat ./code/05-package-management/haskell-project-v3/haskell/Main.hs
+module Main where
+
+main :: IO ()
+main = putStrLn &quot;Hello, World!&quot;
+</code></pre>
+<p>If we try to rebuild our Haskell project and push it to Cachix, we can notice
+that the modified source code is also pushed as well.
+(Notice the <code>drv=$(nix-instantiate ...)</code> assignment has to be re-run to get the
+new derivation with the modified source)</p>
+<pre><code class="language-bash">$ drv=$(nix-instantiate ./code/05-package-management/haskell-project-v3/nix/07-haskell.nix-materialized)
+$ nix-build $drv &amp;&amp; nix-store -qR --include-outputs $drv | grep -v .drv | cachix push $CACHIX_STORE
+...
+/nix/store/hkqkig7y1dx96qbdwkhk0anb0xdmx6hm-haskell-project-exe-hello-0.1.0.0
+compressing and pushing /nix/store/hkqkig7y1dx96qbdwkhk0anb0xdmx6hm-haskell-project-exe-hello-0.1.0.0 (3.60 MiB)
+compressing and pushing /nix/store/wq6ry5x7b5x3ld0d7wd2wx3vkxp4wi66-haskell-project-src (1.49 KiB)
+All done.
+</code></pre>
+<p>We can list the files in <code>/nix/store/6a049f3fv8x2rdxv34k14cxrwi9an43f-haskell-project-src</code>
+and verify that it indeed contains our modified source code. Yikes!</p>
+<pre><code class="language-bash">$ ls -la /nix/store/6a049f3fv8x2rdxv34k14cxrwi9an43f-haskell-project-src
+total 180
+dr-xr-xr-x 2 user user   4096 Jan  1  1970 .
+drwxr-xr-x 1 user user 151552 Jan  7 15:41 ..
+-r--r--r-- 1 user user     15 Jan  1  1970 .gitignore
+-r--r--r-- 1 user user     65 Jan  1  1970 Main.hs
+-r--r--r-- 1 user user     46 Jan  1  1970 Setup.hs
+-r--r--r-- 1 user user     12 Jan  1  1970 cabal.project
+-r--r--r-- 1 user user    307 Jan  1  1970 haskell-project.cabal
+
+$ cat /nix/store/6a049f3fv8x2rdxv34k14cxrwi9an43f-haskell-project-src/Main.hs
+module Main where
+
+main :: IO ()
+main = putStrLn &quot;Hello, World!&quot;
+</code></pre>
+<p>Pushing source code to Cachix might not be a big deal for open source projects.
+However this may be an issue for propritary projects with strict IP policies.
+This could be partially mitigated by having a private Cachix store. But we
+just have to be aware of it and be careful.</p>
+<h2><a class="header" href="#leaking-secrets" id="leaking-secrets">Leaking Secrets</a></h2>
+<p>Even for the case of open source projects, indiscriminately pushing everything
+to Cachix still carries another risk, which is accidentally leaking secrets
+such as authentication credentials.</p>
+<p>Suppose that we have some security credentials stored locally in the <code>secret.key</code>
+file in the project directory. Since the file is included in <code>.gitignore</code>, it is
+not pushed to the git repository.</p>
+<pre><code class="language-bash">$ echo secret &gt; ./code/05-package-management/haskell-project-v3/haskell/secret.key
+$ ls -la ./code/05-package-management/haskell-project-v3/haskell/
+total 32
+drwxrwxr-x 2 user user 4096 Jan  7 15:58 .
+drwxrwxr-x 4 user user 4096 Dec  8 08:23 ..
+-rw-rw-r-- 1 user user   26 Jan  7 15:58 .gitignore
+-rw-r--r-- 1 user user   67 Jan  7 15:45 Main.hs
+-rw-r--r-- 1 user user   46 Dec  7 08:37 Setup.hs
+-rw-rw-r-- 1 user user   12 Dec  7 08:37 cabal.project
+-rw-rw-r-- 1 user user  307 Jan  7 09:35 haskell-project.cabal
+-rw-rw-r-- 1 user user    7 Jan  7 15:58 secret.key
+</code></pre>
+<p>But is <code>secret.key</code> being included when pushing to Cachix? Let's find out:</p>
+<pre><code>$ drv=$(nix-instantiate ./code/05-package-management/haskell-project-v3/nix/07-haskell.nix-materialized)
+$ nix-build $drv &amp;&amp; nix-store -qR --include-outputs $drv | grep -v .drv | cachix push $CACHIX_STORE
+...
+compressing and pushing /nix/store/nrmyzkww87ndyp44jkn56hrra8m9d9vy-haskell-project-exe-hello-0.1.0.0 (3.60 MiB)
+compressing and pushing /nix/store/ryz8an9z9bw7j1357k9b5w99fxvnhb74-haskell-project-src (1.69 KiB)
+All done.
+
+$ ls -la /nix/store/ryz8an9z9bw7j1357k9b5w99fxvnhb74-haskell-project-src
+total 188
+dr-xr-xr-x 2 user user   4096 Jan  1  1970 .
+drwxr-xr-x 1 user user 155648 Jan  7 16:00 ..
+-r--r--r-- 1 user user     26 Jan  1  1970 .gitignore
+-r--r--r-- 1 user user     67 Jan  1  1970 Main.hs
+-r--r--r-- 1 user user     46 Jan  1  1970 Setup.hs
+-r--r--r-- 1 user user     12 Jan  1  1970 cabal.project
+-r--r--r-- 1 user user    307 Jan  1  1970 haskell-project.cabal
+-r--r--r-- 1 user user      7 Jan  1  1970 secret.key
+
+$ cat /nix/store/ryz8an9z9bw7j1357k9b5w99fxvnhb74-haskell-project-src/secret.key
+secret
+</code></pre>
+<p>That's not good! Our local security credentials have been leaked to Cachix!
+If we also have a public Cachix store, the credentials can potentially be obtained
+by anyone!</p>
+<p>The real culprit is in how we create our source derivation in
+<a href="../05-package-management/haskell-project-v3/nix/07-haskell.nix-materialized/project.nix"><code>project.nix</code></a>:</p>
+<pre><code class="language-nix">src = builtins.path {
+  name = &quot;haskell-project-src&quot;;
+  path = ../../haskell;
+  filter = path: type:
+    let
+      basePath = builtins.baseNameOf path;
+    in
+    basePath != &quot;dist-newstyle&quot;
+  ;
+};
+</code></pre>
+<p>Previously, we made a naive attempt of filtering our source directory and
+excluding only the <code>dist-newstyle</code> directory to avoid rebuilding the Nix
+build when the directory is modified by local <code>cabal</code> runs. However if
+we want to push our source code to Cachix, we better be much more careful.</p>
+<h2><a class="header" href="#gitignorenix" id="gitignorenix">Gitignore.nix</a></h2>
+<p>One way we can protect local secrets is by filtering out all gitignored
+files so that our source code is close to a fresh git checkout when copied
+into the Nix store. This can be done using Nix helper libraries such as
+<a href="https://github.com/hercules-ci/gitignore.nix">gitignore.nix</a>.</p>
+<p>Using gitignore.nix, we can now create a new
+<a href="./haskell-project-v4">haskell-project-v4</a> project with the source
+filtered with gitignore.nix:</p>
+<pre><code class="language-nix">gitignore = (import sources.&quot;gitignore.nix&quot; {
+  inherit (nixpkgs) lib;
+}).gitignoreSource;
+
+src = nixpkgs.lib.cleanSourceWith {
+  name = &quot;haskell-project-src&quot;;
+  src = gitignore ../../haskell;
+};
+</code></pre>
+<p>We first add <code>gitignore.nix</code> into <code>sources</code> using <code>niv</code>, and then import
+it as above. Following that, we use <code>gitignore ../../haskell</code> to
+filter the gitignored files in the <code>haskell</code> directory. We then
+use <code>nixpkgs.lib.cleanSourceWith</code> as a hack to give the filtered source a
+name <code>haskell-project-src</code>, so that we can grep for it during inspection.</p>
+<p>Now if we try to build our derivation, we should get the project source with
+the local secret filtered out:</p>
+<pre><code class="language-bash">$ drv=$(nix-instantiate ./code/06-infrastructure/haskell-project-v4/nix/01-gitignore-src)
+$ nix-store -qR --include-outputs $drv | grep haskell-project-src
+/nix/store/mhlj5xql8g6ib1wna4g9pc6cpraiz1q8-haskell-project-src-root
+
+$ ls -la /nix/store/mhlj5xql8g6ib1wna4g9pc6cpraiz1q8-haskell-project-src-root
+total 140
+dr-xr-xr-x 2 nix nix   4096 Jan  1  1970 .
+drwxr-xr-x 1 nix nix 114688 Jan 11 11:21 ..
+-r--r--r-- 1 nix nix     26 Jan  1  1970 .gitignore
+-r--r--r-- 1 nix nix     67 Jan  1  1970 Main.hs
+-r--r--r-- 1 nix nix     46 Jan  1  1970 Setup.hs
+-r--r--r-- 1 nix nix     12 Jan  1  1970 cabal.project
+-r--r--r-- 1 nix nix    307 Jan  1  1970 haskell-project.cabal
+</code></pre>
+<h3><a class="header" href="#caveats" id="caveats">Caveats</a></h3>
+<p>Gitignore.nix can help us filter out files specified in <code>.gitignore</code>.
+However it might still be possible that developers would add new secrets
+locally without adding them to <code>.gitignore</code>. In such case, the secret
+can still potentially leak to Cachix.</p>
+<p>One way to be absolute sure that secrets cannot be leaked is by running
+the builds on CI instead of on personal machines. But even in such case,
+it is still very easy to write a CI job that place credentials in the
+local directories while building. Then the secrets on the CI can still
+leak to the public.</p>
+<p>To be absolutely sure that local secrets cannot leak together with the
+source code, the best way is still to avoid pushing source code to
+Cachix in the first place, both for proprietary and open source projects.</p>
+<p>After all, users will almost always build a Nix project with their own
+local source code, or source that are fetched directly from git or
+remote URLs. There is rarely a need to use Cachix to distribute source
+code to our users.</p>
+<h2><a class="header" href="#filtering-out-source" id="filtering-out-source">Filtering Out Source</a></h2>
+<p>One simple way to filter out the source code is to filter out the name
+of the source derivation using <code>grep</code> before pushing to Cachix:</p>
+<pre><code class="language-bash">$ nix-store -qR --include-outputs $drv \
+  | grep -v .drv | grep -v haskell-project-src \
+  | cachix push $CACHIX_STORE
+</code></pre>
+<p>Note however this may only work if no other paths pushed to Cachix depends
+on the source code. This is because Cachix automatically pushes the whole
+closure of a Nix path. For instance this would not work if we try to push
+the <code>.drv</code> file of the build derivation to Cachix, because that would
+also capture the source derivation as part of the closure.</p>
+<p>This approach also would not work if there are some intermediate derivations
+that make copy of the original source code and modify them to produce
+new source derivation. The intermediate derivation may have a different
+name, or even a generic one, which it would be difficult for us to filter
+out without inspecting the derivation source.</p>
+<p>As a result, it is best to make use of the <code>patchPhase</code> in
+<code>stdenv.mkDerivation</code> to modify the source code if necessary.</p>
+<h2><a class="header" href="#caching-nix-shell" id="caching-nix-shell">Caching Nix Shell</a></h2>
+<p>Another way to exclude source code from derivation is by creating a Nix shell
+derivation and cache that instead. Haskell.nix provides a <code>shellFor</code>
+function that creates a Nix shell derivation from the original
+Haskell.nix project we defined.</p>
+<pre><code class="language-nix">{ useMaterialization ? true }:
+let
+  project = import ./project.nix {
+    inherit useMaterialization;
+  };
+in
+project.shellFor {
+  withHoogle = false;
+}
+</code></pre>
+<p>If we inspect the derivation tree from <code>shell.nix</code>, we can confirm that
+indeed the source code not present in the list. And so we can
+safely push only the Haskell.nix dependencies to Cachix.</p>
+<pre><code class="language-bash">drv=$(nix-instantiate ./code/06-infrastructure/haskell-project-v4/nix/01-gitignore-src/shell.nix)
+
+$ nix-store -qR --include-outputs $drv | grep haskell-project-src
+</code></pre>
+<p>We first use <code>nix-shell --run true $drv</code> to build only the dependencies of our shell derivation and
+push them to Cachix.</p>
+<pre><code class="language-bash">$ nix-shell --run true $drv &amp;&amp; nix-store -qR --include-outputs $drv | grep -v .drv | cachix push $CACHIX_STORE
+...
+All done.
+</code></pre>
+<p>If we want to cache the final build artifact as well, we can still run <code>nix-build $drv</code> and
+then push <em>only</em> the build output to Cachix.</p>
+<pre><code class="language-bash">$ nix-build ./code/06-infrastructure/haskell-project-v4/nix/01-gitignore-src | cachix push $CACHIX_STORE
+...
+compressing and pushing /nix/store/9in65nlw9s255x8zh5g7hlvbnl23rqbz-haskell-project-exe-hello-0.1.0.0 (3.60 MiB)
+All done.
+</code></pre>
+<h2><a class="header" href="#double-check-leaking-with-code-changes" id="double-check-leaking-with-code-changes">Double Check Leaking with Code Changes</a></h2>
+<p>Our attempt to cache only the Nix shell derivation seems to exclude the source code,
+but is it really excluded? If we are not careful, we could easily let Nix give a
+generic name like <code>source</code> to our source derivation. In that case it would not
+be possible to detect it through <code>grep</code> if our source code has leaked through.</p>
+<p>As a result, it is best to double check what is being cached by slightly modifying
+our source code, and then try pushing to Cachix again.</p>
+<pre><code class="language-bash">$ sed -i 's/Hello, Haskell!/Hello, World!/g' ./code/06-infrastructure/haskell-project-v4/haskell/Main.hs
+$ cat ./code/06-infrastructure/haskell-project-v4/haskell/Main.hs
+module Main where
+
+main :: IO ()
+main = putStrLn &quot;Hello, World!&quot;
+
+$ drv=$(nix-instantiate ./code/06-infrastructure/haskell-project-v4/nix/01-gitignore-src/shell.nix)
+$ nix-shell --run true $drv &amp;&amp; nix-store -qR --include-outputs $drv | grep -v .drv | cachix push $CACHIX_STORE
+All done.
+
+$ nix-build ./code/06-infrastructure/haskell-project-v4/nix/01-gitignore-src | cachix push $CACHIX_STORE
+these derivations will be built:
+  /nix/store/52qqdj4pq564ivyawpvfzsz2s3kv9wmp-haskell-project-exe-hello-0.1.0.0.drv
+...
+compressing and pushing /nix/store/fdb6b3dj79gqff0lz0xf34lrs4gpb5a0-haskell-project-exe-hello-0.1.0.0 (3.60 MiB)
+All done.
+</code></pre>
+<p>As we expect, even though <code>Main.hs</code> has been modified, there is no new source
+artifact being pushed to Cachix. Only <code>nix-build</code> produced a new binary, which
+is then pushed to Cachix.</p>
+<p>You can apply the same method on your own project to double check if your
+source code is leaking to Cachix. Even if you do not care about the source
+code leaking, this can still serve as a good way to check if any secret
+is leaking.</p>
+<h2><a class="header" href="#caching-multiple-projects" id="caching-multiple-projects">Caching Multiple Projects</a></h2>
+<p>The technique for caching Nix shell can only work if we have projects made of a
+single Nix derivation. If we instead have a large project with multiple source
+repositories, it is much harder to filter out the source code if the derivations
+depend on each others.</p>
+<p>In such cases, the simple way is to use <code>grep -v</code> and hope that it can filter
+out all the source derivations. Otherwise you may need to use project-specific
+techniques to make sure that only intended Nix artifacts are being cached.</p>
+<h2><a class="header" href="#conclusion" id="conclusion">Conclusion</a></h2>
+<p>As we seen in this chapter, caching build results is not as straighforward if
+there are things that we want to <em>prevent</em> from being cached, such as proprietary
+source code or local secrets. This is probably not a big issue right now, because
+many people may not even be aware that their source code and secrets are leaking!</p>
+<p>Even without considering leaking secrets, there are still too many different ways
+of caching build results in Nix. While this provides more flexibility for us
+to control what to cache, the learning curve is way too high for new users
+who just want to get their Nix builds cached.</p>
+<p>Nix and Cachix may need to implement additional features to help make caching
+easier, and to protect sensitive data.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../06-infrastructure/01-caching-nix.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../06-infrastructure/01-caching-nix.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
