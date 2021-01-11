@@ -19,8 +19,8 @@ Hello World!
 nix-repl> ./.
 /path/to/nix-workshop
 
-nix-repl> ./01-getting-started
-/path/to/nix-workshop/01-getting-started
+nix-repl> ./code/01-getting-started
+/path/to/nix-workshop/code/01-getting-started
 
 nix-repl> ./not-found
 /path/to/nix-workshop/not-found
@@ -29,14 +29,14 @@ nix-repl> ./not-found
 ## Path Concatenation
 
 ```nix
-nix-repl> ./. + "01-getting-started"
-/path/to/nix-workshop/01-getting-started
+nix-repl> ./. + "code/01-getting-started"
+/path/to/nix-workshop/code/01-getting-started
 ```
 
 ## Read File
 
 ```nix
-nix-repl> builtins.readFile ./03-nix-basics/03-files/hello.txt
+nix-repl> builtins.readFile ./code/03-nix-basics/03-files/hello.txt
 "Hello World!"
 
 nix-repl> builtins.readFile /nix/store/r4mvpxzh7rgrm4j831b2yi90zq64grqm-hello.txt
@@ -73,7 +73,7 @@ nix-repl> workshop = builtins.path { path = ./.; name = "first-scrive-workshop";
 nix-repl> workshop
 "/nix/store/fp0lw035xhxqwgfqifxlb430lyw48r7m-first-scrive-workshop"
 
-nix-repl> builtins.readFile (workshop + "/03-nix-basics/03-files/hello.txt")
+nix-repl> builtins.readFile (workshop + "/code/03-nix-basics/03-files/hello.txt")
 "Hello World!"
 ```
 
@@ -85,10 +85,10 @@ in the Nix store. i.e. Name of Nix artifacts depend on the name of the original
 file / directory.
 
 ```nix
-nix-repl> builtins.path { path = ./03-nix-basics/03-files/hello.txt; }
+nix-repl> builtins.path { path = ./code/03-nix-basics/03-files/hello.txt; }
 "/nix/store/925f1jb1ajrypjbyq7rylwryqwizvhp0-hello.txt"
 
-nix-repl> builtins.path { path = ./03-nix-basics/03-files/hello-2.txt; }
+nix-repl> builtins.path { path = ./code/03-nix-basics/03-files/hello-2.txt; }
 "/nix/store/bghk1lsjcylfm05j00zj5j42lv09i79z-hello-2.txt"
 ```
 
@@ -97,7 +97,7 @@ Solution: give a fixed name to path artifacts:
 ```nix
 nix-repl> builtins.path {
             name = "hello.txt";
-            path = ./03-nix-basics/03-files/hello-2.txt;
+            path = ./code/03-nix-basics/03-files/hello-2.txt;
           }
 "/nix/store/925f1jb1ajrypjbyq7rylwryqwizvhp0-hello.txt"
 ```

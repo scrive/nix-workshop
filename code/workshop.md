@@ -1,1 +1,0 @@
-# Scrive Nix Workshop

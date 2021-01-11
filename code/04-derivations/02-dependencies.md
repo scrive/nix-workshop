@@ -16,7 +16,7 @@ Now we build a greet program in [greet.nix](./02-dependencies/greet.nix):
 ```
 
 ```bash
-$ nix-build 04-derivations/02-dependencies/greet.nix
+$ nix-build code/04-derivations/02-dependencies/greet.nix
 these derivations will be built:
   /nix/store/97lmyym0isl0ism7pfnv1b0ls4cahpi8-greet.drv
 building '/nix/store/97lmyym0isl0ism7pfnv1b0ls4cahpi8-greet.drv'...

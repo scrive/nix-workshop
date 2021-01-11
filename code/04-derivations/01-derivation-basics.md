@@ -224,7 +224,7 @@ from a Nix file, and then use it as if the derivation
 has been built:
 
 ```nix
-nix-repl> hello = import ./04-derivations/01-derivation-basics/hello.nix
+nix-repl> hello = import ./code/04-derivations/01-derivation-basics/hello.nix
 
 nix-repl> builtins.readFile hello
 querying info about missing paths"Hello World!"

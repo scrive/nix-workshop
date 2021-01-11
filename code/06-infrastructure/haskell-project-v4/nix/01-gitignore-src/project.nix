@@ -11,7 +11,7 @@ let
   }).gitignoreSource;
 
   src = nixpkgs.lib.cleanSourceWith {
-    name = "haskell-project";
+    name = "haskell-project-src";
     src = gitignore ../../haskell;
   };
 

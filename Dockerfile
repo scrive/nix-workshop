@@ -22,5 +22,5 @@ RUN curl -L https://nixos.org/nix/install | sh
 RUN . /home/nix/.nix-profile/etc/profile.d/nix.sh && \
   nix-channel --add https://nixos.org/channels/nixos-20.09 nixpkgs && \
   nix-channel --update && \
-  nix-env -i cachix && \
+  nix-env -iA cachix -f https://cachix.org/api/v1/install && \
   cachix use iohk

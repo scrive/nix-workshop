@@ -1,6 +1,6 @@
 # Summary
 
-- [Scrive Nix Workshop](./workshop.md)
+- [Scrive Nix Workshop](../README.md)
 
 # Getting Started
 

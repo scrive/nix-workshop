@@ -7,3 +7,4 @@ title = "Scrive Nix Workshop"
 
 [build]
 create-missing = false
+build-dir = "./book"

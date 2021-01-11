@@ -23,7 +23,7 @@ To make sure we build the fibonacci sequence from scratch each time, we can use
 Let's try `fib(0)` and `fib(1)`:
 
 ```bash
-$ time nix-build -E "import ./04-derivations/03-fibonacci/fib.nix \"$(date +%s)\" 0"
+$ time nix-build -E "import ./code/04-derivations/03-fibonacci/fib.nix \"$(date +%s)\" 0"
 these derivations will be built:
   /nix/store/yyy5fz5rsws6a812c9xc5ps1hwh9lm98-1605561354-fib-0.drv
 building '/nix/store/yyy5fz5rsws6a812c9xc5ps1hwh9lm98-1605561354-fib-0.drv'...
@@ -42,7 +42,7 @@ sys     0m0,130s
 ```
 
 ```bash
-$ time nix-build -E "import ./04-derivations/03-fibonacci/fib.nix \"$(date +%s)\" 1"
+$ time nix-build -E "import ./code/04-derivations/03-fibonacci/fib.nix \"$(date +%s)\" 1"
 these derivations will be built:
   /nix/store/qs2pc54dmd21xlhlqgzwmgfj98y1kr8n-1605561412-fib-1.drv
 building '/nix/store/qs2pc54dmd21xlhlqgzwmgfj98y1kr8n-1605561412-fib-1.drv'...
@@ -63,7 +63,7 @@ So both `fib(0)` and `fib(1)` takes roughly 4~5 seconds to build.
 Let's try `fib(2)`:
 
 ```bash
-$ time nix-build -E "import ./04-derivations/03-fibonacci/fib.nix \"$(date +%s)\" 2"
+$ time nix-build -E "import ./code/04-derivations/03-fibonacci/fib.nix \"$(date +%s)\" 2"
 these derivations will be built:
   /nix/store/r8n1v9ifk0q6mf75j35scn3s2dwa03j7-1605561535-fib-1.drv
   /nix/store/xxrzkbsnq1jpp4s5fdkpklxr3fbc0aq6-1605561535-fib-0.drv
@@ -104,7 +104,7 @@ Let's fix our prefix to see Nix cache in effect:
 
 ```bash
 $ prefix=$(date +%s)
-$ time nix-build -E "import ./04-derivations/03-fibonacci/fib.nix \"$prefix\" 4"
+$ time nix-build -E "import ./code/04-derivations/03-fibonacci/fib.nix \"$prefix\" 4"
 these derivations will be built:
   /nix/store/gz9bgzmna8v7pw5giclfhrk81dp1z0rw-1605561962-fib-1.drv
   /nix/store/y2waqw60jqawallz4q3r64iwrrihnd1p-1605561962-fib-0.drv
@@ -129,7 +129,7 @@ sys     0m0,253s
 Now run `fib(5)`:
 
 ```bash
-$ time nix-build -E "import ./04-derivations/03-fibonacci/fib.nix \"$prefix\" 5"
+$ time nix-build -E "import ./code/04-derivations/03-fibonacci/fib.nix \"$prefix\" 5"
 these derivations will be built:
   /nix/store/nyb25403l4m5n69y3djlffsyzvpwyv6g-1605561962-fib-5.drv
 building '/nix/store/nyb25403l4m5n69y3djlffsyzvpwyv6g-1605561962-fib-5.drv'...
@@ -168,7 +168,7 @@ the fibonacci derivations are going to be built unless they are needed:
 
 
 ```bash
-$ time nix-instantiate -E "import ./04-derivations/03-fibonacci/fib.nix \"$(date +%s)\" 10"
+$ time nix-instantiate -E "import ./code/04-derivations/03-fibonacci/fib.nix \"$(date +%s)\" 10"
 warning: you did not specify '--add-root'; the result might be removed by the garbage collector
 /nix/store/dwjxm9rqxfbhf4m8nbg5wzddx1j4rcpl-1605562192-fib-10.drv
 
@@ -275,7 +275,7 @@ numbers are used during the build phase of the current derivation.
 But if we somehow uses the earlier fibonacci numbers to build
 the derviation itself, Nix would behave quite differently.
 
-[`fib-serialized.nix`](./03-fibonacci/fib-serialized.nix):
+[`fib-serialized.nix`](./code/03-fibonacci/fib-serialized.nix):
 
 ```nix
 let
@@ -311,7 +311,7 @@ stdenv.mkDerivation {
 Let's try to instantiate the serialized version of `fib(4)`:
 
 ```bash
-$ time nix-instantiate -E "import ./04-derivations/03-fibonacci/fib-serialized.nix \"$(date +%s)\" 4"
+$ time nix-instantiate -E "import ./code/04-derivations/03-fibonacci/fib-serialized.nix \"$(date +%s)\" 4"
 building '/nix/store/97h18adc1358s8ri9mjzmnbvbbsj7p0a-1606145205-fib-1.drv'...
 ...
 Producing base case fib(1)...
@@ -391,10 +391,6 @@ $ nix-store -qR --include-outputs /nix/store/c29ap9ljazs7k0jx687hnm3s0rgsz2vm-16
 This has a consequence in caching Nix dependencies. Not knowing `fib(0)` to
 `fib(3)` are actually input to `fib(4)`, it would be difficult to properly
 cache these dependencies to Cachix.
-
-This is part of the reason why caching Nix dependencies in Kontrakcja can be tricky.
-There are many evaluation-time dependencies in libraries like Haskell.nix that
-cannot be properly cached.
 
 ## Import From Derivation
 
