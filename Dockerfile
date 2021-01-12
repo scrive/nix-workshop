@@ -24,3 +24,5 @@ RUN . /home/nix/.nix-profile/etc/profile.d/nix.sh && \
   nix-channel --update && \
   nix-env -iA cachix -f https://cachix.org/api/v1/install && \
   cachix use iohk
+
+RUN echo "cd ~/nix-workshop && source ./scripts/setup.sh" >> /home/nix/.profile

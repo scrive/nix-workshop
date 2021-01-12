@@ -122,20 +122,14 @@ the file `cachix-store` containing the name of your Cachix store,
 and `cachix-token` containing the auth token we have just created
 earlier.
 
-With that, we can run the following commands to setup Cachix inside
-the Docker container:
+When entering the Docker container, it will automatically source
+[`scripts/setup.sh`](../../scripts/setup.sh) to read the config
+files and run the following:
 
 ```bash
 CACHIX_STORE=$(cat ~/nix-workshop/config/cachix-store)
 cachix use $CACHIX_STORE
 cachix authtoken $(cat ~/nix-workshop/config/cachix-token)
-```
-
-Alternatively, we can run `scripts/setup.sh` to do the same thing
-as above for us:
-
-```bash
-$ source scripts/setup.sh
 ```
 
 ## Caching Fibonacci
@@ -246,7 +240,7 @@ We can also try pushing `fib-4.drv` itself to Cachix, and we can see that
 it pushes the `.drv` derivation of all its dependencies as well.
 
 ```
-echo $drv | cachix push $CACHIX_STORE
+$ echo $drv | cachix push $CACHIX_STORE
 compressing and pushing /nix/store/0hfyfy1wxlri4gdcmikg7v0ybvpkl3yl-Python-3.8.6.tar.xz.drv (856.00 B)
 compressing and pushing /nix/store/0vjq3889mc2z9v02hcw072ay0fivbshx-nuke-references.drv (1.41 KiB)
 compressing and pushing /nix/store/0rgf63snfi078knpghs1jf2q3913gd17-bootstrap-stage4-gcc-wrapper-10.2.0.drv (7.05 KiB)
@@ -263,6 +257,7 @@ we can see that the build result of
 
 ```bash
 $ drv=$(nix-instantiate ./code/04-derivations/02-dependencies/upper-greet.nix)
+$ nix-build --no-out-link $drv | cachix push $CACHIX_STORE
 these derivations will be built:
   /nix/store/wirssa651gwxv6z8ik78ac05c7f9ml3b-greet.drv
   /nix/store/aqznnbrbplwm2mvybzhp6wxw5inrq2aj-upper-greet.drv
@@ -404,36 +399,37 @@ dependencies, there is still one nuclear option
 
 ## Push All Nix Derivations
 
-`cachix push` provides a `-w,--watch-store` option to watch the global Nix
-store, and push _all_ new paths that are added to the Nix store after the
-command is called.
-
-With that we can run `cachix push` in the background, and then run `nix-build`:
+`cachix push` provides a `watch-exec` command to watch the global Nix
+store, and push _all_ new paths that are added to the Nix store during the
+execution of our command.
 
 ```bash
-$ cachix push -w $CACHIX_STORE &
-$ nix-build -E '
-  import ./code/04-derivations/03-fibonacci/fib-serialized.nix
+$ cachix watch-exec $CACHIX_STORE nix-build -- \
+  --no-out-link \
+  -E 'import ./code/04-derivations/03-fibonacci/fib-serialized.nix
     "foo" 4'
 ...
-compressing and pushing /nix/store/6mc3ccymdyfmqacrq5vyc43zb2gl81ml-foo-fib-1.drv (1.41 KiB)
+Watching /nix/store for new store paths ...
+building '/nix/store/hj0g7hn703axx44x29l27xb1nrdg83rh-foo-fib-0.drv'...
+compressing and pushing /nix/store/52j5p1a03vi8dxn7rh4s8y6n5ml318rq-foo-fib-0 (288.00 B)
 building '/nix/store/6mc3ccymdyfmqacrq5vyc43zb2gl81ml-foo-fib-1.drv'...
 ...
 compressing and pushing /nix/store/c7lwn4mfn3pk0hhvc98lg1r6z6c8pb6c-foo-fib-1 (288.00 B)
-compressing and pushing /nix/store/74x1nl7paqin5zcrkkj94bbkm25shpx9-foo-fib-2.drv (1.52 KiB)
 building '/nix/store/74x1nl7paqin5zcrkkj94bbkm25shpx9-foo-fib-2.drv'...
 ...
 compressing and pushing /nix/store/ia5arkikhbyd9drjzxm2lqgr5a1b6n9m-foo-fib-2 (288.00 B)
-compressing and pushing /nix/store/bg0kqrl14p99y1k0g47gcx7a4ik4qk1m-foo-fib-3.drv (1.52 KiB)
 building '/nix/store/bg0kqrl14p99y1k0g47gcx7a4ik4qk1m-foo-fib-3.drv'...
 ...
 compressing and pushing /nix/store/ykvgv0hvpm93glrjzpyb7hkashq5rr1q-foo-fib-3 (288.00 B)
-compressing and pushing /nix/store/m25lspbpyv09vl3pz3sf3q20ndcrilq9-foo-fib-4.drv (1.52 KiB)
 these derivations will be built:
   /nix/store/m25lspbpyv09vl3pz3sf3q20ndcrilq9-foo-fib-4.drv
+building '/nix/store/m25lspbpyv09vl3pz3sf3q20ndcrilq9-foo-fib-4.drv'...
 ...
 /nix/store/rlllddnljlv1qzlizdr97q5wbzlqpq5k-foo-fib-4
+Stopped watching /nix/store and waiting for queue to empty ...
 compressing and pushing /nix/store/rlllddnljlv1qzlizdr97q5wbzlqpq5k-foo-fib-4 (288.00 B)
+Waiting to finish: 1 pushing, 0 in queue
+Done.
 ```
 
 We can see during the build that Nix pushes a lot of things to Cachix, including all the

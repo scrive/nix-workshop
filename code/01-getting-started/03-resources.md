@@ -8,3 +8,5 @@
   Nix resources.
 
 - [Nix Pills](https://nixos.org/guides/nix-pills/) - Alternative Nix tutorial.
+
+- [Gabriel439's Nix and Haskell tutorial](https://github.com/Gabriel439/haskell-nix)

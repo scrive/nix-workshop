@@ -350,4 +350,5 @@ to control what to cache, the learning curve is way too high for new users
 who just want to get their Nix builds cached.
 
 Nix and Cachix may need to implement additional features to help make caching
-easier, and to protect sensitive data.
+easier, and to protect sensitive data. For example, Cachix may add a command
+line option to exclude paths matching specific pattern to never be pushed.
