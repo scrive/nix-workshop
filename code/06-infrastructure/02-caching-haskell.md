@@ -204,16 +204,14 @@ However it might still be possible that developers would add new secrets
 locally without adding them to `.gitignore`. In such case, the secret
 can still potentially leak to Cachix.
 
-One way to be absolute sure that secrets cannot be leaked is by running
-the builds on CI instead of on personal machines. But even in such case,
-it is still very easy to write a CI job that place credentials in the
-local directories while building. Then the secrets on the CI can still
-leak to the public.
+The best way to prevent secrets from leaking is to build from a published
+git or tarball URL. That way it will be less likely for us to accidentally
+mix up and leak the secrets in our local file systems. This will
+however require more complex project organization, as we have to place
+the Nix code separately from the source code.
 
-To be absolutely sure that local secrets cannot leak together with the
-source code, the best way is still to avoid pushing source code to
+Otherwise, it is still recommended to avoid pushing source code to
 Cachix in the first place, both for proprietary and open source projects.
-
 After all, users will almost always build a Nix project with their own
 local source code, or source that are fetched directly from git or
 remote URLs. There is rarely a need to use Cachix to distribute source
