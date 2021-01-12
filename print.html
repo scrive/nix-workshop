@@ -354,6 +354,9 @@ Nix resources.</p>
 <li>
 <p><a href="https://nixos.org/guides/nix-pills/">Nix Pills</a> - Alternative Nix tutorial.</p>
 </li>
+<li>
+<p><a href="https://github.com/Gabriel439/haskell-nix">Gabriel439's Nix and Haskell tutorial</a></p>
+</li>
 </ul>
 <h1><a class="header" href="#install-global-packages" id="install-global-packages">Install Global Packages</a></h1>
 <pre><code class="language-bash">$ nix-env -i hello
@@ -4002,15 +4005,12 @@ Cachix credentials in <a href="06-infrastructure/../../config">nix-workshop/conf
 the file <code>cachix-store</code> containing the name of your Cachix store,
 and <code>cachix-token</code> containing the auth token we have just created
 earlier.</p>
-<p>With that, we can run the following commands to setup Cachix inside
-the Docker container:</p>
+<p>When entering the Docker container, it will automatically source
+<a href="06-infrastructure/../../scripts/setup.sh"><code>scripts/setup.sh</code></a> to read the config
+files and run the following:</p>
 <pre><code class="language-bash">CACHIX_STORE=$(cat ~/nix-workshop/config/cachix-store)
 cachix use $CACHIX_STORE
 cachix authtoken $(cat ~/nix-workshop/config/cachix-token)
-</code></pre>
-<p>Alternatively, we can run <code>scripts/setup.sh</code> to do the same thing
-as above for us:</p>
-<pre><code class="language-bash">$ source scripts/setup.sh
 </code></pre>
 <h2><a class="header" href="#caching-fibonacci" id="caching-fibonacci">Caching Fibonacci</a></h2>
 <p>Now that our Cachix store is setup properly, we can try to actually
@@ -4092,7 +4092,7 @@ and push each of the path to the specified Cachix store. More specifically,
 dependency, so only the build itself is pushed to Cachix.</p>
 <p>We can also try pushing <code>fib-4.drv</code> itself to Cachix, and we can see that
 it pushes the <code>.drv</code> derivation of all its dependencies as well.</p>
-<pre><code>echo $drv | cachix push $CACHIX_STORE
+<pre><code>$ echo $drv | cachix push $CACHIX_STORE
 compressing and pushing /nix/store/0hfyfy1wxlri4gdcmikg7v0ybvpkl3yl-Python-3.8.6.tar.xz.drv (856.00 B)
 compressing and pushing /nix/store/0vjq3889mc2z9v02hcw072ay0fivbshx-nuke-references.drv (1.41 KiB)
 compressing and pushing /nix/store/0rgf63snfi078knpghs1jf2q3913gd17-bootstrap-stage4-gcc-wrapper-10.2.0.drv (7.05 KiB)
@@ -4105,6 +4105,7 @@ compressing and pushing /nix/store/hj0g7hn703axx44x29l27xb1nrdg83rh-foo-fib-0.dr
 we can see that the build result of
 <a href="06-infrastructure/../04-derivations/02-dependencies/greet.nix"><code>greet.nix</code></a> is pushed as well.</p>
 <pre><code class="language-bash">$ drv=$(nix-instantiate ./code/04-derivations/02-dependencies/upper-greet.nix)
+$ nix-build --no-out-link $drv | cachix push $CACHIX_STORE
 these derivations will be built:
   /nix/store/wirssa651gwxv6z8ik78ac05c7f9ml3b-greet.drv
   /nix/store/aqznnbrbplwm2mvybzhp6wxw5inrq2aj-upper-greet.drv
@@ -4215,33 +4216,35 @@ All done.
 dependencies to push. But in case we really want to push all evaluation time
 dependencies, there is still one nuclear option</p>
 <h2><a class="header" href="#push-all-nix-derivations" id="push-all-nix-derivations">Push All Nix Derivations</a></h2>
-<p><code>cachix push</code> provides a <code>-w,--watch-store</code> option to watch the global Nix
-store, and push <em>all</em> new paths that are added to the Nix store after the
-command is called.</p>
-<p>With that we can run <code>cachix push</code> in the background, and then run <code>nix-build</code>:</p>
-<pre><code class="language-bash">$ cachix push -w $CACHIX_STORE &amp;
-$ nix-build -E '
-  import ./code/04-derivations/03-fibonacci/fib-serialized.nix
+<p><code>cachix push</code> provides a <code>watch-exec</code> command to watch the global Nix
+store, and push <em>all</em> new paths that are added to the Nix store during the
+execution of our command.</p>
+<pre><code class="language-bash">$ cachix watch-exec $CACHIX_STORE nix-build -- \
+  --no-out-link \
+  -E 'import ./code/04-derivations/03-fibonacci/fib-serialized.nix
     &quot;foo&quot; 4'
 ...
-compressing and pushing /nix/store/6mc3ccymdyfmqacrq5vyc43zb2gl81ml-foo-fib-1.drv (1.41 KiB)
+Watching /nix/store for new store paths ...
+building '/nix/store/hj0g7hn703axx44x29l27xb1nrdg83rh-foo-fib-0.drv'...
+compressing and pushing /nix/store/52j5p1a03vi8dxn7rh4s8y6n5ml318rq-foo-fib-0 (288.00 B)
 building '/nix/store/6mc3ccymdyfmqacrq5vyc43zb2gl81ml-foo-fib-1.drv'...
 ...
 compressing and pushing /nix/store/c7lwn4mfn3pk0hhvc98lg1r6z6c8pb6c-foo-fib-1 (288.00 B)
-compressing and pushing /nix/store/74x1nl7paqin5zcrkkj94bbkm25shpx9-foo-fib-2.drv (1.52 KiB)
 building '/nix/store/74x1nl7paqin5zcrkkj94bbkm25shpx9-foo-fib-2.drv'...
 ...
 compressing and pushing /nix/store/ia5arkikhbyd9drjzxm2lqgr5a1b6n9m-foo-fib-2 (288.00 B)
-compressing and pushing /nix/store/bg0kqrl14p99y1k0g47gcx7a4ik4qk1m-foo-fib-3.drv (1.52 KiB)
 building '/nix/store/bg0kqrl14p99y1k0g47gcx7a4ik4qk1m-foo-fib-3.drv'...
 ...
 compressing and pushing /nix/store/ykvgv0hvpm93glrjzpyb7hkashq5rr1q-foo-fib-3 (288.00 B)
-compressing and pushing /nix/store/m25lspbpyv09vl3pz3sf3q20ndcrilq9-foo-fib-4.drv (1.52 KiB)
 these derivations will be built:
   /nix/store/m25lspbpyv09vl3pz3sf3q20ndcrilq9-foo-fib-4.drv
+building '/nix/store/m25lspbpyv09vl3pz3sf3q20ndcrilq9-foo-fib-4.drv'...
 ...
 /nix/store/rlllddnljlv1qzlizdr97q5wbzlqpq5k-foo-fib-4
+Stopped watching /nix/store and waiting for queue to empty ...
 compressing and pushing /nix/store/rlllddnljlv1qzlizdr97q5wbzlqpq5k-foo-fib-4 (288.00 B)
+Waiting to finish: 1 pushing, 0 in queue
+Done.
 </code></pre>
 <p>We can see during the build that Nix pushes a lot of things to Cachix, including all the
 intermediary <code>.drv</code> files and also the downloaded tarballs from sources like nixpkgs,
@@ -4554,7 +4557,8 @@ of caching build results in Nix. While this provides more flexibility for us
 to control what to cache, the learning curve is way too high for new users
 who just want to get their Nix builds cached.</p>
 <p>Nix and Cachix may need to implement additional features to help make caching
-easier, and to protect sensitive data.</p>
+easier, and to protect sensitive data. For example, Cachix may add a command
+line option to exclude paths matching specific pattern to never be pushed.</p>
 
                     </main>
 
