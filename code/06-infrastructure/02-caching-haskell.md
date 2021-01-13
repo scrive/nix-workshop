@@ -73,7 +73,7 @@ main = putStrLn "Hello, World!"
 
 Pushing source code to Cachix might not be a big deal for open source projects.
 However this may be an issue for propritary projects with strict IP policies.
-This could be partially mitigated by having a private Cachix store. But we
+This could be partially mitigated by paying for a private Cachix store. But we
 just have to be aware of it and be careful.
 
 ## Leaking Secrets
