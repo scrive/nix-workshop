@@ -169,10 +169,11 @@ packages can be as simple as a hello world output, or as large as projects
 such as GHC and GCC. If every time we try to build our Nix package from
 scratch together with all its dependencies, it is going to take unreasonably
 long time.</p>
-<p>Fortunately, NixOS provides cache for most packages provided by nixpkgs,
-hosted at https://cache.nixos.org. This cache is usually enabled by default
-in your local <code>nix.conf</code> file. Thanks to this, we can simply download
-the packages in nixpkgs instead of building them from scratch.</p>
+<p>Fortunately, NixOS provides
+<a href="https://cache.nixos.org">a cache for most packages provided by nixpkgs</a>.
+The cache is usually enabled by default in your local <code>nix.conf</code> file.
+Thanks to this, we can simply download the packages in nixpkgs instead of
+building them from scratch.</p>
 <p>The default cache from cache.nixos.org is usually sufficient if we are
 just using Nix to build small projects. But what if we are using Nix to
 build large projects that take hours to build? What if we need to
@@ -220,9 +221,9 @@ machine using Nix:</p>
 $ nix-env -i cachix
 ...
 $ cachix --version
-cachix 0.5.1
+cachix 0.6.0
 </code></pre>
-<p>At the point of writing the version of our <code>cachix</code> command is <code>0.5.1</code>.
+<p>At the point of writing the version of our <code>cachix</code> command is <code>0.6.0</code>.
 We can then configure Nix to use our Cachix store by running:</p>
 <pre><code class="language-bash">cachix use my-awesome-nix-cache
 </code></pre>
@@ -462,7 +463,7 @@ All done.
 </code></pre>
 <p>At this point, there is no simple way to find out all evaluation time
 dependencies to push. But in case we really want to push all evaluation time
-dependencies, there is still one nuclear option</p>
+dependencies, there is still one nuclear option.</p>
 <h2><a class="header" href="#push-all-nix-derivations" id="push-all-nix-derivations">Push All Nix Derivations</a></h2>
 <p><code>cachix push</code> provides a <code>watch-exec</code> command to watch the global Nix
 store, and push <em>all</em> new paths that are added to the Nix store during the
@@ -494,8 +495,8 @@ compressing and pushing /nix/store/rlllddnljlv1qzlizdr97q5wbzlqpq5k-foo-fib-4 (2
 Waiting to finish: 1 pushing, 0 in queue
 Done.
 </code></pre>
-<p>We can see during the build that Nix pushes a lot of things to Cachix, including all the
-intermediary <code>.drv</code> files and also the downloaded tarballs from sources like nixpkgs,
+<p>We can see during the build that Nix pushes a lot of things to Cachix, including
+the downloaded tarballs from sources like nixpkgs,
 which are in fact also evaluation time dependencies.</p>
 <p>Now if we go to a fresh machine and try to build <code>fib-serialized</code>, we can see
 that this time it is correctly downloading the build results of <code>fib(0)</code> to
@@ -517,8 +518,9 @@ these derivations will be built:
 building '/nix/store/wfqhsi5rccz5wb620axn1w3sbjhalw1s-foo-fib-6.drv'...
 /nix/store/7rx619rpisnh9sw2g3sk6yq07jb563yh-foo-fib-6
 </code></pre>
-<p>The <code>-w</code> option provides very coarse-grained control for caching everything to
-Cachix. This can be useful if we do not care about what is being cached, and
+<p>There is also <code>cachix watch-store</code> command that provides very coarse-grained
+control for caching everything to Cachix.
+This can be useful if we do not care about what is being cached, and
 instead just want to cache everything.</p>
 <p>However as we will see in the next chapter, there might be things that we
 do <em>not</em> want to cache to Cachix, such as proprietary source code or
