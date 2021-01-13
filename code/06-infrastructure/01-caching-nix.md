@@ -6,10 +6,11 @@ such as GHC and GCC. If every time we try to build our Nix package from
 scratch together with all its dependencies, it is going to take unreasonably
 long time.
 
-Fortunately, NixOS provides cache for most packages provided by nixpkgs,
-hosted at https://cache.nixos.org. This cache is usually enabled by default
-in your local `nix.conf` file. Thanks to this, we can simply download
-the packages in nixpkgs instead of building them from scratch.
+Fortunately, NixOS provides
+[a cache for most packages provided by nixpkgs](https://cache.nixos.org).
+The cache is usually enabled by default in your local `nix.conf` file.
+Thanks to this, we can simply download the packages in nixpkgs instead of
+building them from scratch.
 
 The default cache from cache.nixos.org is usually sufficient if we are
 just using Nix to build small projects. But what if we are using Nix to
@@ -74,10 +75,10 @@ $ nix-channel --update
 $ nix-env -i cachix
 ...
 $ cachix --version
-cachix 0.5.1
+cachix 0.6.0
 ```
 
-At the point of writing the version of our `cachix` command is `0.5.1`.
+At the point of writing the version of our `cachix` command is `0.6.0`.
 We can then configure Nix to use our Cachix store by running:
 
 ```bash
@@ -395,7 +396,7 @@ All done.
 
 At this point, there is no simple way to find out all evaluation time
 dependencies to push. But in case we really want to push all evaluation time
-dependencies, there is still one nuclear option
+dependencies, there is still one nuclear option.
 
 ## Push All Nix Derivations
 
@@ -432,8 +433,8 @@ Waiting to finish: 1 pushing, 0 in queue
 Done.
 ```
 
-We can see during the build that Nix pushes a lot of things to Cachix, including all the
-intermediary `.drv` files and also the downloaded tarballs from sources like nixpkgs,
+We can see during the build that Nix pushes a lot of things to Cachix, including
+the downloaded tarballs from sources like nixpkgs,
 which are in fact also evaluation time dependencies.
 
 Now if we go to a fresh machine and try to build `fib-serialized`, we can see
@@ -459,8 +460,9 @@ building '/nix/store/wfqhsi5rccz5wb620axn1w3sbjhalw1s-foo-fib-6.drv'...
 /nix/store/7rx619rpisnh9sw2g3sk6yq07jb563yh-foo-fib-6
 ```
 
-The `-w` option provides very coarse-grained control for caching everything to
-Cachix. This can be useful if we do not care about what is being cached, and
+There is also `cachix watch-store` command that provides very coarse-grained
+control for caching everything to Cachix.
+This can be useful if we do not care about what is being cached, and
 instead just want to cache everything.
 
 However as we will see in the next chapter, there might be things that we
