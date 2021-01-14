@@ -82,7 +82,7 @@ Dependency resolution is a complex topic on its own. Different languages
 have their own package managers that deal with dependency resolution
 differently. e.g. cabal-install, npm, mvn, etc. There are also OS-level
 package managers that have to deal with dependencies resolution.
-e.g. Debian, Ubuntu, Fedora, Arch, etc.
+e.g. apt (for Debian and Ubuntu), rpm (Fedora), pacman (Arch Linux, Manjaro), etc.
 
 To support package management across multiple languages and multiple
 platforms, Nix has its own unique challenge of managing dependencies.
