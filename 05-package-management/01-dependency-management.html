@@ -165,7 +165,7 @@
                     <main>
                         <h1><a class="header" href="#dependency-management" id="dependency-management">Dependency Management</a></h1>
 <p>We have seen in previous chapters that Nix makes it easy to construct
-complex build depedencies with several benefits:</p>
+complex build dependencies with several benefits:</p>
 <ul>
 <li>Non-related dependencies can be built in parallel.</li>
 <li>Reproducible builds make it easy to cache and reuse dependencies.</li>
@@ -232,7 +232,7 @@ usable by both <code>stick</code> and <code>planks</code>.</p>
 have their own package managers that deal with dependency resolution
 differently. e.g. cabal-install, npm, mvn, etc. There are also OS-level
 package managers that have to deal with dependencies resolution.
-e.g. Debian, Ubuntu, Fedora, Arch, etc.</p>
+e.g. apt (for Debian and Ubuntu), rpm (Fedora), pacman (Arch Linux, Manjaro), etc.</p>
 <p>To support package management across multiple languages and multiple
 platforms, Nix has its own unique challenge of managing dependencies.
 At this point, Nix itself do not provide any mechanism for resolving
@@ -289,7 +289,7 @@ package manager used.</p>
 <h2><a class="header" href="#upgrading-dependencies" id="upgrading-dependencies">Upgrading Dependencies</a></h2>
 <p>The strategies for pinning dependencies does not eliminate the
 need to resolving the plans in the first place, or the need
-to upgrade or install new depedencies.</p>
+to upgrade or install new dependencies.</p>
 <p>In the ideal world, we would like to be able to just specify
 the dependencies we need, and have the package manager give
 us the best versions that just work. But reality is messy,
@@ -331,7 +331,7 @@ valid combinations of component versions, and not support them.</p>
 <h3><a class="header" href="#lockfiles-in-monorepo" id="lockfiles-in-monorepo">Lockfiles in Monorepo</a></h3>
 <p>Package managers such as <code>godep</code> check in the source code of dependencies
 into a monorepo. However that can greatly pollute the commit history.
-As an alternative, we can check in just the lockfiles into the repostory,
+As an alternative, we can check in just the lockfiles into the repository,
 and have the package managers fetch them separately.</p>
 <p>Checking in the lock file is still effectively mono-versioning the
 dependencies. For each commit in the repository, we support only the

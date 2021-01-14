@@ -311,9 +311,9 @@ sys     0m0,047s
 </code></pre>
 <p>Nix determines whether a derivation needs to be rebuilt based on the input
 derivation. For our case, in both calls to <code>hello-sleep.nix</code>,
-<code>nix-build</code> instantiates the derivation behind the scene at got
-<code>/nix/store/k3cq3qn2cx7vmqjrzlc5wcbm3ci75yxy-hello.txt.drv</code>
-as the result. So it determines that the result has previously already
+<code>nix-build</code> instantiates the derivation behind the scene: i.e.
+<code>/nix/store/58ngrpwgv6hl633a1iyjbmjqlbdqjw92-hello.txt.drv</code>. 
+So it determines that the result has previously already
 been built, and reuse the same Nix artifact.</p>
 <h2><a class="header" href="#derivation-as-file" id="derivation-as-file">Derivation as File</a></h2>
 <p>With the duck-typing nature of Nix, derivations acts just like files in Nix.
