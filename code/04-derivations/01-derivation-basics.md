@@ -194,9 +194,9 @@ sys     0m0,047s
 
 Nix determines whether a derivation needs to be rebuilt based on the input
 derivation. For our case, in both calls to `hello-sleep.nix`,
-`nix-build` instantiates the derivation behind the scene and got
-`/nix/store/k3cq3qn2cx7vmqjrzlc5wcbm3ci75yxy-hello.txt.drv`
-as the result. So it determines that the result has previously already
+`nix-build` instantiates the derivation behind the scene: i.e.
+`/nix/store/58ngrpwgv6hl633a1iyjbmjqlbdqjw92-hello.txt.drv`. 
+So it determines that the result has previously already
 been built, and reuses the same Nix artifact.
 
 ## Derivation as File
