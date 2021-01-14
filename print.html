@@ -1014,16 +1014,16 @@ derivation. For our case, in both calls to <code>hello-sleep.nix</code>,
 <code>nix-build</code> instantiates the derivation behind the scene: i.e.
 <code>/nix/store/58ngrpwgv6hl633a1iyjbmjqlbdqjw92-hello.txt.drv</code>. 
 So it determines that the result has previously already
-been built, and reuse the same Nix artifact.</p>
+been built, and reuses the same Nix artifact.</p>
 <h2><a class="header" href="#derivation-as-file" id="derivation-as-file">Derivation as File</a></h2>
-<p>With the duck-typing nature of Nix, derivations acts just like files in Nix.
+<p>With the duck-typing nature of Nix, derivations act just like files in Nix.
 We can actually treat the <code>hello-drv</code> we defined earlier as a file and
 read from it:</p>
 <pre><code class="language-nix">nix-repl&gt; builtins.readFile hello-drv
 querying info about missing paths&quot;Hello World!&quot;
 </code></pre>
-<p>How does that works? Internally Nix lazily builds a
-derivation when it is evaluated, and turn it into
+<p>How does that work? Internally Nix lazily builds a
+derivation when it is evaluated, and turns it into
 a file path. We can verify that by using <code>builtins.toPath</code>:</p>
 <pre><code class="language-nix">nix-repl&gt; builtins.toPath hello-drv
 &quot;/nix/store/z449wrqvwncs8clk7bsliabv1g1ci3n3-hello.txt&quot;
