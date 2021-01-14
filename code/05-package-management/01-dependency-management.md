@@ -1,7 +1,7 @@
 # Dependency Management
 
 We have seen in previous chapters that Nix makes it easy to construct
-complex build depedencies with several benefits:
+complex build dependencies with several benefits:
 
   - Non-related dependencies can be built in parallel.
   - Reproducible builds make it easy to cache and reuse dependencies.
@@ -82,7 +82,7 @@ Dependency resolution is a complex topic on its own. Different languages
 have their own package managers that deal with dependency resolution
 differently. e.g. cabal-install, npm, mvn, etc. There are also OS-level
 package managers that have to deal with dependencies resolution.
-e.g. Debian, Ubuntu, Fedora, Arch, etc.
+e.g. apt (for Debian and Ubuntu), rpm (Fedora), pacman (Arch Linux, Manjaro), etc.
 
 To support package management across multiple languages and multiple
 platforms, Nix has its own unique challenge of managing dependencies.
@@ -154,7 +154,7 @@ package manager used.
 
 The strategies for pinning dependencies does not eliminate the
 need to resolving the plans in the first place, or the need
-to upgrade or install new depedencies.
+to upgrade or install new dependencies.
 
 In the ideal world, we would like to be able to just specify
 the dependencies we need, and have the package manager give
@@ -209,7 +209,7 @@ valid combinations of component versions, and not support them.
 
 Package managers such as `godep` check in the source code of dependencies
 into a monorepo. However that can greatly pollute the commit history.
-As an alternative, we can check in just the lockfiles into the repostory,
+As an alternative, we can check in just the lockfiles into the repository,
 and have the package managers fetch them separately.
 
 Checking in the lock file is still effectively mono-versioning the
