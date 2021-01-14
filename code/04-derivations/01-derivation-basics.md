@@ -197,11 +197,11 @@ derivation. For our case, in both calls to `hello-sleep.nix`,
 `nix-build` instantiates the derivation behind the scene: i.e.
 `/nix/store/58ngrpwgv6hl633a1iyjbmjqlbdqjw92-hello.txt.drv`. 
 So it determines that the result has previously already
-been built, and reuse the same Nix artifact.
+been built, and reuses the same Nix artifact.
 
 ## Derivation as File
 
-With the duck-typing nature of Nix, derivations acts just like files in Nix.
+With the duck-typing nature of Nix, derivations act just like files in Nix.
 We can actually treat the `hello-drv` we defined earlier as a file and
 read from it:
 
@@ -210,8 +210,8 @@ nix-repl> builtins.readFile hello-drv
 querying info about missing paths"Hello World!"
 ```
 
-How does that works? Internally Nix lazily builds a
-derivation when it is evaluated, and turn it into
+How does that work? Internally Nix lazily builds a
+derivation when it is evaluated, and turns it into
 a file path. We can verify that by using `builtins.toPath`:
 
 ```nix
