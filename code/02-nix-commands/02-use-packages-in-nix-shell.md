@@ -1,7 +1,6 @@
 # Nix Shell
 
-You can use Nix packages without installing them globally on your machine.
-
+You can use Nix packages without installing them globally on your machine. This is a good way to bring in the tools you need for individual projects.
 
 ```bash
 $ nix-shell -p hello
@@ -24,3 +23,7 @@ $ nix-shell -p nodejs ghc cabal-install
 [nix-shell:nix-workshop]$ which cabal
 /nix/store/060x141b9fz2pm6yz4zn3i0ncavbdbf7-cabal-install-3.2.0.0/bin/cabal
 ```
+
+## Using `shell.nix`
+
+`nix-shell` will read `shell.nix` if it exists, so if you ever see a `shell.nix` in a project, know that you can run `nix-shell` to get a temporary environment with the tools you'll need. Managing temporary environments --- for any tool, written in any language --- is one of Nix's killer features.
