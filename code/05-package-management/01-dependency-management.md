@@ -121,17 +121,10 @@ back the same dependencies.
 ### Package Lock
 
 One common approach is to create a lock file containing the result of
-running the dependency resolution algorithm, and check in the lock file
-into the version control system. Examples are `package-lock.json` and
-`cabal.project.freeze`. With the lock files available, we can even
+running the dependency resolution algorithm, and include the lock file into the version control system (e.g. GIT). For instance the lock file could be  `package-lock.json` (for npm) or
+`cabal.project.freeze` (for haskell projects). With the lock files available, we can even
 skip dependency resolution in the future, and just use the result in the
 lock file.
-
-Although lock files help provide strong reproducibility to managing
-dependencies, it has the downside of adding noise to version control.
-When we generate a new lock file in the future to get new dependency
-versions, the new lock file may contain a lot of changes, and this
-may affect the diff output when inspect the commit history.
 
 ### Registry Snapshot
 
@@ -143,8 +136,7 @@ With that we can specify the timestamp of the time we first
 build our dependencies, and not worry about new versions of
 packages being added in the future.
 
-Specifying the snapshot version of the registry also result in
-cleaner commit logs. However there can still be other variables
+However there can still be other variables
 that can affect the outcome. For example, the package manager
 itself may update the dependency resolution algorithm, so we
 may still get different results depending on the version of
@@ -207,12 +199,12 @@ valid combinations of component versions, and not support them.
 
 ### Lockfiles in Monorepo
 
-Package managers such as `godep` check in the source code of dependencies
-into a monorepo. However that can greatly pollute the commit history.
-As an alternative, we can check in just the lockfiles into the repository,
+Package managers such as `godep` check the source code of dependencies
+into a monorepo.
+As an alternative, we can check just the lockfiles into the repository,
 and have the package managers fetch them separately.
 
-Checking in the lock file is still effectively mono-versioning the
+Checking the lock file is still effectively mono-versioning the
 dependencies. For each commit in the repository, we support only the
 exact dependencies specified in the lockfile of that commit. We simply
 pretend that no other versions of the dependencies are available.
@@ -258,8 +250,8 @@ At its core, there are a few factors involved.
 
 Mono-versioning places much higher value in stability. People in this camp
 want to make sure each version of the software always work. They achieve
-that by significantly limit the number of versions of the software,
-and throughoutly test the software before upgrading any version.
+that by significantly limiting the number of versions of the software,
+and thoroughly testing softwares before upgrading any version.
 
 Mono-versioning tend to put emphasis in LTS (long term support) releases,
 where its components are guaranteed to not have any breaking changes
@@ -277,7 +269,7 @@ dependencies, at the risk of it may break on some of the software.
 
 ## Blurring the Line
 
-There is no clear cut of whether the mono-versioning or multi-versioning
+There is no clear cut off whether the mono-versioning or multi-versioning
 approaches are better. In practice, we tend to take a hybrid approach
 in large software projects.
 
