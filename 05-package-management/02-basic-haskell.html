@@ -439,9 +439,9 @@ which is also mono-versioned. However recently the team have
 <a href="https://discourse.nixos.org/t/new-ghc-default-version-8-10-2-package-versions-now-from-stackage-nightly/10117">switched to Stackage nightly</a>
 to reduce the maintenance burden.</p>
 <h3><a class="header" href="#callpackage-pattern" id="callpackage-pattern">Callpackage Pattern</a></h3>
-<p>As we discussed in previous chapter, Nix itself do not provide any
+<p>As we discussed in previous chapter, Nix itself does not provide any
 mechanism for dependency resolution. So nixpkgs come out with the
-<a href="https://nixos.org/guides/nix-pills/callpackage-design-pattern.html">Callpackge design pattern</a>
+<a href="https://nixos.org/guides/nix-pills/callpackage-design-pattern.html">Callpackage design pattern</a>
 to manage dependencies in nixpkgs.</p>
 <p>In short, we define new packages in function form which accept
 dependencies as function inputs. Let's call these functions
