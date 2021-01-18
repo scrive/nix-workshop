@@ -113,10 +113,10 @@ that causes `pickaxe-1.0.0` to break.
 
 ## Version Pinning
 
-Even without Nix, there is a strong use case to fix the pin versions
-to a particular snapshot in time. This is to make sure no matter when
-we try to resolve the dependencies in the future, we will always get
-back the exact dependencies.
+Even without Nix, there is a strong use case to pin the versions
+to a particular snapshot of the registry. This is to make sure that, no matter when
+we try to resolve the dependencies, we will always get
+back the same dependencies.
 
 ### Package Lock
 
