@@ -71,7 +71,7 @@ Hello World!
 ## Explicit Dependencies
 
 Inside `builtins.derivation`, almost all dependencies have to be provided
-explicitly, even then bash shell that we are running on. Since we specify
+explicitly, even the bash shell that we are running on. Since we specify
 `bash` as the builder program, it is also shown in the list of `inputDrvs`
 of our derivation.
 

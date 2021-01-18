@@ -249,7 +249,7 @@ From the [nix-shell manual](https://nixos.org/manual/nix/unstable/command-ref/ni
 
 ## Deriving Environment at Build Time
 
-One question we might ask is, why is `stdenv` doing the heavyweight steps only
+One question we might ask is, why is `stdenv` doing the heavy lifting steps only
 at build time inside a shell script. We could as well parse the dependencies
 inside Nix at evaluation time, and produce a derivation with everything
 setup already.

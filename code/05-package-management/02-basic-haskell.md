@@ -234,9 +234,9 @@ to reduce the maintenance burden.
 
 ### Callpackage Pattern
 
-As we discussed in previous chapter, Nix itself do not provide any
+As we discussed in previous chapter, Nix itself does not provide any
 mechanism for dependency resolution. So nixpkgs come out with the
-[Callpackge design pattern](https://nixos.org/guides/nix-pills/callpackage-design-pattern.html)
+[Callpackage design pattern](https://nixos.org/guides/nix-pills/callpackage-design-pattern.html)
 to manage dependencies in nixpkgs.
 
 In short, we define new packages in function form which accept
