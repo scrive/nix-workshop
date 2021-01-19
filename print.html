@@ -3872,7 +3872,7 @@ of the Hackage registry is pretty large, taking over 100 MiB after compression.<
 If the Haskell ecosystem were to grow to the size of Node.js, not only
 the nixpkgs and Haskell packages in nixpkgs have to be re-architected,
 but also Cabal itself has to come up with better ways of managing dependencies.</p>
-<p>Compared to Cabal, package managers like npm and cargo do not simply download
+<p>Compared to Cabal, package managers like npm do not simply download
 the entire state of the package registries. Instead, the package registries
 provide APIs for the package managers to query the available versions of
 specific packages. This way, the local package managers only have to query
@@ -3888,7 +3888,7 @@ answer given the same set of queries.</p>
 <a href="https://github.com/svanderburg/node2nix">node2nix</a> and
 <a href="https://github.com/cargo2nix/cargo2nix">cargo2nix</a> to
 convert the dependency resolution results directly into Nix expressions.</p>
-<p>For these tools to work, they has to run outside of a Nix build to query
+<p>For these tools to work, they have to run outside of a Nix build to query
 the package registry, and then generate the Nix expressions. Typically,
 the Nix expressions are also derived directly from the lock files such as
 <code>package-lock.json</code> and <code>Cargo.lock</code>.</p>
