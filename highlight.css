@@ -4,6 +4,10 @@ Railscasts-like style (c) Visoft, Inc. (Damien White)
 
 */
 
+:root {
+  --inline-code-color: #e6e1dc;
+}
+
 .hljs {
   display: block;
   overflow-x: auto;
