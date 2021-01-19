@@ -22,7 +22,7 @@ If the Haskell ecosystem were to grow to the size of Node.js, not only
 the nixpkgs and Haskell packages in nixpkgs have to be re-architected,
 but also Cabal itself has to come up with better ways of managing dependencies.
 
-Compared to Cabal, package managers like npm and cargo do not simply download
+Compared to Cabal, package managers like npm do not simply download
 the entire state of the package registries. Instead, the package registries
 provide APIs for the package managers to query the available versions of
 specific packages. This way, the local package managers only have to query
@@ -42,7 +42,7 @@ Languages like Node.js and Rust come out with tools like
 [cargo2nix](https://github.com/cargo2nix/cargo2nix) to
 convert the dependency resolution results directly into Nix expressions.
 
-For these tools to work, they has to run outside of a Nix build to query
+For these tools to work, they have to run outside of a Nix build to query
 the package registry, and then generate the Nix expressions. Typically,
 the Nix expressions are also derived directly from the lock files such as
 `package-lock.json` and `Cargo.lock`.
