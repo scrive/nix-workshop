@@ -8,3 +8,7 @@ title = "Scrive Nix Workshop"
 [build]
 create-missing = false
 build-dir = "./book"
+
+[output.html]
+default-theme = "navy"
+preferred-dark-theme = "navy"
