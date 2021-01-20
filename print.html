@@ -364,6 +364,7 @@ Nix resources.</p>
 </li>
 </ul>
 <h1><a class="header" href="#install-global-packages" id="install-global-packages">Install Global Packages</a></h1>
+<p>For newcomers, we can thought of Nix as a supercharged package manager. Similar to traditional package managers, we can use Nix to install packages globally. Nix &quot;installs&quot; a global package by adding symlinkgs to <code>~/.nix-profile/bin</code>, which should be automatically included in your shell's <code>$PATH</code>.</p>
 <pre><code class="language-bash">$ nix-env -i hello
 installing 'hello-2.10'
 building '/nix/store/mlfrpy1ahv3arh2n23p45vdpm0p4nl1x-user-environment.drv'...
@@ -382,8 +383,9 @@ $ readlink $(which hello)
 <pre><code class="language-bash">$ nix-env --uninstall hello
 uninstalling 'hello-2.10'
 </code></pre>
+<p>While convenient, global packages pollutes the global environment of our system. <a href="02-nix-commands/02-use-packages-in-nix-shell.html">Next</a> we will look at how Nix shell can provide a local shell environment that provide the same dependencies that we need.</p>
 <h1><a class="header" href="#nix-shell" id="nix-shell">Nix Shell</a></h1>
-<p>You can use Nix packages without installing them globally on your machine.</p>
+<p>You can use Nix packages without installing them globally on your machine. This is a good way to bring in the tools you need for individual projects.</p>
 <pre><code class="language-bash">$ nix-shell -p hello
 
 [nix-shell:nix-workshop]$ hello
@@ -401,6 +403,8 @@ Hello, world!
 [nix-shell:nix-workshop]$ which cabal
 /nix/store/060x141b9fz2pm6yz4zn3i0ncavbdbf7-cabal-install-3.2.0.0/bin/cabal
 </code></pre>
+<h2><a class="header" href="#using-shellnix" id="using-shellnix">Using <code>shell.nix</code></a></h2>
+<p>It is common practice for Nix-using projects to provide a <code>shell.nix</code> file that specifies the shell environment. The <code>nix-shell</code> command reads this file, allowing us to create reproducible shell environments without using <code>-p</code>. These environments can provide access to any tool written in any language, without polluting the global environment. We will cover the use of <code>shell.nix</code> in a <a href="02-nix-commands/../04-derivations/04-raw-derivation.html#nix-shell">later chapter</a>.</p>
 <h1><a class="header" href="#nix-repl" id="nix-repl">Nix Repl</a></h1>
 <pre><code class="language-bash">nix repl
 Welcome to Nix version 2.3.8. Type :? for help.

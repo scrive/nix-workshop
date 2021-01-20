@@ -164,7 +164,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#nix-shell" id="nix-shell">Nix Shell</a></h1>
-<p>You can use Nix packages without installing them globally on your machine.</p>
+<p>You can use Nix packages without installing them globally on your machine. This is a good way to bring in the tools you need for individual projects.</p>
 <pre><code class="language-bash">$ nix-shell -p hello
 
 [nix-shell:nix-workshop]$ hello
@@ -182,6 +182,8 @@ Hello, world!
 [nix-shell:nix-workshop]$ which cabal
 /nix/store/060x141b9fz2pm6yz4zn3i0ncavbdbf7-cabal-install-3.2.0.0/bin/cabal
 </code></pre>
+<h2><a class="header" href="#using-shellnix" id="using-shellnix">Using <code>shell.nix</code></a></h2>
+<p>It is common practice for Nix-using projects to provide a <code>shell.nix</code> file that specifies the shell environment. The <code>nix-shell</code> command reads this file, allowing us to create reproducible shell environments without using <code>-p</code>. These environments can provide access to any tool written in any language, without polluting the global environment. We will cover the use of <code>shell.nix</code> in a <a href="../04-derivations/04-raw-derivation.html#nix-shell">later chapter</a>.</p>
 
                     </main>
 
