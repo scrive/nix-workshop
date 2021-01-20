@@ -26,4 +26,4 @@ $ nix-shell -p nodejs ghc cabal-install
 
 ## Using `shell.nix`
 
-`nix-shell` will read `shell.nix` if it exists, so if you ever see a `shell.nix` in a project, know that you can run `nix-shell` to get a temporary environment with the tools you'll need. Managing temporary environments --- for any tool, written in any language --- is one of Nix's killer features.
+It is common practice for Nix-using projects to provide a `shell.nix` file that specifies the shell environment. The `nix-shell` command reads this file, allowing us to create reproducible shell environments without using `-p`. These environments can provide access to any tool written in any language, without polluting the global environment. We will cover the use of `shell.nix` in a [later chapter](../04-derivations/04-raw-derivation.md#nix-shell).

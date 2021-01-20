@@ -27,4 +27,4 @@ $ nix-env --uninstall hello
 uninstalling 'hello-2.10'
 ```
 
-This is a good way to get started, but most people use [`nix-shell`](02-use-packages-in-nix-shell.html) to make programs available when they're needed.
+While convenient, global packages pollutes the global environment of our system. [Next](02-use-packages-in-nix-shell.html) we will look at how Nix shell can provide a local shell environment that provide the same dependencies that we need.
