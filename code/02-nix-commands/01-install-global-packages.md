@@ -1,6 +1,6 @@
 # Install Global Packages
 
-For newcomers, we can thought of Nix as a supercharged package manager. Similar to traditional package managers, we can use Nix to install packages globally. Nix "installs" a global package by adding symlinkgs to `~/.nix-profile/bin`, which should be automatically included in your shell's `$PATH`.
+For newcomers, we can think of Nix as a supercharged package manager. Similar to traditional package managers, we can use Nix to install packages globally. Nix "installs" a global package by adding symlinkgs to `~/.nix-profile/bin`, which should be automatically included in your shell's `$PATH`.
 
 ```bash
 $ nix-env -i hello
@@ -27,4 +27,4 @@ $ nix-env --uninstall hello
 uninstalling 'hello-2.10'
 ```
 
-While convenient, global packages pollutes the global environment of our system. [Next](02-use-packages-in-nix-shell.html) we will look at how Nix shell can provide a local shell environment that provide the same dependencies that we need.
+While convenient, global packages pollute the global environment of our system. [Next](02-use-packages-in-nix-shell.html) we will look at how Nix shell can provide a local shell environment that provide the same dependencies that we need.
