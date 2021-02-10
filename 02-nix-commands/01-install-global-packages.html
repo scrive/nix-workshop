@@ -164,7 +164,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#install-global-packages" id="install-global-packages">Install Global Packages</a></h1>
-<p>For newcomers, we can thought of Nix as a supercharged package manager. Similar to traditional package managers, we can use Nix to install packages globally. Nix &quot;installs&quot; a global package by adding symlinkgs to <code>~/.nix-profile/bin</code>, which should be automatically included in your shell's <code>$PATH</code>.</p>
+<p>For newcomers, we can think of Nix as a supercharged package manager. Similar to traditional package managers, we can use Nix to install packages globally. Nix &quot;installs&quot; a global package by adding symlinkgs to <code>~/.nix-profile/bin</code>, which should be automatically included in your shell's <code>$PATH</code>.</p>
 <pre><code class="language-bash">$ nix-env -i hello
 installing 'hello-2.10'
 building '/nix/store/mlfrpy1ahv3arh2n23p45vdpm0p4nl1x-user-environment.drv'...
@@ -183,7 +183,7 @@ $ readlink $(which hello)
 <pre><code class="language-bash">$ nix-env --uninstall hello
 uninstalling 'hello-2.10'
 </code></pre>
-<p>While convenient, global packages pollutes the global environment of our system. <a href="02-use-packages-in-nix-shell.html">Next</a> we will look at how Nix shell can provide a local shell environment that provide the same dependencies that we need.</p>
+<p>While convenient, global packages pollute the global environment of our system. <a href="02-use-packages-in-nix-shell.html">Next</a> we will look at how Nix shell can provide a local shell environment that provide the same dependencies that we need.</p>
 
                     </main>
 
