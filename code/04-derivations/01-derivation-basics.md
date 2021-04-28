@@ -136,7 +136,7 @@ as the earlier result we had in `nix repl`.
 
 We create [`hello-sleep.nix`](01-derivation-basics/hello-sleep.nix) as a variant of
 `hello.nix` which sleeps for 10 seconds in its `buildPhase`.
-(We will go through how each phases work in the next chapter)
+(We will go through how each phase works in the next chapter)
 The 10 seconds sleep simulates the time taken to compile a program.
 We can see what happens when we try to build the same Nix derivation
 multiple times.
