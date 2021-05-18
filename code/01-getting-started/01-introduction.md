@@ -4,7 +4,7 @@ What is Nix?
 
 ## Programming Language
 
-- Dynamically typed - Similar semantics with JavaScript and Lisp.
+- Dynamically typed - Similar semantics to JavaScript and Lisp.
 
 - Functional programming - Higher order functions, immutability, etc.
 
@@ -37,7 +37,7 @@ What is Nix?
 
   - All Nix artifacts are stored in `/nix`.
 
-  - Global "installation" are merely symlink to Nix artifacts in
+  - Global "installation" is merely a set of symlinks to Nix artifacts in
     `/nix/store`.
 
 - Lightweight activation of global Nix packages.
@@ -48,7 +48,7 @@ What is Nix?
 
   - Otherwise Nix is almost invisible to users if it is not activated.
 
-- NixOS as a full Linux operating system.
+- NixOS is a full Linux operating system.
 
 ## Reproducibility
 
@@ -66,13 +66,13 @@ What is Nix?
 
   - Very difficult to accidentally escape the sandbox.
 
-- Content addressable storage.
+- Content-addressable storage.
 
-  - Address of Nix packages are based on checksum of source code,
+  - Addresses of Nix packages are based on a checksum of the source code,
     plus other factors such as CPU architecture and operating system.
 
-  - If checksum of source code changes, the address of the derivation
-    and build artifact also changes.
+  - If the checksum of the source code changes, the addresses of the derivation
+    and any build artifacts also change.
 
-  - If the address of a dependency changes, the address of the
-    derivation and build artifact also changes.
+  - If the address of a dependency changes, the addresses of the
+    derivation and build artifact also change.
