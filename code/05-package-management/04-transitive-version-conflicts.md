@@ -124,7 +124,7 @@ is propagated there.
 
 If we want to get the latest Hackage package beyond what is available
 in nixpkgs, we can instead use `callHackageDirect` to directly
-download the package from Hackge, skipping nixpkgs entirely:
+download the package from Hackage, skipping nixpkgs entirely:
 
 ```nix
 {{#include ./haskell-project-v3/nix/03-nixpkgs-transitive-deps/default.nix}}
