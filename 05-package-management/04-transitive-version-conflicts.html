@@ -317,7 +317,7 @@ is propagated there.</p>
 <h2><a class="header" href="#callhackagedirect" id="callhackagedirect">CallHackageDirect</a></h2>
 <p>If we want to get the latest Hackage package beyond what is available
 in nixpkgs, we can instead use <code>callHackageDirect</code> to directly
-download the package from Hackge, skipping nixpkgs entirely:</p>
+download the package from Hackage, skipping nixpkgs entirely:</p>
 <pre><code class="language-nix">let
   sources = import ../sources.nix {};
   nixpkgs = import sources.nixpkgs {};
