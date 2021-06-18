@@ -21,7 +21,7 @@ nix-repl> let
             bar = "bar val, ${foo}";
           in
           { inherit foo bar; }
-{ bar = "bar val"; foo = "foo val"; }
+{ bar = "bar val, foo val"; foo = "foo val"; }
 ```
 
 

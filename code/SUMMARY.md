@@ -26,7 +26,7 @@
 
   - [Files](./03-nix-basics/03-files.md)
 
-  - [Import](./03-nix-basics/04-import.md)
+  - [Importing Modules](./03-nix-basics/04-import.md)
 
 # Derivations
 

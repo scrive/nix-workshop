@@ -77,12 +77,12 @@ nix-repl> builtins.readFile (workshop + "/code/03-nix-basics/03-files/hello.txt"
 "Hello World!"
 ```
 
-## Content Addressible Path
+## Content-Addressable Path
 
 The files [hello.txt](03-files/hello.txt) and [hello-2.txt](03-files/hello-2.txt)
 both have the same content `"Hello World!"`, but they produce different artifacts
-in the Nix store. i.e. Name of Nix artifacts depend on the name of the original
-file / directory.
+in the Nix store, i.e. the name of a Nix artifact depends on the name of the
+original file / directory.
 
 ```nix
 nix-repl> builtins.path { path = ./code/03-nix-basics/03-files/hello.txt; }
@@ -141,7 +141,7 @@ bin  CHANGELOG.md  include  lib  LICENSE  README.md  share
 
 ## SHA256 Checksum
 
-Make sure that the content retrieved are the same for all users.
+Make sure that the content retrieved is the same for all users.
 
 ```bash
 nix-repl> nodejs-src = builtins.fetchTarball {

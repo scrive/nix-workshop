@@ -1,6 +1,6 @@
-# Import Modules
+# Importing Modules
 
-## Import Nix Modules
+## Importing Nix Modules
 
 We have the following files in
 [03-nix-basics/04-import](03-nix-basics/04-import):
@@ -36,7 +36,7 @@ nix-repl> import ./code/03-nix-basics/04-import
 { bar = [ ... ]; foo = "foo val"; }
 ```
 
-## Import Global Modules
+## Importing Global Modules
 
 ```nix
 nix-repl> nixpkgs = import <nixpkgs> {}
@@ -45,7 +45,7 @@ nix-repl> nixpkgs.lib.stringLength "hello"
 5
 ```
 
-## Import Tarball
+## Importing a Tarball
 
 Let's say we have the same [foo.nix](./code/04-import/foo.nix) now available
 as a [gist](https://gist.github.com/soareschen/d41e9b764018da4d2336644329c915e4).
@@ -60,7 +60,7 @@ nix-repl> foo
 "foo val"
 ```
 
-## Pin Tarball Version
+## Pinning a Tarball Version
 
 We have tested our remote `foo.nix` hosted on GitHub Gist, expecting it
 to have the same content as the local [foo.nix](./04-import/foo.nix) we have.
@@ -119,9 +119,9 @@ nix-repl> nixpkgs.lib.stringLength "hello"
 ```
 
 Pinning nixpkgs is highly encouraged when developing Nix modules. Without
-pinning, your user may run your modules on nixpkgs that has not been updated
-for months, if they have installed Nix very long time ago.
+pinning, your users may run your modules on a version of nixpkgs that is several
+months old.
 
-We will go through in later chapter on how to use
-[`niv`](https://github.com/nmattia/niv) to automate the management of
-pinned remote Nix packages.
+We will go through in a later chapter on how to use
+[`niv`](https://github.com/nmattia/niv) to automate the management of pinned
+remote Nix packages.

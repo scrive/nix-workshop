@@ -58,7 +58,7 @@ nix-repl> "Hello, ${name}!"
 "Hello, John!"
 ```
 
-## Multi Line Strings
+## Multiline Strings
 
 ```nix
 nix-repl> ''
